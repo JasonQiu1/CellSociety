@@ -3,29 +3,7 @@
 ### Spencer Katz, Prince Ahmed, Jason Qiu (jq48)
 
 
-#### Examples
-
-Here is a graphical look at my design:
-
-![This is cool, too bad you can't see it](online-shopping-uml-example.png "An initial UI")
-
-made from [a tool that generates UML from existing code](http://staruml.io/).
-
-
-Here is our amazing UI:
-
-![This is cool, too bad you can't see it](29-sketched-ui-wireframe.jpg "An alternate design")
-
-taken from [Brilliant Examples of Sketched UI Wireframes and Mock-Ups](https://onextrapixel.com/40-brilliant-examples-of-sketched-ui-wireframes-and-mock-ups/).
-
 ## Introduction
-This section describes the problem your team is trying to solve by writing this program, the primary design goals of the project (i.e., where is it most flexible), and the primary architecture of the design (i.e., what is closed and what is open). Discuss the program at a high-level (i.e., without referencing specific classes, data structures, or code).
-
-Example rule:
-_ _ _       _ _ _
-_ X 1 -> _ _ X
-_ _ _      _ _ _
-
 We want to make a program that can run any cellular automata simulation, supporting loading new rulesets and and saving current states. We also want to be able to control different aspects of the simulation, including the timestep. We want the ruleset configuration to be open to extension but want the code that updates the cells to be closed, so that it does not need to be changed for every new simulation.
 
 ## Design Overview
@@ -35,7 +13,7 @@ We want to make a program that can run any cellular automata simulation, support
 ## User Interface
 This section describes the overall appearance of program's user interface and how the user will interact with your program (keep it very simple to start). Include one or more pictures of the user interface and describe any possible erroneous situations that should be reported to the user (i.e., bad input data, empty data, etc.). These pictures can be hand drawn and scanned in, created with a standard drawing program (such as Figma or PowerPoint), ExcaliDraw (a Markdown-oriented drawing tool!), or screen shots from a dummy program that serves as a exemplar.
 
-[Mockup of the user interface](UserInterfaceMockUp.png)
+[Mockup of the user interface](images/UserInterfaceMockUp.png)
 
 ## Configuration File Format
 Configuration files will use the standard XML format that can be parsed automatically by Java, but the exact tag names and attributes you use within this file are up to your team. Create at least two example files to help the team agree on the information represented (such as number of tags, using attributes vs. elements, and other internal formatting decisions). Note, your examples do not need to be exhaustive, just representative of the file's format.
