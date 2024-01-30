@@ -10,8 +10,10 @@ import java.awt.event.KeyEvent;
  * @author Jason Qiu (jq48)
  */
 public class Controller {
+
   /**
    * Handles the given key event.
+   *
    * @param keyEvent the key event.
    */
   public static void handleKeyEvents(KeyEvent keyEvent) {

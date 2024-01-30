@@ -6,16 +6,16 @@ import cellsociety.model.Grid;
 import cellsociety.model.Simulation;
 
 /**
- * Responsible for drawing anything visible on the screen.
- * Also checks and handles user input (button clicks, text fields, keypresses).
+ * Responsible for drawing anything visible on the screen. Also checks and handles user input
+ * (button clicks, text fields, keypresses).
  *
  * @author Jason Qiu (jq48)
  */
 public class View {
 
   /**
-   * Splits the given Stage into two portions for the cell grid and the user interface.
-   * Also hooks user key events and user interface buttons and text fields to their handlers in Controller.
+   * Splits the given Stage into two portions for the cell grid and the user interface. Also hooks
+   * user key events and user interface buttons and text fields to their handlers in Controller.
    *
    * @param stage the stage to draw everything on.
    */

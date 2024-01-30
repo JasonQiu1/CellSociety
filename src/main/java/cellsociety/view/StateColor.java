@@ -12,6 +12,7 @@ public class StateColor {
 
   /**
    * Initializes a map of state to distinct color.
+   *
    * @param numStates the number of possible states.
    */
   public StateColor(int numStates) {

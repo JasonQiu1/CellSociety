@@ -10,8 +10,8 @@ import javafx.scene.layout.Pane;
 public class UserInterfaceDrawer {
 
   /**
-   * Initializes the user interface drawer.
-   * Also hooks button presses and text field submissions to their handlers in Controller.
+   * Initializes the user interface drawer. Also hooks button presses and text field submissions to
+   * their handlers in Controller.
    *
    * @param pane the pane to draw the user interface onto.
    */
