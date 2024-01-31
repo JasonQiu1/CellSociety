@@ -1,6 +1,8 @@
 package cellsociety.view;
 
 import cellsociety.model.Grid;
+import javafx.geometry.Pos;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -10,14 +12,22 @@ import javafx.scene.layout.Pane;
  */
 public class GridDrawer {
 
+  int numStates;
+  GridPane gridPane;
+  StateColor colorGenerator;
+
   /**
    * Creates an instance of StateColor to get colors from when drawing later.
    *
-   * @param root      the root to add window objects to.
-   * @param numStates the number of possible states in the current simulation.
+   * @param root the root to add window objects to.
    */
-  public GridDrawer(Pane root, int numStates) {
+  public GridDrawer(Pane root) {
+    numStates = 0;
 
+    gridPane = new GridPane();
+    gridPane.setAlignment(Pos.CENTER);
+    gridPane.setGridLinesVisible(true);
+    gridPane.setPrefSize(root.getMaxWidth(), root.getMaxHeight());
   }
 
   /**
