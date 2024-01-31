@@ -1,6 +1,6 @@
 package cellsociety.view;
 
-import cellsociety.model.Grid;
+//import cellsociety.model.Grid;
 import javafx.scene.layout.Pane;
 
 /**
@@ -25,7 +25,7 @@ public class GridDrawer {
    *
    * @param grid the grid to draw.
    */
-  public void draw(Grid grid) {
-    return;
-  }
+//  public void draw(Grid grid) {
+//    return;
+//  }
 }

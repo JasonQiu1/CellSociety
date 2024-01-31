@@ -20,6 +20,7 @@ public class View {
    * @param stage the stage to draw everything on.
    */
   public View(Stage stage) {
+    stage.show();
   }
 
   /**
@@ -36,7 +37,9 @@ public class View {
    *
    * @param simulation the current simulation to send messages to if needed.
    */
-  public void handleUserInput(Simulation simulation) {
+  public void setSimulation(Simulation simulation) {
 
   }
+
+
 }
