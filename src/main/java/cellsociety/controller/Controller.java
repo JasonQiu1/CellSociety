@@ -4,7 +4,7 @@ import cellsociety.model.Simulation;
 import java.awt.event.KeyEvent;
 
 /**
- * Responsible for telling Game or Simulation what to do given user input. Doesn't need to be
+ * Responsible for telling cellsociety.Game or Simulation what to do given user input. Doesn't need to be
  * instantiated.
  *
  * @author Jason Qiu (jq48)

@@ -2,7 +2,7 @@ package cellsociety.view;
 
 import javafx.stage.Stage;
 
-import cellsociety.model.Grid;
+//import cellsociety.model.Grid;
 import cellsociety.model.Simulation;
 
 /**
@@ -27,7 +27,7 @@ public class View {
    *
    * @param grid the grid to draw onto the cell grid portion.
    */
-  public void draw(Grid grid) {
+  public void draw() {
     return;
   }
 

@@ -1,4 +1,4 @@
-# Cell Society Design Final
+# cellsociety.model.Cell Society Design Final
 ### TEAM NUMBER
 ### NAMES
 
