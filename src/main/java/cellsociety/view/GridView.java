@@ -8,7 +8,7 @@ import javafx.scene.paint.Paint;
  *
  * @author Jason Qiu
  */
-public class GridView {
+class GridView {
 
   GridPane gridPane;
   CellView[][] cellViewGrid;

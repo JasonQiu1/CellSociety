@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
  *
  * @author Jason Qiu (jq48)
  */
-public class UserInterfaceDrawer {
+class UserInterfaceDrawer {
 
   /**
    * Initializes the user interface drawer. Also hooks button presses and text field submissions to

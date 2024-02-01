@@ -11,7 +11,7 @@ import javafx.scene.paint.Paint;
  *
  * @author Jason Qiu
  */
-public class CellView extends Region {
+class CellView extends Region {
 
   public static Paint DEFAULT_COLOR = Color.WHITE;
 

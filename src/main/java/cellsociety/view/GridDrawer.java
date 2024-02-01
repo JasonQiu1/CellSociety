@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
  *
  * @author Jason Qiu (jq48)
  */
-public class GridDrawer {
+class GridDrawer {
 
   Pane root;
   GridView gridView;

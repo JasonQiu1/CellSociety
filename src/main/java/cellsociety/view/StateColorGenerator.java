@@ -8,7 +8,7 @@ import javafx.scene.paint.Paint;
  *
  * @author Jason Qiu
  */
-public class StateColorGenerator {
+class StateColorGenerator {
 
   /**
    * Initializes a map of state to distinct color.
