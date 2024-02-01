@@ -1,14 +1,13 @@
-public abstract class RuleSet {
+public abstract class RuleSet implements Rules {
   private Cell[][] grid;
   private static final int NEIGHBOR_SIZE = 3;
   public RuleSet(Cell[][] grid) {
     this.grid = grid;
   }
   public abstract Cell[][] applyRules(Cell[][] grid);
+  public abstract void setUpdateFlag(Cell[][] neighbors, Cell c1);
 
-  public abstract int setUpdateFlag();
-
-  public abstract int updateCells(Cell[][] grid);
+  public abstract void applyUpdates();
 
   public Cell[][] findNeighbors (int xCord, int yCord) {
     Cell[][] neighbors = new Cell[NEIGHBOR_SIZE][NEIGHBOR_SIZE];
