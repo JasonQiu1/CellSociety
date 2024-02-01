@@ -10,10 +10,23 @@ and now he is playing pong
 
 Protein is good
 Apple is too
-
 I had both
+
 Eating wood
 Tastes worse than goo
+I had both
+
+Eating wood
+Tastes worse than goo
+I didn't have either
+
+1738, eh
+I'm like hey what's up hello.
+
+
+i am enjoying the apple
+
+>>>>>>> Stashed changes
 
 
 
