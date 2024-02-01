@@ -1,6 +1,6 @@
 package cellsociety.view;
 
-import cellsociety.model.Grid;
+import cellsociety.controller.Controller;
 import cellsociety.model.Simulation;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -10,8 +10,8 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 /**
- * Responsible for drawing anything visible on the screen. Also checks and handles user input
- * (button clicks, text fields, keypresses).
+ * Responsible for drawing anything visible on the screen. Delegates user input handling to a
+ * Controller instance.
  *
  * @author Jason Qiu (jq48)
  */
@@ -24,42 +24,54 @@ public class View {
   private Stage mainScene;
   private UserInterfaceDrawer uiDrawer;
   private GridDrawer gridDrawer;
+  private Controller controller;
 
   /**
-   * Splits the given Stage into two portions for the cell grid and the user interface. Also hooks
-   * user key events and user interface buttons and text fields to their handlers in Controller.
+   * Splits the given Stage into two portions for the cell grid and the user interface. Sets up the
+   * drawers for the cell grid, ui, and controller.
    *
    * @param stage the stage to draw everything on.
    */
   public View(Stage stage) {
+    controller = new Controller();
+
     Pane gridPane = new Pane();
     gridPane.setMaxSize(STAGE_WIDTH, STAGE_HEIGHT * GRID_TO_UI_RATIO);
     gridDrawer = new GridDrawer(gridPane);
 
     Pane uiPane = new Pane();
     uiPane.setMaxSize(STAGE_WIDTH, STAGE_HEIGHT * (1 - GRID_TO_UI_RATIO));
-    uiDrawer = new UserInterfaceDrawer(uiPane);
+    uiDrawer = new UserInterfaceDrawer(uiPane, controller);
 
     Group sceneRoot = new Group(uiPane, gridPane);
     Scene scene = new Scene(sceneRoot, STAGE_WIDTH, STAGE_HEIGHT, STAGE_COLOR);
     stage.setScene(scene);
+    stage.setTitle("Cell Society");
+    stage.show();
   }
 
   /**
-   * Draws the cell grid and user interface given a cell grid.
-   *
-   * @param grid the grid to draw onto the cell grid portion.
+   * Draws the current simulation's grid and user interface.
    */
-  public void draw(Grid grid) {
-    return;
+  public void draw() {
+    gridDrawer.draw(currentSimulation.getGrid());
+    uiDrawer.draw();
   }
 
   /**
-   * Checks for user input and handles it.
+   * Update's the grid reference that gridDrawer draws from. Also points the controller's user input
+   * handling functions to the correct simulation.
+   * TODO: refactor later so that main just passes Grid into draw for the GridDrawer
+   * TODO: make main create the controller instead and pass it into View constructor to hook
+   *    Removes the need for this function in View, will be responsibility of main
    *
-   * @param simulation the current simulation to send messages to if needed.
+   * @param simulation the new simulation.
    */
-  public void handleUserInput(Simulation simulation) {
-
+  public void setSimulation(Simulation simulation) {
+    if (simulation == null) {
+      return;
+    }
+    gridDrawer.setNumStates(simulation.getNumStates());
+    controller.setSimulation(simulation);
   }
 }
