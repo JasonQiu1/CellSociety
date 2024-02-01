@@ -25,6 +25,7 @@ public class View {
   private UserInterfaceDrawer uiDrawer;
   private GridDrawer gridDrawer;
   private Controller controller;
+  private Simulation currentSimulation;
 
   /**
    * Splits the given Stage into two portions for the cell grid and the user interface. Sets up the
@@ -54,8 +55,8 @@ public class View {
    * Draws the current simulation's grid and user interface.
    */
   public void draw() {
-    gridDrawer.draw(currentSimulation.getGrid());
-    uiDrawer.draw();
+    //gridDrawer.draw(currentSimulation.getGrid());
+    //uiDrawer.draw();
   }
 
   /**
@@ -68,10 +69,10 @@ public class View {
    * @param simulation the new simulation.
    */
   public void setSimulation(Simulation simulation) {
-
     if (simulation == null) {
       return;
     }
+    currentSimulation = simulation;
     gridDrawer.setNumStates(simulation.getNumStates());
     controller.setSimulation(simulation);
   }

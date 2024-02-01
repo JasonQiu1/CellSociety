@@ -46,6 +46,14 @@ public class Simulation {
     }
   }
 
+  public int getNumStates() {
+    return 0;
+  }
+
+  public Grid getGrid() {
+    return null;
+  }
+
 //    public void setGrid(cellsociety.model.Grid grid) {
 //        if (grid != null) {
 //            this.grid = grid;

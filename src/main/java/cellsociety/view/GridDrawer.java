@@ -1,6 +1,7 @@
 package cellsociety.view;
 
 
+import cellsociety.model.Grid;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -35,6 +36,9 @@ class GridDrawer {
    * @param currentGrid the non-null grid to draw.
    */
   public void draw(Grid currentGrid) {
+    if (currentGrid == null) {
+      return;
+    }
     // reinitialize the grid if it's a different size
     if (currentGrid.getNumRows() != gridView.getNumRows()
         || currentGrid.getNumCols() != gridView.getNumColumns()) {
@@ -80,7 +84,7 @@ class GridDrawer {
    */
   private void updateGridView(Grid currentGrid) {
     for (int row = 0; row < currentGrid.getNumRows(); row++) {
-      for (int col = 0; col < currentGrid.getNumColumns(); col++) {
+      for (int col = 0; col < currentGrid.getNumCols(); col++) {
         gridView.setCellViewColor(row, col,
             colorGenerator.getColor(currentGrid.getCellState(row, col)));
       }

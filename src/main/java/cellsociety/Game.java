@@ -41,6 +41,10 @@ public class Game extends Application {
     return updateGridFromConfig(configFileName);
   }
 
+  private static boolean updateGridFromConfig(String configFileName) {
+    return false;
+  }
+
   @Override
   public void start(Stage stage) {
     // Initialize UI and components here

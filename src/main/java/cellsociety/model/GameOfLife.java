@@ -8,7 +8,7 @@ public class GameOfLife extends RuleSet {
 
   @Override
   public Cell[][] applyRules(Cell[][] grid) {
-
+    return null;
   }
 
   @Override
