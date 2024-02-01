@@ -1,7 +1,6 @@
 package cellsociety.controller;
 
 import cellsociety.model.Simulation;
-import java.awt.event.KeyEvent;
 
 /**
  * Responsible for telling cellsociety.Game or Simulation what to do given user input. Doesn't need to be
@@ -11,18 +10,21 @@ import java.awt.event.KeyEvent;
  */
 public class Controller {
 
-  /**
-   * Handles the given key event.
-   *
-   * @param keyEvent the key event.
-   */
-  public static void handleKeyEvents(KeyEvent keyEvent) {
-
-  }
+  Simulation currentSimulation;
 
   /**
    * No initialization required, doesn't hold state.
    */
-  private Controller() {
+  public Controller() {
+    currentSimulation = null;
+  }
+
+  /**
+   * Updates the internal reference to the current simulation.
+   *
+   * @param simulation the new simulation to send messages to.
+   */
+  public void setSimulation(Simulation simulation) {
+    currentSimulation = simulation;
   }
 }
