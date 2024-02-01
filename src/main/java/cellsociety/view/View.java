@@ -61,7 +61,7 @@ public class View {
   /**
    * Update's the grid reference that gridDrawer draws from. Also points the controller's user input
    * handling functions to the correct simulation.
-   * TODO: refactor later so that main just passes Grid into draw for the GridDrawer
+   * TODO: refactor later so that main just passes cellsociety.model.Grid into draw for the GridDrawer
    * TODO: make main create the controller instead and pass it into View constructor to hook
    *    Removes the need for this function in View, will be responsibility of main
    *

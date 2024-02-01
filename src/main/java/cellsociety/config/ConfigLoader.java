@@ -82,7 +82,7 @@ public class ConfigLoader {
 //        int width = Integer.parseInt(configDocument.getElementsByTagName("Width").item(0).getTextContent());
 //        int height = Integer.parseInt(configDocument.getElementsByTagName("Height").item(0).getTextContent());
 //
-//        grid = new Grid(width, height); // Assuming Grid constructor takes width and height
+//        grid = new cellsociety.model.Grid(width, height); // Assuming cellsociety.model.Grid constructor takes width and height
 //
 //        NodeList cells = configDocument.getElementsByTagName("Cell");
 //        for (int i = 0; i < cells.getLength(); i++) {
@@ -91,14 +91,15 @@ public class ConfigLoader {
 //            int col = Integer.parseInt(cell.getAttribute("col"));
 //            String state = cell.getTextContent();
 //
-//            grid.setCell(row, col, state); // Assuming Grid has a method to set the state of a cell
+//            grid.setCell(row, col, state); // Assuming cellsociety.model.Grid has a method to set the state of a cell
 //        }
 //    }
   private Grid buildGrid(Document doc) {
     Element root = doc.getDocumentElement();
     int width = Integer.parseInt(getTextValue(root, "Width"));
     int height = Integer.parseInt(getTextValue(root, "Height"));
-    Grid grid = new Grid(width, height); // Assuming Grid class has this constructor
+    Grid grid = new Grid(width,
+        height); // Assuming cellsociety.model.Grid class has this constructor
 
     NodeList cellList = doc.getElementsByTagName("Cell");
     for (int i = 0; i < cellList.getLength(); i++) {
@@ -108,16 +109,16 @@ public class ConfigLoader {
         int row = Integer.parseInt(cell.getAttribute("row"));
         int col = Integer.parseInt(cell.getAttribute("col"));
         String status = cell.getTextContent();
-        // set cell status in the grid here based on your Grid class implementation
+        // set cell status in the grid here based on your cellsociety.model.Grid class implementation
       }
     }
     return grid;
   }
 
   private void buildRuleSet() {
-    // This would depend on how your RuleSet and Rules are defined
+    // This would depend on how your cellsociety.model.RuleSet and cellsociety.model.Rules are defined
     ruleSet = new RuleSet();
-    // Assume that RuleSet can be constructed and then rules added to it
+    // Assume that cellsociety.model.RuleSet can be constructed and then rules added to it
   }
 
   private void trackParameters() {
@@ -126,7 +127,7 @@ public class ConfigLoader {
     int distance = Integer.parseInt(
         configDocument.getElementsByTagName("distance").item(0).getTextContent());
 
-    // Use these parameters as needed, perhaps storing them or passing them to the Simulation or RuleSet
+    // Use these parameters as needed, perhaps storing them or passing them to the Simulation or cellsociety.model.RuleSet
   }
 }
 

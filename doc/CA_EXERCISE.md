@@ -14,7 +14,7 @@
 ### Discussion Questions
 
  * How does a cellsociety.model.Cell know what rules to apply for its simulation?
- The cell takes a number of states to instantiate. The RuleSet abstract class will have a method that apply the rules takes each cell and its neighbors as input, returning a enum Result that, will be used by a different method in the RuleSet class to update the cell and its neighbors.
+ The cell takes a number of states to instantiate. The cellsociety.model.RuleSet abstract class will have a method that apply the rules takes each cell and its neighbors as input, returning a enum Result that, will be used by a different method in the cellsociety.model.RuleSet class to update the cell and its neighbors.
 
  * How does a cellsociety.model.Cell know about its neighbors?
  The game will have a first pass through all of the cells, applying the rules to get a list of results for each cell
@@ -22,17 +22,17 @@
  * How can a cellsociety.model.Cell update itself without affecting its neighbors update?
  The game will have a second pass through all of the results for each cell, updating it and its neighbors if needed.
 
- * What behaviors does the Grid itself have?
+ * What behaviors does the cellsociety.model.Grid itself have?
  The getUpdates() and updateGrid(). loadGrid() loads a new board state of cells.
 
- * How can a Grid update all the Cells it contains?
+ * How can a cellsociety.model.Grid update all the Cells it contains?
  It runs getUpdates on all cells and then runs updateGrid on all the update results from the first function.
 
  * What information about a simulation needs to be in the configuration file?
  The ruleset, each state and its color, board size, and  initial board config.
 
  * How is configuration information used to set up a simulation?
- The ruleset initializes the RuleSet class. The board size determines the board size. The initial board sets up the board.
+ The ruleset initializes the cellsociety.model.RuleSet class. The board size determines the board size. The initial board sets up the board.
 
  * How is the graphical view of the simulation updated after all the cells have been updated?
  Drawer will take a board and for each cell, it looks at the config to determine what to color them.
