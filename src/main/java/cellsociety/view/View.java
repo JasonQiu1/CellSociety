@@ -1,9 +1,8 @@
 package cellsociety.view;
 
-import javafx.stage.Stage;
-
 import cellsociety.model.Grid;
 import cellsociety.model.Simulation;
+import javafx.stage.Stage;
 
 /**
  * Responsible for drawing anything visible on the screen. Also checks and handles user input

@@ -1,6 +1,5 @@
 package cellsociety.controller;
 
-import cellsociety.model.Simulation;
 import java.awt.event.KeyEvent;
 
 /**
@@ -12,17 +11,17 @@ import java.awt.event.KeyEvent;
 public class Controller {
 
   /**
+   * No initialization required, doesn't hold state.
+   */
+  private Controller() {
+  }
+
+  /**
    * Handles the given key event.
    *
    * @param keyEvent the key event.
    */
   public static void handleKeyEvents(KeyEvent keyEvent) {
 
-  }
-
-  /**
-   * No initialization required, doesn't hold state.
-   */
-  private Controller() {
   }
 }
