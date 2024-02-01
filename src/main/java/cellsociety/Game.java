@@ -31,7 +31,8 @@ public class Game extends Application {
 //        this configloader shouldn't it return me the simulation
 //        what else do I need the config loader for?
 //        it will return a simulation make it into a instance variable
-        configLoader = new ConfigLoader();
+//        configLoader = new ConfigLoader();
+
 
 
 //        code from breakout that might be useful
@@ -39,10 +40,8 @@ public class Game extends Application {
         animation.setCycleCount(Timeline.INDEFINITE);
         animation.getKeyFrames().add(new KeyFrame(Duration.seconds(SECOND_DELAY), e -> step(SECOND_DELAY)));
         animation.play();
-//
 //        // Configure and show the primary stage
 //        stage.show();
-//
 //        // Start the game loop
 //        gameLoop();
     }
@@ -57,6 +56,13 @@ public class Game extends Application {
         view.setSimulation(simulation);
         view.draw();
     }
+    public static boolean loadNewSimulation(String configFileName) {
+        // Load a new simulation from a configuration file
+        configLoader = new ConfigLoader(configFileName);
+        simulation = configLoader.simulation;
+        view.setSimulation(simulation);
+        return updateGridFromConfig(configFileName);
+    }
 
 //    public static boolean reloadGridFromConfig() {
 //        // Load grid configuration from file and update the grid
@@ -69,9 +75,5 @@ public class Game extends Application {
 //        return configLoader.saveConfig(configFileName, simulation);
 //    }
 //
-//    public static boolean loadNewSimulation(String configFileName) {
-//        // Load a new simulation from a configuration file
-//        view.setSimulation(simulation);
-//        return updateGridFromConfig(configFileName);
-//    }
+
 }
