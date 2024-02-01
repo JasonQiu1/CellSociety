@@ -1,27 +1,30 @@
 package cellsociety.controller;
 
-import java.awt.event.KeyEvent;
+import cellsociety.model.Simulation;
 
 /**
- * Responsible for telling Game or Simulation what to do given user input. Doesn't need to be
- * instantiated.
+ * Responsible for telling cellsociety.Game or Simulation what to do given user input. Doesn't need
+ * to be instantiated.
  *
  * @author Jason Qiu (jq48)
  */
 public class Controller {
 
+  Simulation currentSimulation;
+
   /**
    * No initialization required, doesn't hold state.
    */
-  private Controller() {
+  public Controller() {
+    currentSimulation = null;
   }
 
   /**
-   * Handles the given key event.
+   * Updates the internal reference to the current simulation.
    *
-   * @param keyEvent the key event.
+   * @param simulation the new simulation to send messages to.
    */
-  public static void handleKeyEvents(KeyEvent keyEvent) {
-
+  public void setSimulation(Simulation simulation) {
+    currentSimulation = simulation;
   }
 }
