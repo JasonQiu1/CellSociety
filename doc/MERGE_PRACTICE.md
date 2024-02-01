@@ -10,6 +10,8 @@ and now he is playing pong
 
 Protein is good
 Apple is too
+
+I had both
 Eating wood
 Tastes worse than goo
 
