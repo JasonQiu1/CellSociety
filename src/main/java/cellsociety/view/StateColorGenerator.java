@@ -8,19 +8,21 @@ import javafx.scene.paint.Paint;
  *
  * @author Jason Qiu
  */
-public class StateColor {
+class StateColorGenerator {
 
   /**
    * Initializes a map of state to distinct color.
+   * TODO: implement
    *
    * @param numStates the number of possible states.
    */
-  public StateColor(int numStates) {
+  public StateColorGenerator(int numStates) {
 
   }
 
   /**
    * Gets the fixed color for a given state.
+   * TODO: implement
    *
    * @param state the state number.
    * @return the color that corresponds to that state.

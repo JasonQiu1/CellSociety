@@ -1,6 +1,7 @@
 package cellsociety.view;
 
-import cellsociety.model.Grid;
+import javafx.geometry.Pos;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -8,24 +9,79 @@ import javafx.scene.layout.Pane;
  *
  * @author Jason Qiu (jq48)
  */
-public class GridDrawer {
+class GridDrawer {
+
+  Pane root;
+  GridView gridView;
+  StateColorGenerator colorGenerator;
+  int numStates;
 
   /**
-   * Creates an instance of StateColor to get colors from when drawing later.
+   * Holds on to the parent to draw to.
    *
-   * @param root      the root to add window objects to.
-   * @param numStates the number of possible states in the current simulation.
+   * @param root the root to add window objects to.
    */
-  public GridDrawer(Pane root, int numStates) {
+  public GridDrawer(Pane root) {
+    this.root = root;
+    gridView = null;
+    colorGenerator = null;
+  }
 
+
+  /**
+   * Draws the current simulation's grid onto the cell grid.
+   *
+   * @param currentGrid the non-null grid to draw.
+   */
+  public void draw(Grid currentGrid) {
+    // reinitialize the grid if it's a different size
+    if (currentGrid.getNumRows() != gridView.getNumRows()
+        || currentGrid.getNumCols() != gridView.getNumColumns()) {
+      initializeGridView(currentGrid.getNumRows(), currentGrid.getNumCols());
+    }
+
+    updateGridView(currentGrid);
   }
 
   /**
-   * Draws the given grid onto the cell grid.
+   * Creates a new StateColorGenerator given the number of states.
    *
-   * @param grid the grid to draw.
+   * @param numStates the new number of states.
    */
-  public void draw(Grid grid) {
-    return;
+  public void setNumStates(int numStates) {
+    this.numStates = numStates;
+    colorGenerator = new StateColorGenerator(numStates);
+  }
+
+  /**
+   * Set gridView to a new GridView and set its formatting, maintaining the root at the same time.
+   *
+   * @param numRows the number of rows of the resulting GridView.
+   * @param numCols the number of columns of the resulting GridView.
+   */
+  private void initializeGridView(int numRows, int numCols) {
+    if (gridView != null) {
+      root.getChildren().remove(gridView.getGridPane());
+    }
+    gridView = new GridView(numRows, numCols);
+    GridPane gridPane = gridView.getGridPane();
+    gridPane.setPrefSize(root.getMaxWidth(), root.getMaxHeight());
+    gridPane.setAlignment(Pos.CENTER);
+    gridPane.setGridLinesVisible(true);
+    root.getChildren().add(gridPane);
+  }
+
+  /**
+   * Updates the colors of each cell in gridView to match the states in the model Grid.
+   *
+   * @param currentGrid the model's Grid instance.
+   */
+  private void updateGridView(Grid currentGrid) {
+    for (int row = 0; row < currentGrid.getNumRows(); row++) {
+      for (int col = 0; col < currentGrid.getNumColumns(); col++) {
+        gridView.setCellViewColor(row, col,
+            colorGenerator.getColor(currentGrid.getCellState(row, col)));
+      }
+    }
   }
 }

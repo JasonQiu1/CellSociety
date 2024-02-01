@@ -1,5 +1,6 @@
 package cellsociety.view;
 
+import cellsociety.controller.Controller;
 import javafx.scene.layout.Pane;
 
 /**
@@ -7,15 +8,15 @@ import javafx.scene.layout.Pane;
  *
  * @author Jason Qiu (jq48)
  */
-public class UserInterfaceDrawer {
+class UserInterfaceDrawer {
 
   /**
    * Initializes the user interface drawer. Also hooks button presses and text field submissions to
-   * their handlers in Controller.
+   * Controller handlers.
    *
    * @param pane the pane to draw the user interface onto.
    */
-  public UserInterfaceDrawer(Pane pane) {
+  public UserInterfaceDrawer(Pane pane, Controller controller) {
   }
 
   /**
