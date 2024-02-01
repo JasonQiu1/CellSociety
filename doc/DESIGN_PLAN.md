@@ -51,21 +51,21 @@ The ConfigSaver class is responsible for taking a Simulation instance and file p
 ### ConfigLoader
 The ConfigLoader class is responsible for taking a file path and returning a Simulation instance that corresponds to that file's configuration details.
 
-### RuleSet
-The RuleSet interface provides the functionality to take a given array of cellsociety.model.Cell instances and returns an array of the same size with flags. These flags are used by the next method to actually update the cells and returns the updated array of cells. It also returns the number of states the ruleset uses.
+### cellsociety.model.RuleSet
+The cellsociety.model.RuleSet interface provides the functionality to take a given array of cellsociety.model.Cell instances and returns an array of the same size with flags. These flags are used by the next method to actually update the cells and returns the updated array of cells. It also returns the number of states the ruleset uses.
 
 Each different simulation (Conway's cellsociety.Game of Life, Spreading of Fire, etc.) implements this interface.
 
-### Grid
-The Grid interface provides the functionality to update itself given a particular RuleSet instance.
+### cellsociety.model.Grid
+The cellsociety.model.Grid interface provides the functionality to update itself given a particular cellsociety.model.RuleSet instance.
 
 Different types of grids (e.g. finite or infinite grids) implement this interface.
 
 ### Simulation
-The Simulation class is responsible for any high-level details regarding when to update the stored Grid instance, such as handling simulation speed and pausing/unpausing, and also holds what RuleSet to use to update it.
+The Simulation class is responsible for any high-level details regarding when to update the stored cellsociety.model.Grid instance, such as handling simulation speed and pausing/unpausing, and also holds what cellsociety.model.RuleSet to use to update it.
 
 ### GridDrawer
-The GridDrawer class is responsible for drawing the given Grid instance onto the screen given some Group/Pane/StackPane JavaFX object. It makes sure all Cells that are the same state are the same color.
+The GridDrawer class is responsible for drawing the given cellsociety.model.Grid instance onto the screen given some Group/Pane/StackPane JavaFX object. It makes sure all Cells that are the same state are the same color.
 
 ### UserInterface
 The UserInterface class is responsible for drawing the user interface given some Group/Pane/StackPane JavaFX object and detecting user input (via buttons, text field, or keypress).
@@ -86,11 +86,11 @@ In addition to the Use Cases below, write at least two Use Cases per person to f
 
 
 Apply the rules to a middle cell: set the next state of a cell to dead by counting its number of neighbors using the cellsociety.Game of Life rules for a cell in the middle (i.e., with all its neighbors)
-The class cellsociety.Game calls the method gridUpdate() in the Class Grid, when it reaches this cell it will send the array as parameters to the RuleSet Class. The RuleSet Class will determine what the state for this cell should be on the next iteration along with the other cells. The array for the next iteration will get returned to the Grid Class. The grid class will go through the rest of the cells and then apply the update.
+The class cellsociety.Game calls the method gridUpdate() in the Class cellsociety.model.Grid, when it reaches this cell it will send the array as parameters to the cellsociety.model.RuleSet Class. The cellsociety.model.RuleSet Class will determine what the state for this cell should be on the next iteration along with the other cells. The array for the next iteration will get returned to the cellsociety.model.Grid Class. The grid class will go through the rest of the cells and then apply the update.
 Apply the rules to an edge cell: set the next state of a cell to live by counting its number of neighbors using the cellsociety.Game of Life rules for a cell on the edge (i.e., with some of its neighbors missing)
 This is the same as the previous with special considerations.
 Move to the next generation: update all cells in a simulation from their current state to their next state and display the result graphically
-The RuleSet Class will determine what the state for the cells should be in the next. The 2d array of the next state will get returned to the Grid Class. The grid class will go through the array and then apply the update. Then the grid drawer class will update the graphical grid on each step.
+The cellsociety.model.RuleSet Class will determine what the state for the cells should be in the next. The 2d array of the next state will get returned to the cellsociety.model.Grid Class. The grid class will go through the array and then apply the update. Then the grid drawer class will update the graphical grid on each step.
 Switch simulations: load a new simulation from a data file, replacing the current running simulation with the newly loaded one
 If the Load New button is selected in the UI, the simulation class is told to stop the simulation. The UI opens a drop down menu which allows the user to select a new file. When this file is selected, the game class is told to reset with a new file. This file is passed to the configloader class which will load the simulation with the new grid object. 
 Set a simulation parameter: set the value of a parameter, probCatch, for a simulation, Fire, based on the value given in a data file
@@ -104,7 +104,7 @@ A Rule object for this specific game will have been created. The grid class will
 Adjust the simulation speed
 The game loop calls UI.handleUserInput(simulation), which finds that the user has updated the simulation speed, so it tells simulation to set a new speed using simulation.setSimulationSpeed(). Then when the game calls simulation.update(elapsedTime), it keeps track of how much time has passed in comparison to its stored simulation speed to decide whether or not to actually call grid.update()
 Start the program
-cellsociety.Game is the main class. This will call the UI which will create a screen asking for a file. A file will be selected. Then cellsociety.Game will call ConfigLoader which will load this file. ConfigLoader will create a RuleSet and Grid object which will be given to a simulation object which is also created in ConfigLoader. cellsociety.Game will call a method which continuously tells UI and simulation to update.
+cellsociety.Game is the main class. This will call the UI which will create a screen asking for a file. A file will be selected. Then cellsociety.Game will call ConfigLoader which will load this file. ConfigLoader will create a cellsociety.model.RuleSet and cellsociety.model.Grid object which will be given to a simulation object which is also created in ConfigLoader. cellsociety.Game will call a method which continuously tells UI and simulation to update.
 Save a file
 The UI will determine if a save file button was pressed. This will call a static method in game that will taken the current grid and game information and convert this to an xml file.
 
@@ -122,7 +122,7 @@ Cons:
  Single Responsibility Principle Violation: Could violate the SRP by mixing grid management with game logic.
 Reduced Modularity: May lead to less modular and harder-to-maintain code.
 
-To address these issues, we introduced a dedicated Grid class, acting as an intermediary between the cellsociety.Game and Rules classes. The Grid class handles grid management, updates, and queries:
+To address these issues, we introduced a dedicated cellsociety.model.Grid class, acting as an intermediary between the cellsociety.Game and cellsociety.model.Rules classes. The cellsociety.model.Grid class handles grid management, updates, and queries:
 
 Pros:
 Open and closed principle: If we need to add new functionality to the grid (like making it infinite, or implementing in a different way) we are allowing the grid class to be open to do this. On the other hand the functions on the grid will stay closed.
@@ -131,9 +131,9 @@ Clear Responsibilities: Ensures each class has a focused role, adhering to SRP.
 
 
 Cons:
-Indirect Access: Requires the cellsociety.Game class to interact with the Grid class for grid operations.
+Indirect Access: Requires the cellsociety.Game class to interact with the cellsociety.model.Grid class for grid operations.
 
-The advantages of introducing a Grid class, such as improved modularity and adherence to SRP, outweigh the cons so we decided to implement it.
+The advantages of introducing a cellsociety.model.Grid class, such as improved modularity and adherence to SRP, outweigh the cons so we decided to implement it.
 
 Design consideration 2
 Organization of responsibilities among classes, specifically, whether to introduce a separate Simulation class and decide which component should handle the simulation loop. This discussion emerged from the need to manage user interactions like loading new simulation configurations and handling ongoing simulations. 
@@ -160,8 +160,8 @@ This section describes the parts of the program each team member plans to take p
 Classes: 
 
  * Spencer #1
-All Rules
-Grid
+All cellsociety.model.Rules
+cellsociety.model.Grid
 Cells
  * Prince #2
 ConfigFile

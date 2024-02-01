@@ -1,3 +1,5 @@
+package cellsociety.model;
+
 public class FiniteGrid implements Grid {
 
   private Cell[][] grid;
@@ -7,6 +9,7 @@ public class FiniteGrid implements Grid {
     this.grid = grid;
     this.rules = rules;
   }
+
   public Cell[][] getGrid() {
     return grid;
   }
@@ -14,10 +17,12 @@ public class FiniteGrid implements Grid {
   public void setGrid(Cell[][] grid) {
     this.grid = grid;
   }
+
   @Override
   public void update() {
     grid = rules.applyRules(grid);
   }
+
   @Override
   public int getCellState(int row, int column) {
     return 0;

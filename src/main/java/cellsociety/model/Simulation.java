@@ -2,12 +2,12 @@ package cellsociety.model;
 
 public class Simulation {
 
-  //    private RuleSet ruleSet;
-//    private Grid grid;
+  //    private cellsociety.model.RuleSet ruleSet;
+//    private cellsociety.model.Grid grid;
   private boolean isPaused;
   private double simulationSpeed;
 
-  //    public Simulation(RuleSet ruleSet, Grid initialGrid) {
+  //    public Simulation(cellsociety.model.RuleSet ruleSet, cellsociety.model.Grid initialGrid) {
   public Simulation() {
 //        this.ruleSet = ruleSet;
 //        this.grid = initialGrid;
@@ -46,11 +46,11 @@ public class Simulation {
     }
   }
 
-//    public void setGrid(Grid grid) {
+//    public void setGrid(cellsociety.model.Grid grid) {
 //        if (grid != null) {
 //            this.grid = grid;
 //        } else {
-//            throw new IllegalArgumentException("Grid cannot be null.");
+//            throw new IllegalArgumentException("cellsociety.model.Grid cannot be null.");
 //        }
 //    }
 

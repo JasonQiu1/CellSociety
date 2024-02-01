@@ -73,9 +73,10 @@ class GridDrawer {
   }
 
   /**
-   * Updates the colors of each cell in gridView to match the states in the model Grid.
+   * Updates the colors of each cell in gridView to match the states in the model
+   * cellsociety.model.Grid.
    *
-   * @param currentGrid the model's Grid instance.
+   * @param currentGrid the model's cellsociety.model.Grid instance.
    */
   private void updateGridView(Grid currentGrid) {
     for (int row = 0; row < currentGrid.getNumRows(); row++) {
