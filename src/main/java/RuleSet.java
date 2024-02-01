@@ -4,11 +4,20 @@ public abstract class RuleSet implements Rules {
   public RuleSet(Cell[][] grid) {
     this.grid = grid;
   }
-  public abstract Cell[][] applyRules(Cell[][] grid);
+  public Cell[][] applyRules(Cell[][] grid) {
+    setGrid(grid);
+    for (int i = 0; i<grid.length; i++) {
+      for (int j = 0; j<grid[0].length; j++) {
+        Cell[][] neighbors = findNeighbors(i,j);
+        setUpdateFlag(neighbors, grid[i][j]);
+      }
+      applyUpdates();
+    }
+    return grid;
+  }
   public abstract void setUpdateFlag(Cell[][] neighbors, Cell c1);
 
   public abstract void applyUpdates();
-
   public Cell[][] findNeighbors (int xCord, int yCord) {
     Cell[][] neighbors = new Cell[NEIGHBOR_SIZE][NEIGHBOR_SIZE];
     int loopInt = NEIGHBOR_SIZE-2;
