@@ -1,5 +1,6 @@
 package cellsociety.view;
 
+
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;

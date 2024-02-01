@@ -1,4 +1,4 @@
-# Cell Society Design Lab Discussion
+# cellsociety.model.Cell Society Design Lab Discussion
 #### Jason Qiu (jq48), Spencer Katz (sek49), Prince Ahmed (pa99)
 
 
@@ -13,13 +13,13 @@
 
 ### Discussion Questions
 
- * How does a Cell know what rules to apply for its simulation?
+ * How does a cellsociety.model.Cell know what rules to apply for its simulation?
  The cell takes a number of states to instantiate. The RuleSet abstract class will have a method that apply the rules takes each cell and its neighbors as input, returning a enum Result that, will be used by a different method in the RuleSet class to update the cell and its neighbors.
 
- * How does a Cell know about its neighbors?
+ * How does a cellsociety.model.Cell know about its neighbors?
  The game will have a first pass through all of the cells, applying the rules to get a list of results for each cell
 
- * How can a Cell update itself without affecting its neighbors update?
+ * How can a cellsociety.model.Cell update itself without affecting its neighbors update?
  The game will have a second pass through all of the results for each cell, updating it and its neighbors if needed.
 
  * What behaviors does the Grid itself have?
@@ -103,14 +103,14 @@ public class Something {
 
 ### Use Cases
 
-* Apply the rules to a middle cell: set the next state of a cell to dead by counting its number of neighbors using the Game of Life rules for a cell in the middle (i.e., with all its neighbors)
+* Apply the rules to a middle cell: set the next state of a cell to dead by counting its number of neighbors using the cellsociety.Game of Life rules for a cell in the middle (i.e., with all its neighbors)
 ```java
  Something thing = new Something();
  Order o = thing.makeOrder("coffee,large,black");
  o.update(13);
 ```
 
-* Apply the rules to an edge cell: set the next state of a cell to live by counting its number of neighbors using the Game of Life rules for a cell on the edge (i.e., with some of its neighbors missing)
+* Apply the rules to an edge cell: set the next state of a cell to live by counting its number of neighbors using the cellsociety.Game of Life rules for a cell on the edge (i.e., with some of its neighbors missing)
 ```java
  Something thing = new Something();
  Order o = thing.makeOrder("coffee,large,black");

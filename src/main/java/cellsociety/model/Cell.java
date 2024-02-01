@@ -1,3 +1,5 @@
+package cellsociety.model;
+
 public class Cell {
 
   private int currentState;

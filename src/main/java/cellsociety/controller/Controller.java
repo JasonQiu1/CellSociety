@@ -3,8 +3,8 @@ package cellsociety.controller;
 import cellsociety.model.Simulation;
 
 /**
- * Responsible for telling Game or Simulation what to do given user input. Doesn't need to be
- * instantiated.
+ * Responsible for telling cellsociety.Game or Simulation what to do given user input. Doesn't need
+ * to be instantiated.
  *
  * @author Jason Qiu (jq48)
  */

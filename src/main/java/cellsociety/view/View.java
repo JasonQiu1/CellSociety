@@ -68,10 +68,13 @@ public class View {
    * @param simulation the new simulation.
    */
   public void setSimulation(Simulation simulation) {
+
     if (simulation == null) {
       return;
     }
     gridDrawer.setNumStates(simulation.getNumStates());
     controller.setSimulation(simulation);
   }
+
+
 }

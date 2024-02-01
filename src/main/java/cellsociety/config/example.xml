@@ -1,0 +1,15 @@
+<config>
+  <Author>Prince</Author>
+  <Description>This is an example of what the project will look like</Description>
+  <Height>100</Height>
+  <InitialConfig>
+    <Cell col="1" row="1">Alive</Cell>
+    <Cell col="1" row="2">Empty</Cell>
+  </InitialConfig>
+  <Parameters>
+    <Distance>5</Distance>
+    <Probability>0.9</Probability>
+  </Parameters>
+  <SimulationType>Game of Life/Percolation</SimulationType>
+  <Width>100</Width>
+</config>

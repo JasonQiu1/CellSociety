@@ -28,7 +28,7 @@ Each subclass's high-level behavorial differences from the superclass
 ```
 
 
-#### Affect on Game/Level class
+#### Affect on cellsociety.Game/Level class
 
 Which methods are simplified by using this abstraction and why
 
@@ -65,7 +65,7 @@ Each subclass's high-level behavorial differences from the superclass
  }
 ```
 
-#### Affect on Game/Level class
+#### Affect on cellsociety.Game/Level class
 
 Item no longer needs to take a boolean to determine whether or not it is a bomb, simplifying any conditionals in the other sections of code.
 
