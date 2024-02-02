@@ -16,14 +16,25 @@ public abstract class RuleSet implements Rules {
         Cell[][] neighbors = findNeighbors(i, j);
         setUpdateFlag(neighbors, grid[i][j]);
       }
-      applyUpdates();
+      update();
     }
     return grid;
   }
 
   public abstract void setUpdateFlag(Cell[][] neighbors, Cell c1);
 
-  public abstract void applyUpdates();
+  public abstract void applyUpdate(Cell c1);
+
+  public void update() {
+    for (int i = 0; i<grid.length;i++) {
+      for (int j = 0; j <grid[0].length; j++) {
+        if (grid[i][j].getFlag()) {
+          applyUpdate(grid[i][j]);
+          grid[i][j].setFlag(false);
+        }
+      }
+    }
+  }
 
   public Cell[][] findNeighbors(int xCord, int yCord) {
     Cell[][] neighbors = new Cell[NEIGHBOR_SIZE][NEIGHBOR_SIZE];

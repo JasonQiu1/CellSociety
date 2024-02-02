@@ -25,7 +25,7 @@ public class FiniteGrid implements Grid {
 
   @Override
   public int getCellState(int row, int column) {
-    return 0;
+    return grid[row][column].getCurrentState();
   }
 
   @Override
