@@ -71,13 +71,13 @@ public class View {
   }
 
   /**
-   * Draws the current simulation's grid and user interface.
+   * Updates the current simulation's grid and user interface.
    */
-  public void draw() {
+  public void update() {
     if (currentSimulation != null) {
-      gridDrawer.draw(currentSimulation.getGrid());
+      gridDrawer.update(currentSimulation.getGrid());
     }
-    uiDrawer.draw();
+    uiDrawer.update();
   }
 
   /**

@@ -31,7 +31,7 @@ public class Game extends Application {
       simulation.update(elapsedTime);
     }
     view.setSimulation(simulation);
-    view.draw();
+    view.update();
   }
 
   public static boolean loadNewSimulation(String configFileName) {
