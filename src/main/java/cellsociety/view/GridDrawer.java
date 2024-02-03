@@ -37,7 +37,6 @@ class GridDrawer {
    */
   public void draw(Grid currentGrid) {
     if (currentGrid == null) {
-      return;
     }
     // reinitialize the grid if it's a different size
     if (currentGrid.getNumRows() != gridView.getNumRows()

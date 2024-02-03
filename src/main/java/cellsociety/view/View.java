@@ -2,6 +2,7 @@ package cellsociety.view;
 
 import cellsociety.controller.Controller;
 import cellsociety.model.Simulation;
+import java.util.ResourceBundle;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -22,12 +23,12 @@ public class View {
   public static final String DEFAULT_RESOURCE_PACKAGE = "cellsociety.";
   public static final String DEFAULT_RESOURCE_FOLDER =
       "/" + DEFAULT_RESOURCE_PACKAGE.replace(".", "/");
-  public static final String STYLESHEET = "default.css";
   private static int STAGE_WIDTH = 750;
   private static int STAGE_HEIGHT = 500;
   private static Paint STAGE_COLOR = Color.WHITE;
   private static double GRID_TO_UI_RATIO = 0.8;
   private Stage stage;
+  private ResourceBundle resources;
   private UserInterfaceDrawer uiDrawer;
   private GridDrawer gridDrawer;
   private Controller controller;
@@ -39,7 +40,10 @@ public class View {
    *
    * @param stage the stage to draw everything on.
    */
-  public View(Stage stage) {
+  public View(Stage stage, String resourcesFileName) {
+    // resource bundle loading line from nanobrowser lab:
+    // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
+    resources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + resourcesFileName);
     this.stage = stage;
     controller = new Controller();
 
@@ -85,6 +89,5 @@ public class View {
     gridDrawer.setNumStates(simulation.getNumStates());
     controller.setSimulation(simulation);
   }
-
-
+  
 }

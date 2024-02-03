@@ -14,6 +14,7 @@ public class Game extends Application {
 
   public static final int FRAMES_PER_SECOND = 60;
   public static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
+  public static final String VIEW_RESOURCE_BUNDLE_NAME = "view";
   public static View view;
   public static Simulation simulation;
   public static ConfigLoader configLoader;
@@ -48,7 +49,7 @@ public class Game extends Application {
   @Override
   public void start(Stage stage) {
     // Initialize UI and components here
-    view = new View(stage);
+    view = new View(stage, VIEW_RESOURCE_BUNDLE_NAME);
 //        simulation = new Simulation();
 //        this configloader shouldn't it return me the simulation
 //        what else do I need the config loader for?
