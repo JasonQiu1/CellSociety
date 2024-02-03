@@ -2,13 +2,21 @@ package cellsociety.view;
 
 import cellsociety.controller.Controller;
 import cellsociety.model.Simulation;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 /**
  * Responsible for drawing anything visible on the screen. Delegates user input handling to a
@@ -89,5 +97,34 @@ public class View {
     gridDrawer.setNumStates(simulation.getNumStates());
     controller.setSimulation(simulation);
   }
-  
+
+  // makeButton code from nanobrowser lab:
+  // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
+  // makes a button using either an image or a label
+  private Button makeButton(String property, EventHandler<ActionEvent> handler) {
+    // represent all supported image suffixes
+    final String IMAGE_FILE_SUFFIXES = String.format(".*\\.(%s)",
+        String.join("|", ImageIO.getReaderFileSuffixes()));
+    Button result = new Button();
+    String label = resources.getString(property);
+    if (label.matches(IMAGE_FILE_SUFFIXES)) {
+      result.setGraphic(new ImageView(new Image(
+          Objects.requireNonNull(
+              getClass().getResourceAsStream(DEFAULT_RESOURCE_FOLDER + label)))));
+    } else {
+      result.setText(label);
+    }
+    result.setOnAction(handler);
+    return result;
+  }
+
+  // makeInputField code from nanobrowser lab:
+  // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
+  private TextField makeInputField(int width, EventHandler<ActionEvent> handler) {
+    TextField result = new TextField();
+    result.setPrefColumnCount(width);
+    result.setOnAction(handler);
+    return result;
+  }
+
 }
