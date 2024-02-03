@@ -17,11 +17,17 @@ import javafx.stage.Stage;
  */
 public class View {
 
+  // resource code from nanobrowser lab:
+  // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
+  public static final String DEFAULT_RESOURCE_PACKAGE = "cellsociety.";
+  public static final String DEFAULT_RESOURCE_FOLDER =
+      "/" + DEFAULT_RESOURCE_PACKAGE.replace(".", "/");
+  public static final String STYLESHEET = "default.css";
   private static int STAGE_WIDTH = 750;
   private static int STAGE_HEIGHT = 500;
   private static Paint STAGE_COLOR = Color.WHITE;
   private static double GRID_TO_UI_RATIO = 0.8;
-  private Stage mainScene;
+  private Stage stage;
   private UserInterfaceDrawer uiDrawer;
   private GridDrawer gridDrawer;
   private Controller controller;
@@ -34,6 +40,7 @@ public class View {
    * @param stage the stage to draw everything on.
    */
   public View(Stage stage) {
+    this.stage = stage;
     controller = new Controller();
 
     Pane gridPane = new Pane();
@@ -55,8 +62,10 @@ public class View {
    * Draws the current simulation's grid and user interface.
    */
   public void draw() {
-    //gridDrawer.draw(currentSimulation.getGrid());
-    //uiDrawer.draw();
+    if (currentSimulation != null) {
+      gridDrawer.draw(currentSimulation.getGrid());
+    }
+    uiDrawer.draw();
   }
 
   /**
