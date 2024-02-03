@@ -1,6 +1,8 @@
 package cellsociety.controller;
 
+import cellsociety.Game;
 import cellsociety.model.Simulation;
+import java.util.Map;
 
 /**
  * Responsible for telling cellsociety.Game or Simulation what to do given user input. Doesn't need
@@ -12,9 +14,6 @@ public class Controller {
 
   Simulation currentSimulation;
 
-  /**
-   * No initialization required, doesn't hold state.
-   */
   public Controller() {
     currentSimulation = null;
   }
@@ -26,5 +25,47 @@ public class Controller {
    */
   public void setSimulation(Simulation simulation) {
     currentSimulation = simulation;
+  }
+
+  public void handleLoadConfigurationFileButtonPress(String configurationFileName) {
+    Game.loadNewSimulation(configurationFileName);
+  }
+
+  public void handleSaveConfigurationFileButtonPress(String saveFileName,
+      Map<String, String> saveFileMetadata) {
+    // send a message to Game to save the simulation with the given metadata
+  }
+
+  public void handleStartSimulationButtonPress() {
+    if (currentSimulation == null) {
+      return;
+    }
+    // send a message to currentSimulation to start/unpause the simulation
+  }
+
+  public void handlePauseSimulationButtonPress() {
+    if (currentSimulation == null) {
+      return;
+    }
+    // send a message to currentSimulation to pause the simulation
+  }
+
+  public void handleSpeedUpSimulationButtonPress() {
+    if (currentSimulation == null) {
+      return;
+    }
+    // send a message to currentSimulation to speed up a certain amount
+  }
+
+  public void handleSlowDownSimulationButtonPress() {
+    if (currentSimulation == null) {
+      return;
+    }
+    // send a message to currentSimulation to slow down a certain amount
+  }
+
+  public void handleResetGridButtonPress() {
+    // send a message to Game to load the initial grid into the same simulation
+    // without resetting its parameters
   }
 }
