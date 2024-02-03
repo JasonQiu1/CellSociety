@@ -25,12 +25,12 @@ public class View {
   public static final String DEFAULT_RESOURCE_FOLDER =
       "/" + DEFAULT_RESOURCE_PACKAGE.replace(".", "/");
   public static final String STYLESHEET = "default.css";
+  private static final int STAGE_WIDTH = 750;
+  private static final int STAGE_HEIGHT = 500;
+  private static final Paint STAGE_COLOR = Color.WHITE;
+  private static final double GRID_TO_UI_RATIO = 0.8;
   // make resources accessible to all ui components, so they don't have to grab their own each time
   public static ResourceBundle resources;
-  private static int STAGE_WIDTH = 750;
-  private static int STAGE_HEIGHT = 500;
-  private static Paint STAGE_COLOR = Color.WHITE;
-  private static double GRID_TO_UI_RATIO = 0.8;
   private Stage stage;
   private UserInterfaceDrawer uiDrawer;
   private GridDrawer gridDrawer;
