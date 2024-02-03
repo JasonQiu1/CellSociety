@@ -17,7 +17,7 @@ class SimulationControlPanel extends UserInterfacePanel implements UserInputable
    * @param controller the controller to hook handlers.
    */
   public SimulationControlPanel(Pane pane, Controller controller) {
-    super(pane);
+    super(pane, "simulation-control-panel");
     // TODO: create and hook all buttons
   }
 }

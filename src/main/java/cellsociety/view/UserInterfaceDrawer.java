@@ -20,7 +20,7 @@ class UserInterfaceDrawer extends UserInterfacePanel {
    * @param controller the controller from which to hook user input handlers
    */
   public UserInterfaceDrawer(Pane pane, Controller controller) {
-    super(pane);
+    super(pane, "user-interface");
     // TODO: split the user interface in half horizontally for the config panel and simulation panels
   }
 

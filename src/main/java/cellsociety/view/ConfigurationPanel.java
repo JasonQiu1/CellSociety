@@ -18,7 +18,7 @@ class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
    * @param controller the controller to hook handlers.
    */
   public ConfigurationPanel(Pane pane, Controller controller) {
-    super(pane);
+    super(pane, "configuration-panel");
     // TODO: create and hook all ui components
   }
 

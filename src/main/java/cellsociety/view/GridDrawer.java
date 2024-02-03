@@ -23,7 +23,7 @@ class GridDrawer extends UserInterfacePanel {
    * @param pane the root to add window objects to.
    */
   public GridDrawer(Pane pane) {
-    super(pane);
+    super(pane, "grid-drawer");
     gridView = null;
     colorGenerator = null;
   }
