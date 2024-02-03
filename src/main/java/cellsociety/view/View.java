@@ -31,6 +31,7 @@ public class View {
   public static final String DEFAULT_RESOURCE_PACKAGE = "cellsociety.";
   public static final String DEFAULT_RESOURCE_FOLDER =
       "/" + DEFAULT_RESOURCE_PACKAGE.replace(".", "/");
+  public static final String STYLESHEET = "default.css";
   private static int STAGE_WIDTH = 750;
   private static int STAGE_HEIGHT = 500;
   private static Paint STAGE_COLOR = Color.WHITE;
@@ -65,6 +66,11 @@ public class View {
 
     Group sceneRoot = new Group(uiPane, gridPane);
     Scene scene = new Scene(sceneRoot, STAGE_WIDTH, STAGE_HEIGHT, STAGE_COLOR);
+    // stylesheets line from nanobrowser lab:
+    // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
+    scene.getStylesheets().add(
+        Objects.requireNonNull(getClass().getResource(DEFAULT_RESOURCE_FOLDER + STYLESHEET))
+            .toExternalForm());
     stage.setScene(scene);
     stage.setTitle("Cell Society");
     stage.show();
