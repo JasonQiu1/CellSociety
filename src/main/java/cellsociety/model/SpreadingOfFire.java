@@ -38,10 +38,5 @@ public class SpreadingOfFire extends RuleSet {
       c1.setNextState(1);
     }
   }
-
-  @Override
-  public void applyUpdate(Cell c1) {
-    c1.setCurrentState(c1.getNextState());
-  }
 }
 

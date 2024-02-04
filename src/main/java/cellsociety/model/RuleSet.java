@@ -5,8 +5,7 @@ public abstract class RuleSet implements Rules {
   private static final int NEIGHBOR_SIZE = 3;
   private Cell[][] grid;
 
-  public RuleSet(Cell[][] grid) {
-    this.grid = grid;
+  public RuleSet(Cell[][] grid) {this.grid = grid;
   }
 
   public Cell[][] applyRules(Cell[][] grid) {
@@ -23,7 +22,9 @@ public abstract class RuleSet implements Rules {
 
   public abstract void setUpdateFlag(Cell[][] neighbors, Cell c1);
 
-  public abstract void applyUpdate(Cell c1);
+  public void applyUpdate(Cell c1) {
+    c1.setCurrentState(c1.getNextState());
+  }
 
   public void update() {
     for (int i = 0; i<grid.length;i++) {
