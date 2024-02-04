@@ -65,7 +65,7 @@ public class WaterWorld extends RuleSet {
     }
     return empty;
   }
-  private void Reproduction(FishOrShark animal, FishOrShark animalMove) {
+  private void reproduction(FishOrShark animal, FishOrShark animalMove) {
       animalMove.setNextState(animal.getCurrentState());
       animalMove.setChrononsSurvived(animal.getChrononsSurvived());
       if (animal.getChrononsSurvived()>=REPRODUCTION_MOVES) {
@@ -85,12 +85,12 @@ public class WaterWorld extends RuleSet {
       ArrayList<FishOrShark> empty = generateList(neighbors, 0);
       if (!fish.isEmpty()) {
         int randomChooser = (int) (Math.random() * fish.size());
-        Reproduction(f1, fish.get(randomChooser));
+        reproduction(f1, fish.get(randomChooser));
         fish.get(randomChooser).setEnergy(f1.getEnergy()+ENERGY_FROM_FISH-1);
       }
       else if (!empty.isEmpty()) {
         int randomChooser = (int) (Math.random() * fish.size());
-        Reproduction(f1, fish.get(randomChooser));
+        reproduction(f1, empty.get(randomChooser));
         empty.get(randomChooser).setEnergy(f1.getEnergy()-1);
       }
       else {
@@ -104,7 +104,7 @@ public class WaterWorld extends RuleSet {
 
     if (!empty.isEmpty()) {
       int randomChooser = (int) (Math.random() * empty.size());
-      Reproduction(f1, empty.get(randomChooser));
+      reproduction(f1, empty.get(randomChooser));
     }
     else {
       f1.setChrononsSurvived(f1.getChrononsSurvived()+1);
