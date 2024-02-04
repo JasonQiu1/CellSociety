@@ -17,7 +17,9 @@ public class SpreadingOfFire extends RuleSet {
       c1.setNextState(0);
     }
     if (currentState == 1) {
-      c1.setFlag(Math.random()<probabilityIgnite);
+      if (Math.random()<probabilityIgnite) {
+        c1.setNextState(2);
+      }
       boolean leaveLoops = false;
       for (int i = 0; i < neighbors.length; i++) {
         for (int j = 0; j < neighbors[0].length; j++) {

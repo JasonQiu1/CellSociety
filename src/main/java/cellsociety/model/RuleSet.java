@@ -16,8 +16,8 @@ public abstract class RuleSet implements Rules {
         Cell[][] neighbors = findNeighbors(i, j);
         setUpdateFlag(neighbors, grid[i][j]);
       }
-      update();
     }
+    update();
     return grid;
   }
 
@@ -42,7 +42,7 @@ public abstract class RuleSet implements Rules {
       for (int y = yCord - loopInt; y <= yCord + loopInt; y++) {
         if (x == xCord && y == yCord) {
           neighbors[xCord][yCord] = null;
-        } else if (x >= 0 && x <= grid.length && y >= 0 && y <= grid[0].length) {
+        } else if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length) {
           neighbors[x - xCord + loopInt][y - yCord + loopInt] = grid[x][y];
         } else {
           neighbors[x - xCord + loopInt][y - yCord + loopInt] = null;

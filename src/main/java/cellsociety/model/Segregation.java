@@ -34,7 +34,7 @@ public class Segregation extends RuleSet {
       }
     }
     if (((double)sameGroupCounter)/((double)otherGroupCounter) < segregationFraction && c1.getCurrentState()!=0) {
-      c1.setNextState(-1); // it is unclear what this will change to yet
+      c1.setNextState(0);
     }
   }
 
@@ -43,8 +43,7 @@ public class Segregation extends RuleSet {
     int randomSpot = (int)(Math.random()*emptyCells.size());
     emptyCells.get(randomSpot).setCurrentState(c1.getCurrentState());
     emptyCells.get(randomSpot).setNextState(c1.getCurrentState());
-    c1.setCurrentState(0);
-    c1.setNextState(0);
+    c1.setCurrentState(c1.getNextState());
     emptyCells.remove(randomSpot);
     emptyCells.add(c1);
   }
