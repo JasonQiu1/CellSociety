@@ -22,19 +22,19 @@ public class Segregation extends RuleSet {
     int otherGroupCounter = 0;
     for (int i = 0; i < neighbors.length; i++) {
       for (int j = 0; j < neighbors[0].length; j++) {
-        if (neighbors[i][j].getCurrentState()==c1.getCurrentState()) {
-          sameGroupCounter++;
-        }
-        else if (neighbors[i][j].getCurrentState()==0) {
-          continue;
-        }
-        else {
-          otherGroupCounter++;
+        if (neighbors[i][j]!=null) {
+          if (neighbors[i][j].getCurrentState() == c1.getCurrentState()) {
+            sameGroupCounter++;
+          } else if (neighbors[i][j].getCurrentState() == 0) {
+            continue;
+          } else {
+            otherGroupCounter++;
+          }
         }
       }
     }
     if (((double)sameGroupCounter)/((double)otherGroupCounter) < segregationFraction && c1.getCurrentState()!=0) {
-      c1.setFlag(true);
+      c1.setNextState(-1); // it is unclear what this will change to yet
     }
   }
 
@@ -42,7 +42,9 @@ public class Segregation extends RuleSet {
   public void applyUpdate(Cell c1) {
     int randomSpot = (int)(Math.random()*emptyCells.size());
     emptyCells.get(randomSpot).setCurrentState(c1.getCurrentState());
+    emptyCells.get(randomSpot).setNextState(c1.getCurrentState());
     c1.setCurrentState(0);
+    c1.setNextState(0);
     emptyCells.remove(randomSpot);
     emptyCells.add(c1);
   }

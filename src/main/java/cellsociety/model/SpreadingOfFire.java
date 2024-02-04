@@ -14,15 +14,15 @@ public class SpreadingOfFire extends RuleSet {
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
     int currentState = c1.getCurrentState();
     if (currentState == 2) {
-      c1.setFlag(true);
+      c1.setNextState(0);
     }
     if (currentState == 1) {
       c1.setFlag(Math.random()<probabilityIgnite);
       boolean leaveLoops = false;
       for (int i = 0; i < neighbors.length; i++) {
         for (int j = 0; j < neighbors[0].length; j++) {
-          if (neighbors[i][j].getCurrentState()==2) {
-            c1.setFlag(true);
+          if (neighbors[i][j]!= null && neighbors[i][j].getCurrentState()==2) {
+            c1.setNextState(2);
             leaveLoops = true;
             break;
           }
@@ -32,21 +32,14 @@ public class SpreadingOfFire extends RuleSet {
         }
       }
     }
-    if(currentState == 0) {
-      c1.setFlag(Math.random()<probabilityTree);
+    if(currentState == 0 && (Math.random()<probabilityTree)) {
+      c1.setNextState(1);
     }
   }
 
   @Override
   public void applyUpdate(Cell c1) {
-    switch(c1.getCurrentState()) {
-      case 0:
-        c1.setCurrentState(1);
-      case 1:
-        c1.setCurrentState(2);
-      case 2:
-        c1.setCurrentState(0);
-    }
+    c1.setCurrentState(c1.getNextState());
   }
 }
 

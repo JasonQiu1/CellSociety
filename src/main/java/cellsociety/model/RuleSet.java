@@ -28,9 +28,8 @@ public abstract class RuleSet implements Rules {
   public void update() {
     for (int i = 0; i<grid.length;i++) {
       for (int j = 0; j <grid[0].length; j++) {
-        if (grid[i][j].getFlag()) {
+        if (grid[i][j].getCurrentState()!=grid[i][j].getNextState()) {
           applyUpdate(grid[i][j]);
-          grid[i][j].setFlag(false);
         }
       }
     }

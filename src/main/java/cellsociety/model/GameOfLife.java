@@ -22,19 +22,15 @@ public class GameOfLife extends RuleSet {
       }
     }
     if (isAlive && (liveNeighborCount < 2 || liveNeighborCount > 3)) {
-      c1.setFlag(true);
+      c1.setNextState(0);
     } else if (!isAlive && liveNeighborCount == 3) {
-      c1.setFlag(true);
+      c1.setNextState(1);
     }
   }
 
   @Override
   public void applyUpdate(Cell c1) {
-    if (c1.getCurrentState() == 0) {
-      c1.setCurrentState(1);
-    } else {
-      c1.setCurrentState(0);
-    }
+    c1.setCurrentState(c1.getNextState());
   }
 }
 
