@@ -1,6 +1,7 @@
 package cellsociety;
 
 import cellsociety.config.ConfigLoader;
+import cellsociety.config.SimulationSaver;
 import cellsociety.model.Simulation;
 import cellsociety.view.View;
 import javafx.animation.KeyFrame;
@@ -31,6 +32,8 @@ public class Game extends Application {
     simulation = new Simulation();
     simulation.unpause();
     view.setSimulation(simulation);
+    SimulationSaver saver = new SimulationSaver();
+    saver.saveSimulationState(simulation, "simulation_state.xml");
     Timeline animation = new Timeline();
     animation.setCycleCount(Timeline.INDEFINITE);
     animation.getKeyFrames()

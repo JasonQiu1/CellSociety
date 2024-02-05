@@ -24,13 +24,14 @@ public class ConfigLoader {
   public Grid grid;
   public RuleSet ruleSet;
   public String fileName;
+  public String FILE_PATH = "./data/";
   public Map<String, String> parameters;
 
 
   public ConfigLoader(String fileName) {
     this.fileName = fileName;
     try {
-      Document doc = readXmlFile(fileName);
+      Document doc = readXmlFile(FILE_PATH+ fileName);
       System.out.println(doc);
       this.grid = buildGrid(doc);
 //      this.ruleSet = buildRuleSet(doc);

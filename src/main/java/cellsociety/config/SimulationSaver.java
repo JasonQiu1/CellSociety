@@ -16,6 +16,7 @@ import org.w3c.dom.Element;
 public class SimulationSaver {
 
   public void saveSimulationState(Simulation simulation, String filePath) {
+    System.out.println("\n\n\n llllllllll");
     try {
       DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
       DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -29,7 +30,12 @@ public class SimulationSaver {
 //      addSimulationDetails(doc, rootElement, simulation);
 
       // Add current grid state
-      addGridState(doc, rootElement, simulation.getGrid());
+//      addGridState(doc, rootElement, simulation.getGrid());
+
+      int[][] grid = new int[10][9];
+      grid[0][1] = 7;
+      grid[1][8] = 69;
+      addGridStateTest(doc, rootElement, grid);
 
       // Add other parameters if needed
       addSimulationParameters(doc, rootElement, simulation);
@@ -52,15 +58,30 @@ public class SimulationSaver {
 //    // Add elements like Author, Description, etc. based on your requirements
 //  }
 
-  private void addGridState(Document doc, Element rootElement, Grid grid) {
+//  private void addGridState(Document doc, Element rootElement, Grid grid) {
+//    // Assuming you have a way to iterate over the grid and get cell states
+//    Element gridElement = doc.createElement("InitialConfig");
+//    for (int row = 0; row < grid.getHeight(); row++) {
+//      for (int col = 0; col < grid.getWidth(); col++) {
+//        Element cellElement = doc.createElement("Cell");
+//        cellElement.setAttribute("col", String.valueOf(col));
+//        cellElement.setAttribute("row", String.valueOf(row));
+//        cellElement.setTextContent(String.valueOf(grid.getCellState(row, col))); // Assuming getCellState method exists
+//        gridElement.appendChild(cellElement);
+//      }
+//    }
+//    rootElement.appendChild(gridElement);
+//  }
+
+  private void addGridStateTest(Document doc, Element rootElement, int[][] grid) {
     // Assuming you have a way to iterate over the grid and get cell states
     Element gridElement = doc.createElement("InitialConfig");
-    for (int row = 0; row < grid.getHeight(); row++) {
-      for (int col = 0; col < grid.getWidth(); col++) {
+    for (int row = 0; row < 10; row++) {
+      for (int col = 0; col < 9; col++) {
         Element cellElement = doc.createElement("Cell");
         cellElement.setAttribute("col", String.valueOf(col));
         cellElement.setAttribute("row", String.valueOf(row));
-        cellElement.setTextContent(String.valueOf(grid.getCellState(row, col))); // Assuming getCellState method exists
+        cellElement.setTextContent(String.valueOf(grid[row][col])); // Assuming getCellState method exists
         gridElement.appendChild(cellElement);
       }
     }
