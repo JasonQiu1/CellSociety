@@ -27,6 +27,9 @@ public class Game extends Application {
   public void start(Stage stage) {
     view = new View(stage);
     configLoader = new ConfigLoader("example.xml");
+    simulation = new Simulation();
+//    this will need to be done by the ui but for testing it's here
+    simulation.unpause();
     Timeline animation = new Timeline();
     animation.setCycleCount(Timeline.INDEFINITE);
     animation.getKeyFrames()
@@ -37,6 +40,7 @@ public class Game extends Application {
   private static void step(double elapsedTime) {
     // Update simulation and UI based on elapsed time
     if (simulation != null) {
+//      System.out.println("bbbb");
       simulation.update(elapsedTime);
     }
     view.setSimulation(simulation);

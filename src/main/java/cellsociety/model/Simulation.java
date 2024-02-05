@@ -27,16 +27,22 @@ public class Simulation {
   }
 
   public void update(double elapsedTime) {
+    lastUpdateTime += elapsedTime;
     if (!isPaused) {
+//      System.out.println(lastUpdateTime);
+//      System.out.println(1.0 / simulationSpeed);
       // Apply the rules to the grid
       // Note: You would need to implement the logic to update the grid based on the elapsed time and simulation speed
-      if (elapsedTime - lastUpdateTime >= 1.0 / simulationSpeed) {
+      if (lastUpdateTime >= 1.0 / simulationSpeed) {
+
         // Apply the rules to the grid
         // Note: Implement the logic to update the grid based on the elapsed time and simulation speed
         // grid = ruleSet.applyRules(grid);
 
         // Update the last update time
-        lastUpdateTime = elapsedTime;
+        System.out.println("I am updating the gid");
+        System.out.println(elapsedTime);
+        lastUpdateTime = 0;
       }
     }
   }
