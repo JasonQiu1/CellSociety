@@ -19,7 +19,7 @@ interface UserInputable {
   // makeButton code from nanobrowser lab:
   // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
   // makes a button using either an image or a label
-  private Button makeButton(String property, EventHandler<ActionEvent> handler) {
+  default Button makeButton(String property, EventHandler<ActionEvent> handler) {
     // represent all supported image suffixes
     final String IMAGE_FILE_SUFFIXES = String.format(".*\\.(%s)",
         String.join("|", ImageIO.getReaderFileSuffixes()));
@@ -38,7 +38,7 @@ interface UserInputable {
 
   // makeInputField code from nanobrowser lab:
   // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
-  private TextField makeInputField(int width, EventHandler<ActionEvent> handler) {
+  default TextField makeInputField(int width, EventHandler<ActionEvent> handler) {
     TextField result = new TextField();
     result.setPrefColumnCount(width);
     result.setOnAction(handler);
