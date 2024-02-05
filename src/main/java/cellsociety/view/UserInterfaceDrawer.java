@@ -32,6 +32,8 @@ class UserInterfaceDrawer extends UserInterfacePanel {
     simulationRoot.setMaxSize(pane.getMaxWidth() * (1 - CONFIG_TO_SIMULATION_PANEL_RATIO),
         pane.getMaxHeight());
     simulationPanel = new SimulationControlPanel(simulationRoot, controller);
+
+    pane.getChildren().addAll(configRoot, simulationRoot);
   }
 
   public void update() {
