@@ -6,13 +6,16 @@ public class Simulation {
 //    private cellsociety.model.Grid grid;
   private boolean isPaused;
   private double simulationSpeed;
+  private double lastUpdateTime;
+
 
   //    public Simulation(cellsociety.model.RuleSet ruleSet, cellsociety.model.Grid initialGrid) {
   public Simulation() {
 //        this.ruleSet = ruleSet;
 //        this.grid = initialGrid;
-    this.isPaused = false;
+    this.isPaused = true;
     this.simulationSpeed = 1.0;
+    this.lastUpdateTime = 0;
   }
 
   public void pause() {
@@ -27,10 +30,14 @@ public class Simulation {
     if (!isPaused) {
       // Apply the rules to the grid
       // Note: You would need to implement the logic to update the grid based on the elapsed time and simulation speed
+      if (elapsedTime - lastUpdateTime >= 1.0 / simulationSpeed) {
+        // Apply the rules to the grid
+        // Note: Implement the logic to update the grid based on the elapsed time and simulation speed
+        // grid = ruleSet.applyRules(grid);
 
-//            grid = ruleSet.applyRules(grid);
-
-      return;
+        // Update the last update time
+        lastUpdateTime = elapsedTime;
+      }
     }
   }
 

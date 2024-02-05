@@ -23,7 +23,17 @@ public class Game extends Application {
     launch(args);
   }
 
-  //    @Override
+  @Override
+  public void start(Stage stage) {
+    view = new View(stage);
+    configLoader = new ConfigLoader("example.xml");
+    Timeline animation = new Timeline();
+    animation.setCycleCount(Timeline.INDEFINITE);
+    animation.getKeyFrames()
+        .add(new KeyFrame(Duration.seconds(SECOND_DELAY), e -> step(SECOND_DELAY)));
+    animation.play();
+  }
+
   private static void step(double elapsedTime) {
     // Update simulation and UI based on elapsed time
     if (simulation != null) {
@@ -45,27 +55,7 @@ public class Game extends Application {
     return false;
   }
 
-  @Override
-  public void start(Stage stage) {
-    // Initialize UI and components here
-    view = new View(stage);
-//        simulation = new Simulation();
-//        this configloader shouldn't it return me the simulation
-//        what else do I need the config loader for?
-//        it will return a simulation make it into a instance variable
-//        configLoader = new ConfigLoader();
 
-//        code from breakout that might be useful
-    Timeline animation = new Timeline();
-    animation.setCycleCount(Timeline.INDEFINITE);
-    animation.getKeyFrames()
-        .add(new KeyFrame(Duration.seconds(SECOND_DELAY), e -> step(SECOND_DELAY)));
-    animation.play();
-//        // Configure and show the primary stage
-//        stage.show();
-//        // Start the game loop
-//        gameLoop();
-  }
 
 //    public static boolean reloadGridFromConfig() {
 //        // Load grid configuration from file and update the grid
@@ -73,7 +63,7 @@ public class Game extends Application {
 //        return configLoader.loadCurrentConfigWithoutParams();
 //    }
 //
-//    public static boolean saveSimulationToConfig(String configFileName) {
+//    public static boolean saveSimulationToConfig(String configFileName, Map<String,String> Metadata) {
 //        // Save current simulation state to a configuration file
 //        return configLoader.saveConfig(configFileName, simulation);
 //    }
