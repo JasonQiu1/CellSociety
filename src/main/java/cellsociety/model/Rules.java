@@ -12,5 +12,7 @@ public interface Rules {
 
   public void setGrid(Cell[][] grid);
 
-  public void applyUpdates();
+  public void applyUpdate(Cell c1);
+
+  public void update();
 }
