@@ -43,7 +43,7 @@ public class WaterWorld extends RuleSet {
   // 1 fish
   // 2 shark
   private static final int STATES = 2;
-  private static final int REPRODUCTION_MOVES = 5;
+  private static final int REPRODUCTION_MOVES = 50;
   private static final int ENERGY_FROM_FISH = 20;
 
   private static final int BABY_ENERGY = 5;
@@ -76,33 +76,41 @@ public class WaterWorld extends RuleSet {
   }
   @Override
   public Cell[][] findNeighbors(int xCord, int yCord) {
+    Cell[][] neighbors = super.findNeighbors(xCord,yCord);
     // only adjacent count
-    Cell[][] neighbors = new Cell[4][1];
-    if (xCord>0) {
-      neighbors[0][0] = getGrid()[xCord - 1][yCord];
-    }
-    else {
-      neighbors[0][0] = null;
-    }
-    if (xCord<getGrid().length-1) {
-      neighbors[1][0] = getGrid()[xCord + 1][yCord];
-    }
-    else{
-      neighbors[1][0] = null;
-    }
-    if (yCord>0) {
-      neighbors[2][0] = getGrid()[xCord][yCord-1];
-    }
-    else{
-      neighbors[2][0] = null;
-    }
-    if (yCord<getGrid()[0].length-1) {
-      neighbors[3][0] = getGrid()[xCord][yCord+1];
-    }
-    else{
-      neighbors[3][0] = null;
-    }
-    return neighbors;
+    Cell[][] adjNeighbors = new Cell[4][1];
+    adjNeighbors[0][0] = neighbors[(neighbors.length/2)-1][(neighbors.length/2)];
+    adjNeighbors[1][0] = neighbors[(neighbors.length/2)+1][(neighbors.length/2)];
+    adjNeighbors[2][0] = neighbors[(neighbors.length/2)][(neighbors.length/2)-1];
+    adjNeighbors[3][0] = neighbors[(neighbors.length/2)][(neighbors.length/2)+1];
+    return adjNeighbors;
+
+//    Cell[][] neighbors = new Cell[4][1];
+//    if (xCord>0) {
+//      neighbors[0][0] = getGrid()[xCord - 1][yCord];
+//    }
+//    else {
+//      neighbors[0][0] = null;
+//    }
+//    if (xCord<getGrid().length-1) {
+//      neighbors[1][0] = getGrid()[xCord + 1][yCord];
+//    }
+//    else{
+//      neighbors[1][0] = null;
+//    }
+//    if (yCord>0) {
+//      neighbors[2][0] = getGrid()[xCord][yCord-1];
+//    }
+//    else{
+//      neighbors[2][0] = null;
+//    }
+//    if (yCord<getGrid()[0].length-1) {
+//      neighbors[3][0] = getGrid()[xCord][yCord+1];
+//    }
+//    else{
+//      neighbors[3][0] = null;
+//    }
+//    return neighbors;
   }
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
@@ -151,7 +159,7 @@ public class WaterWorld extends RuleSet {
         fish.get(randomChooser).setEnergy(currentEnergy+ENERGY_FROM_FISH-1);
       }
       else if (!empty.isEmpty()) {
-        int randomChooser = (int) (Math.random() * fish.size());
+        int randomChooser = (int) (Math.random() * empty.size());
         reproduction(f1, empty.get(randomChooser));
         empty.get(randomChooser).setEnergy(currentEnergy-1);
       }
