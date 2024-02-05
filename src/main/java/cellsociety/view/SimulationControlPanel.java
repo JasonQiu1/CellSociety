@@ -2,6 +2,7 @@ package cellsociety.view;
 
 import cellsociety.controller.Controller;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -19,7 +20,7 @@ class SimulationControlPanel extends UserInterfacePanel implements UserInputable
   private Button reset;
 
   /**
-   * Create all simulation control buttons.
+   * Create all simulation control buttons and lay them out.
    *
    * @param pane       the root to draw to.
    * @param controller the controller to hook handlers.
@@ -37,5 +38,11 @@ class SimulationControlPanel extends UserInterfacePanel implements UserInputable
         event -> controller.handleSlowDownSimulationButtonPress());
     reset = makeButton("reset" + PROPERTY_SUFFIX,
         event -> controller.handleResetGridButtonPress());
+
+    GridPane layout = new GridPane();
+    layout.addRow(0, start, pause);
+    layout.addRow(1, speedUp, slowDown);
+    layout.addRow(2, reset);
+    getRoot().getChildren().add(layout);
   }
 }
