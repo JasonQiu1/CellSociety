@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
  */
 class UserInterfaceDrawer extends UserInterfacePanel {
 
+  public static final double CONFIG_TO_SIMULATION_PANEL_RATIO = 0.5;
   private ConfigurationPanel configPanel;
   private SimulationControlPanel simulationPanel;
 
@@ -21,7 +22,16 @@ class UserInterfaceDrawer extends UserInterfacePanel {
    */
   public UserInterfaceDrawer(Pane pane, Controller controller) {
     super(pane, "user-interface");
-    // TODO: split the user interface in half horizontally for the config panel and simulation panels
+
+    Pane configRoot = new Pane();
+    configRoot.setMaxSize(pane.getMaxWidth() * CONFIG_TO_SIMULATION_PANEL_RATIO,
+        pane.getMaxHeight());
+    configPanel = new ConfigurationPanel(configRoot, controller);
+
+    Pane simulationRoot = new Pane();
+    simulationRoot.setMaxSize(pane.getMaxWidth() * (1 - CONFIG_TO_SIMULATION_PANEL_RATIO),
+        pane.getMaxHeight());
+    simulationPanel = new SimulationControlPanel(simulationRoot, controller);
   }
 
   public void update() {
