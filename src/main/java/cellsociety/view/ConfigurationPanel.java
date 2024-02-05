@@ -1,6 +1,9 @@
 package cellsociety.view;
 
 import cellsociety.controller.Controller;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -11,6 +14,12 @@ import javafx.scene.layout.Pane;
  */
 class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
 
+  private static final String PROPERTY_SUFFIX = "ConfigurationPanel";
+  private Button load;
+  private Button save;
+  private TextField configPathInput;
+  private String currentConfigPath;
+
   /**
    * Create all config components, including the config info panel, input field, and buttons
    *
@@ -19,10 +28,30 @@ class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
    */
   public ConfigurationPanel(Pane pane, Controller controller) {
     super(pane, "configuration-panel");
-    // TODO: create and hook all ui components
+
+    configPathInput = makeInputField(10, event -> updateCurrentConfigPath());
+    // TODO: handle invalid user input to avoid crashes
+    load = makeButton("load" + PROPERTY_SUFFIX,
+        event -> controller.handleLoadConfigurationFileButtonPress(configPathInput.getText()));
+    // TODO: create edit save popout window and functionality, pass metadata map as second argument
+    save = makeButton("save" + PROPERTY_SUFFIX,
+        event -> controller.handleSaveConfigurationFileButtonPress(configPathInput.getText(),
+            null));
+
+    // TODO: create config information box
+
+    GridPane layout = new GridPane();
+    // reserve columns 0 and 1 for configuration info
+    layout.addColumn(2, configPathInput, load, save);
+    getRoot().getChildren().add(layout);
   }
 
   public void update() {
     // TODO: update any components if needed
+  }
+
+  // TODO: sanitize input to allow only possibly-valid paths
+  private void updateCurrentConfigPath() {
+    currentConfigPath = configPathInput.getText();
   }
 }
