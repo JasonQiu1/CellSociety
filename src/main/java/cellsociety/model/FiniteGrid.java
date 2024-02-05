@@ -5,9 +5,9 @@ public class FiniteGrid implements Grid {
   private Cell[][] grid;
   private RuleSet rules;
 
-  public FiniteGrid(Cell[][] grid, RuleSet rules) {
-    this.grid = grid;
+  public FiniteGrid(RuleSet rules) {
     this.rules = rules;
+    grid = rules.getGrid();
   }
 
   public Cell[][] getGrid() {
