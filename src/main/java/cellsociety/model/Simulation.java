@@ -61,6 +61,7 @@ public class Simulation {
 
   public int getNumStates() {
     return 0;
+//    return grid.getNumStates();
   }
 
   public Grid getGrid() {
