@@ -1,15 +1,22 @@
 package cellsociety.model;
 
 public class SpreadingOfFire extends RuleSet {
-
+  private final double probabilityTree;
+  private final double probabilityIgnite;
   public SpreadingOfFire(Cell[][] grid) {
     super(grid);
+    probabilityIgnite = 0.5;
+    probabilityTree = 0.5;
+  }
+  public SpreadingOfFire(Cell[][] grid, double probabilityIgnite, double probabilityTree) {
+    super(grid);
+    this.probabilityIgnite = probabilityIgnite;
+    this.probabilityTree = probabilityTree;
   }
   // 0 empty
   // 1 tree
   // 2 burning
-  private static final double probabilityTree = 0.5;
-  private static final double probabilityIgnite = 0.5;
+
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
     int currentState = c1.getCurrentState();

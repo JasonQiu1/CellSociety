@@ -7,13 +7,19 @@ public class Segregation extends RuleSet {
   // 1 group 1
   // 2 group 2
   // ...
-  public static final double segregationFraction = 0.7;
+  private final double segregationFraction;
 
   private ArrayList<Cell> emptyCells;
 
   public Segregation(Cell[][] grid) {
     super(grid);
     emptyCells = findEmptyCells();
+    segregationFraction = 0.3;
+  }
+  public Segregation(Cell[][] grid, double segregationFactor) {
+    super(grid);
+    emptyCells = findEmptyCells();
+    this.segregationFraction = segregationFactor;
   }
 
   @Override

@@ -5,10 +5,11 @@ public class FishOrShark extends Cell {
 
   private int energy;
 
-  private final static int START_ENERGY = 10;
-  public FishOrShark(int currentState) {
+  private int START_ENERGY = 10;
+  public FishOrShark(int currentState, int START_ENERGY) {
     super(currentState);
     chrononsSurvived = 0;
+    this.START_ENERGY = START_ENERGY;
     energy = START_ENERGY;
   }
   public int getChrononsSurvived() {

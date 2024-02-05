@@ -7,17 +7,28 @@ public class WaterWorld extends RuleSet {
   // 1 fish
   // 2 shark
   private static final int STATES = 2;
-  private static final int REPRODUCTION_MOVES = 50;
-  private static final int ENERGY_FROM_FISH = 20;
-  private static final int BABY_ENERGY = 5;
+  private final int REPRODUCTION_MOVES;
+  private final int ENERGY_FROM_FISH ;
+  private final int START_ENERGY;
   public WaterWorld(Cell[][] grid) {
     setGrid(makeFishOrShark(grid));
+    REPRODUCTION_MOVES = 15;
+    ENERGY_FROM_FISH = 10;
+    START_ENERGY = 5;
+  }
+
+  public WaterWorld(Cell[][] grid, int REPRODUCTION_MOVES, int ENERGY_FROM_FISH, int START_ENERGY) {
+    setGrid(makeFishOrShark(grid));
+    this.REPRODUCTION_MOVES = REPRODUCTION_MOVES;
+    this.ENERGY_FROM_FISH = ENERGY_FROM_FISH;
+    this.START_ENERGY = START_ENERGY;
+
   }
   public Cell[][] makeFishOrShark(Cell[][] grids) {
     Cell[][] updatedGrid = new Cell[grids.length][grids[0].length];
     for (int i = 0; i<grids.length; i++) {
       for (int j = 0; j<grids[0].length; j++) {
-        updatedGrid[i][j] = new FishOrShark(grids[i][j].getCurrentState());
+        updatedGrid[i][j] = new FishOrShark(grids[i][j].getCurrentState(), START_ENERGY);
       }
     }
     return updatedGrid;
@@ -75,7 +86,7 @@ public class WaterWorld extends RuleSet {
       if (animal.getChrononsSurvived()>=REPRODUCTION_MOVES) {
         animalMove.setChrononsSurvived(0);
         animal.setChrononsSurvived(0);
-        animal.setEnergy(BABY_ENERGY);
+        animal.setEnergy(START_ENERGY);
       }
       else {
         animal.setNextState(0);
