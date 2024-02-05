@@ -7,6 +7,8 @@ public class Simulation {
   private boolean isPaused;
   private double simulationSpeed;
   private double lastUpdateTime;
+  private String author;
+  private String description;
 
 
   //    public Simulation(cellsociety.model.RuleSet ruleSet, cellsociety.model.Grid initialGrid) {
@@ -67,6 +69,31 @@ public class Simulation {
   public Grid getGrid() {
     return null;
 //    return grid;
+  }
+
+  public void setAuthor(String author) {
+    if (author != null && !author.trim().isEmpty()) {
+      this.author = author;
+    } else {
+      throw new IllegalArgumentException("Author cannot be null or empty.");
+    }
+  }
+
+  public void setDescription(String description) {
+    if (description != null && !description.trim().isEmpty()) {
+      this.description = description;
+    } else {
+      throw new IllegalArgumentException("Description cannot be null or empty.");
+    }
+  }
+
+  // Additional getters for author and description if needed
+  public String getAuthor() {
+    return author;
+  }
+
+  public String getDescription() {
+    return description;
   }
 
 //    public void setGrid(cellsociety.model.Grid grid) {

@@ -37,6 +37,7 @@ public class ConfigLoader {
 //      this.ruleSet = buildRuleSet(doc);
       buildRuleSet(doc);
 //      simulation = new Simulation(ruleSet, grid);
+//      parseSimulationDetails(doc);
 //            // rule object can be initialized here with buildRuleset method
 //            trackParameters(doc);
 //            this.simulation = buildSimulation();
@@ -88,6 +89,17 @@ public class ConfigLoader {
       // FIXME: empty string or exception? In some cases it may be an error to not find any text
       return "";
     }
+  }
+  private void parseSimulationDetails(Document doc) {
+    Element root = doc.getDocumentElement();
+    String author = getTextValue(root, "Author");
+    String description = getTextValue(root, "Description");
+//    System.out.println(author);
+//    System.out.println(description);
+
+    // Assuming Simulation has setters for author and description
+    simulation.setAuthor(author);
+    simulation.setDescription(description);
   }
 //  private RuleSet buildRuleSet(Document doc) {
   private void buildRuleSet(Document doc) {

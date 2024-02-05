@@ -27,11 +27,13 @@ public class Game extends Application {
   @Override
   public void start(Stage stage) {
     view = new View(stage);
-    configLoader = new ConfigLoader("example.xml");
+    configLoader = new ConfigLoader("example2.xml");
     //    this will need to be done by the ui but for testing it's here
     simulation = new Simulation();
     simulation.unpause();
     view.setSimulation(simulation);
+    simulation.setAuthor("prince 2");
+    simulation.setDescription("i am saving this file");
     SimulationSaver saver = new SimulationSaver();
     saver.saveSimulationState(simulation, "simulation_state.xml");
     Timeline animation = new Timeline();

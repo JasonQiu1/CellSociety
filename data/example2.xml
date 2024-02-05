@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <config>
+    <Author>prince 2</Author>
+    <Description>i am saving this file</Description>
+    <Width>9</Width>
+    <Height>10</Height>
     <InitialConfig>
         <Cell col="0" row="0">0</Cell>
         <Cell col="1" row="0">7</Cell>
@@ -92,4 +96,7 @@
         <Cell col="7" row="9">0</Cell>
         <Cell col="8" row="9">0</Cell>
     </InitialConfig>
+    <Parameters>
+        <probability>0.9</probability>
+    </Parameters>
 </config>
