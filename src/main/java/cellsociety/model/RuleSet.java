@@ -42,11 +42,11 @@ public abstract class RuleSet implements Rules {
     for (int x = xCord - loopInt; x <= xCord + loopInt; x++) {
       for (int y = yCord - loopInt; y <= yCord + loopInt; y++) {
         if (x == xCord && y == yCord) {
-          neighbors[xCord][yCord] = null;
+          neighbors[loopInt][loopInt] = null;
         } else if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length) {
-          neighbors[x - xCord + loopInt][y - yCord + loopInt] = grid[x][y];
+          neighbors[x - xCord + loopInt][y - yCord+loopInt] = grid[x][y];
         } else {
-          neighbors[x - xCord + loopInt][y - yCord + loopInt] = null;
+          neighbors[x - xCord+loopInt][y - yCord+loopInt] = null;
         }
       }
     }

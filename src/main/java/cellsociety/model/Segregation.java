@@ -7,7 +7,7 @@ public class Segregation extends RuleSet {
   // 1 group 1
   // 2 group 2
   // ...
-  public static final double segregationFraction = 0.3;
+  public static final double segregationFraction = 0.7;
 
   private ArrayList<Cell> emptyCells;
 
@@ -37,7 +37,6 @@ public class Segregation extends RuleSet {
       c1.setNextState(0);
     }
   }
-
   @Override
   public void applyUpdate(Cell c1) {
     int randomSpot = (int)(Math.random()*emptyCells.size());
