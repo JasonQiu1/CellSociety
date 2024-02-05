@@ -51,11 +51,12 @@ public class View {
     controller = new Controller();
 
     Pane gridPane = new Pane();
-    gridPane.setMaxSize(STAGE_WIDTH, STAGE_HEIGHT * GRID_TO_UI_RATIO);
+    gridPane.setPrefSize(STAGE_WIDTH, STAGE_HEIGHT * GRID_TO_UI_RATIO);
     gridDrawer = new GridDrawer(gridPane);
 
     Pane uiPane = new Pane();
-    uiPane.setMaxSize(STAGE_WIDTH, STAGE_HEIGHT * (1 - GRID_TO_UI_RATIO));
+    uiPane.setLayoutY(STAGE_HEIGHT * GRID_TO_UI_RATIO);
+    uiPane.setPrefSize(STAGE_WIDTH, STAGE_HEIGHT * (1 - GRID_TO_UI_RATIO));
     uiDrawer = new UserInterfaceDrawer(uiPane, controller);
 
     Group sceneRoot = new Group(uiPane, gridPane);
