@@ -1,6 +1,7 @@
 package cellsociety.view;
 
 import cellsociety.controller.Controller;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 /**
@@ -10,6 +11,13 @@ import javafx.scene.layout.Pane;
  */
 class SimulationControlPanel extends UserInterfacePanel implements UserInputable {
 
+  private static final String PROPERTY_SUFFIX = "SimulationControl";
+  private Button start;
+  private Button pause;
+  private Button speedUp;
+  private Button slowDown;
+  private Button reset;
+
   /**
    * Create all simulation control buttons.
    *
@@ -18,6 +26,16 @@ class SimulationControlPanel extends UserInterfacePanel implements UserInputable
    */
   public SimulationControlPanel(Pane pane, Controller controller) {
     super(pane, "simulation-control-panel");
-    // TODO: create and hook all buttons
+
+    start = makeButton("start" + PROPERTY_SUFFIX,
+        event -> controller.handleStartSimulationButtonPress());
+    pause = makeButton("pause" + PROPERTY_SUFFIX,
+        event -> controller.handlePauseSimulationButtonPress());
+    speedUp = makeButton("speedUp" + PROPERTY_SUFFIX,
+        event -> controller.handleSpeedUpSimulationButtonPress());
+    slowDown = makeButton("slowDown" + PROPERTY_SUFFIX,
+        event -> controller.handleSlowDownSimulationButtonPress());
+    reset = makeButton("reset" + PROPERTY_SUFFIX,
+        event -> controller.handleResetGridButtonPress());
   }
 }
