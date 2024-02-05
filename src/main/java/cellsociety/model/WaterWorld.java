@@ -3,70 +3,35 @@ package cellsociety.model;
 import java.util.ArrayList;
 
 public class WaterWorld extends RuleSet {
-
-  public static void main (String[] args) {
-    Cell[][] grid = new Cell[10][10];
-    int x = 0;
-    for (int i = 0; i<10; i++) {
-      for (int j = 0; j<10; j++) {
-        double random = Math.random();
-        if (random<0.1) {
-          x = 1;
-        }
-        else if (random<0.2) {
-          x = 2;
-        }
-        else {
-          x = 0;
-        }
-        grid[i][j] = new FishOrShark(x);
-      }
-    }
-    WaterWorld w1 = new WaterWorld(grid);
-    for (int y = 0; y<1000; y++) {
-      w1.print(grid);
-      System.out.println(" ");
-      System.out.println(" ");
-      grid = w1.applyRules(grid);
-
-    }
-  }
-  public void print(Cell[][] grid) {
-    for (int i = 0; i<grid.length; i++) {
-      for (int j = 0; j<grid.length; j++) {
-        System.out.print(((FishOrShark)grid[i][j]).getCurrentState() + " ");
-      }
-      System.out.println(" ");
-    }
-  }
   // 0 nothing
   // 1 fish
   // 2 shark
   private static final int STATES = 2;
   private static final int REPRODUCTION_MOVES = 50;
   private static final int ENERGY_FROM_FISH = 20;
-
   private static final int BABY_ENERGY = 5;
   public WaterWorld(Cell[][] grid) {
-    super(grid);
-    Cell[][] updatedGrid = new Cell[grid.length][grid[0].length];
-    for (int i = 0; i<grid.length; i++) {
-      for (int j = 0; j<grid[0].length; j++) {
-        updatedGrid[i][j] = new FishOrShark(grid[i][j].getCurrentState());
+    setGrid(makeFishOrShark(grid));
+  }
+  public Cell[][] makeFishOrShark(Cell[][] grids) {
+    Cell[][] updatedGrid = new Cell[grids.length][grids[0].length];
+    for (int i = 0; i<grids.length; i++) {
+      for (int j = 0; j<grids[0].length; j++) {
+        updatedGrid[i][j] = new FishOrShark(grids[i][j].getCurrentState());
       }
     }
-    setGrid(updatedGrid);
+    return updatedGrid;
   }
   @Override
   public Cell[][] applyRules(Cell[][] grid) {
     setGrid(grid);
     // first for loop ensures that shark logic occurs before fish logic (sharks move before fish)
     for (int k = STATES; k>0; k--) {
-      for (int i = 0; i < grid.length; i++) {
-        for (int j = 0; j < grid[0].length; j++) {
+      for (int i = 0; i < getGrid().length; i++) {
+        for (int j = 0; j < getGrid()[0].length; j++) {
           if (k == getGrid()[i][j].getCurrentState()) {
             Cell[][] neighbors = findNeighbors(i, j);
-            setUpdateFlag(neighbors, grid[i][j]);
+            setUpdateFlag(neighbors, getGrid()[i][j]);
           }
         }
       }
@@ -84,33 +49,6 @@ public class WaterWorld extends RuleSet {
     adjNeighbors[2][0] = neighbors[(neighbors.length/2)][(neighbors.length/2)-1];
     adjNeighbors[3][0] = neighbors[(neighbors.length/2)][(neighbors.length/2)+1];
     return adjNeighbors;
-
-//    Cell[][] neighbors = new Cell[4][1];
-//    if (xCord>0) {
-//      neighbors[0][0] = getGrid()[xCord - 1][yCord];
-//    }
-//    else {
-//      neighbors[0][0] = null;
-//    }
-//    if (xCord<getGrid().length-1) {
-//      neighbors[1][0] = getGrid()[xCord + 1][yCord];
-//    }
-//    else{
-//      neighbors[1][0] = null;
-//    }
-//    if (yCord>0) {
-//      neighbors[2][0] = getGrid()[xCord][yCord-1];
-//    }
-//    else{
-//      neighbors[2][0] = null;
-//    }
-//    if (yCord<getGrid()[0].length-1) {
-//      neighbors[3][0] = getGrid()[xCord][yCord+1];
-//    }
-//    else{
-//      neighbors[3][0] = null;
-//    }
-//    return neighbors;
   }
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {

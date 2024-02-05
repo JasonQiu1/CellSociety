@@ -10,9 +10,7 @@ public class FishOrShark extends Cell {
     super(currentState);
     chrononsSurvived = 0;
     energy = START_ENERGY;
-
   }
-
   public int getChrononsSurvived() {
     return chrononsSurvived;
   }

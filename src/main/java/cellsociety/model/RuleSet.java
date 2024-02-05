@@ -5,7 +5,11 @@ public abstract class RuleSet implements Rules {
   private static final int NEIGHBOR_SIZE = 3;
   private Cell[][] grid;
 
-  public RuleSet(Cell[][] grid) {this.grid = grid;
+  public RuleSet(Cell[][] grid) {
+    this.grid = grid;
+  }
+  public RuleSet() {
+    grid = null;
   }
 
   public Cell[][] applyRules(Cell[][] grid) {
