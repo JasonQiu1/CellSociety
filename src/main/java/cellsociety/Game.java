@@ -30,6 +30,7 @@ public class Game extends Application {
     simulation = new Simulation();
 //    this will need to be done by the ui but for testing it's here
     simulation.unpause();
+    view.setSimulation(simulation);
     Timeline animation = new Timeline();
     animation.setCycleCount(Timeline.INDEFINITE);
     animation.getKeyFrames()
