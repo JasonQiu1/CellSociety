@@ -65,6 +65,7 @@ public class Simulation {
 
   public Grid getGrid() {
     return null;
+//    return grid;
   }
 
 //    public void setGrid(cellsociety.model.Grid grid) {

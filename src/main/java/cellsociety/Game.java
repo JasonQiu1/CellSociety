@@ -27,8 +27,8 @@ public class Game extends Application {
   public void start(Stage stage) {
     view = new View(stage);
     configLoader = new ConfigLoader("example.xml");
+    //    this will need to be done by the ui but for testing it's here
     simulation = new Simulation();
-//    this will need to be done by the ui but for testing it's here
     simulation.unpause();
     view.setSimulation(simulation);
     Timeline animation = new Timeline();
