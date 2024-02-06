@@ -5,9 +5,9 @@ public class FiniteGrid implements Grid {
   private Cell[][] grid;
   private RuleSet rules;
 
-  public FiniteGrid(Cell[][] grid, RuleSet rules) {
-    this.grid = grid;
+  public FiniteGrid(RuleSet rules) {
     this.rules = rules;
+    grid = rules.getGrid();
   }
 
   public Cell[][] getGrid() {
@@ -25,7 +25,7 @@ public class FiniteGrid implements Grid {
 
   @Override
   public int getCellState(int row, int column) {
-    return 0;
+    return grid[row][column].getCurrentState();
   }
 
   @Override

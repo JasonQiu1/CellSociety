@@ -18,6 +18,7 @@ class CellView extends Region {
   public CellView() {
     super();
     setColor(DEFAULT_COLOR);
+    this.getStyleClass().add("cell-view");
   }
 
   public void setColor(Paint color) {

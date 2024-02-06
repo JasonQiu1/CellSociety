@@ -8,21 +8,36 @@ import javafx.scene.layout.Pane;
  *
  * @author Jason Qiu (jq48)
  */
-class UserInterfaceDrawer {
+class UserInterfaceDrawer extends UserInterfacePanel {
+
+  public static final double CONFIG_TO_SIMULATION_PANEL_RATIO = 0.6;
+  private ConfigurationPanel configPanel;
+  private SimulationControlPanel simulationPanel;
 
   /**
-   * Initializes the user interface drawer. Also hooks button presses and text field submissions to
-   * Controller handlers.
+   * Splits the user interface in half for the config panel and the simulation panel.
    *
-   * @param pane the pane to draw the user interface onto.
+   * @param pane       the pane to draw the user interface onto.
+   * @param controller the controller from which to hook user input handlers
    */
   public UserInterfaceDrawer(Pane pane, Controller controller) {
+    super(pane, "user-interface");
+
+    Pane configRoot = new Pane();
+    configRoot.setPrefSize(pane.getMaxWidth() * CONFIG_TO_SIMULATION_PANEL_RATIO,
+        pane.getMaxHeight());
+    configPanel = new ConfigurationPanel(configRoot, controller);
+
+    Pane simulationRoot = new Pane();
+    simulationRoot.setLayoutX(pane.getPrefWidth() * CONFIG_TO_SIMULATION_PANEL_RATIO);
+    simulationRoot.setPrefSize(pane.getMaxWidth() * (1 - CONFIG_TO_SIMULATION_PANEL_RATIO),
+        pane.getMaxHeight());
+    simulationPanel = new SimulationControlPanel(simulationRoot, controller);
+
+    pane.getChildren().addAll(configRoot, simulationRoot);
   }
 
-  /**
-   * Draws the user interface.
-   */
-  public void draw() {
-    return;
+  public void update() {
+    // TODO: update any components if needed
   }
 }

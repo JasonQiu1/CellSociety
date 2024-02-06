@@ -2,6 +2,7 @@ package cellsociety.config;
 
 import cellsociety.model.FiniteGrid;
 import cellsociety.model.Grid;
+import cellsociety.model.InitializeGrid;
 import cellsociety.model.RuleSet;
 import cellsociety.model.Simulation;
 import java.io.File;
@@ -34,10 +35,10 @@ public class ConfigLoader {
       Document doc = readXmlFile(FILE_PATH+ fileName);
       System.out.println(doc);
       this.grid = buildGrid(doc);
-//      this.ruleSet = buildRuleSet(doc);
+      this.ruleSet = buildRuleSet(doc);
       buildRuleSet(doc);
-//      simulation = new Simulation(ruleSet, grid);
-//      parseSimulationDetails(doc);
+      simulation = new Simulation(ruleSet, grid);
+      parseSimulationDetails(doc);
 //            // rule object can be initialized here with buildRuleset method
 //            trackParameters(doc);
 //            this.simulation = buildSimulation();
@@ -59,7 +60,7 @@ public class ConfigLoader {
     Element root = doc.getDocumentElement();
     int width = Integer.parseInt(getTextValue(root, "Width"));
     int height = Integer.parseInt(getTextValue(root, "Height"));
-//    InitializeGrid gridInitializer = new InitializeGrid(width, height);
+    InitializeGrid gridInitializer = new InitializeGrid(width, height);
     System.out.println(width);
     System.out.println(height);
 
@@ -71,7 +72,7 @@ public class ConfigLoader {
         int row = Integer.parseInt(cell.getAttribute("row"));
         int col = Integer.parseInt(cell.getAttribute("col"));
         int val = Integer.parseInt(cell.getTextContent().trim());
-//        gridInitializer.setCellState(row, col, val);
+        gridInitializer.setCellState(row, col, val);
         System.out.println(row);
         System.out.println(col);
         System.out.println(val);
@@ -121,8 +122,8 @@ public class ConfigLoader {
     System.out.println(parameters);
 
     // Assuming RuleSet constructor takes a simulation type string and a parameters map
-//    RuleSet ruleSet = new RuleSet(simulationType, parameters);
-//    return ruleSet;
+    ruleSet = new RuleSet(grid.getGrid());
+    return ruleSet;
   }
 
 }

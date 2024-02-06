@@ -10,4 +10,7 @@ public interface Grid {
 
   public int getNumCols();
 
+  public Cell[][] getGrid();
+
+  public void setGrid(Cell[][] cells);
 }

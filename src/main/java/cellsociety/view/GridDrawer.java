@@ -11,9 +11,8 @@ import javafx.scene.layout.Pane;
  *
  * @author Jason Qiu (jq48)
  */
-class GridDrawer {
+class GridDrawer extends UserInterfacePanel {
 
-  Pane root;
   GridView gridView;
   StateColorGenerator colorGenerator;
   int numStates;
@@ -21,10 +20,10 @@ class GridDrawer {
   /**
    * Holds on to the parent to draw to.
    *
-   * @param root the root to add window objects to.
+   * @param pane the root to add window objects to.
    */
-  public GridDrawer(Pane root) {
-    this.root = root;
+  public GridDrawer(Pane pane) {
+    super(pane, "grid-drawer");
     gridView = null;
     colorGenerator = null;
   }
@@ -35,7 +34,7 @@ class GridDrawer {
    *
    * @param currentGrid the non-null grid to draw.
    */
-  public void draw(Grid currentGrid) {
+  public void update(Grid currentGrid) {
     if (currentGrid == null) {
       return;
     }
@@ -59,21 +58,22 @@ class GridDrawer {
   }
 
   /**
-   * Set gridView to a new GridView and set its formatting, maintaining the root at the same time.
+   * Set gridView to a new GridView and set its formatting, maintaining the getRoot() at the same
+   * time.
    *
    * @param numRows the number of rows of the resulting GridView.
    * @param numCols the number of columns of the resulting GridView.
    */
   private void initializeGridView(int numRows, int numCols) {
     if (gridView != null) {
-      root.getChildren().remove(gridView.getGridPane());
+      getRoot().getChildren().remove(gridView.getGridPane());
     }
     gridView = new GridView(numRows, numCols);
     GridPane gridPane = gridView.getGridPane();
-    gridPane.setPrefSize(root.getMaxWidth(), root.getMaxHeight());
+    gridPane.setPrefSize(getRoot().getMaxWidth(), getRoot().getMaxHeight());
     gridPane.setAlignment(Pos.CENTER);
     gridPane.setGridLinesVisible(true);
-    root.getChildren().add(gridPane);
+    getRoot().getChildren().add(gridPane);
   }
 
   /**

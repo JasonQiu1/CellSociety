@@ -15,6 +15,7 @@ public class Game extends Application {
 
   public static final int FRAMES_PER_SECOND = 60;
   public static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
+  public static final String VIEW_RESOURCE_BUNDLE_NAME = "view";
   public static View view;
   public static Simulation simulation;
   public static ConfigLoader configLoader;
@@ -26,16 +27,16 @@ public class Game extends Application {
 
   @Override
   public void start(Stage stage) {
-    view = new View(stage);
-    configLoader = new ConfigLoader("example2.xml");
+    view = new View(stage, VIEW_RESOURCE_BUNDLE_NAME);
+//    configLoader = new ConfigLoader("example.xml");
     //    this will need to be done by the ui but for testing it's here
-    simulation = new Simulation();
-    simulation.unpause();
-    view.setSimulation(simulation);
-    simulation.setAuthor("prince 2");
-    simulation.setDescription("i am saving this file");
-    SimulationSaver saver = new SimulationSaver();
-    saver.saveSimulationState(simulation, "simulation_state.xml");
+//    simulation = new Simulation();
+//    simulation.unpause();
+//    view.setSimulation(simulation);
+//    simulation.setAuthor("prince 2");
+//    simulation.setDescription("i am saving this file");
+//    SimulationSaver saver = new SimulationSaver();
+//    saver.saveSimulationState(simulation, "simulation_state.xml");
     Timeline animation = new Timeline();
     animation.setCycleCount(Timeline.INDEFINITE);
     animation.getKeyFrames()
@@ -50,7 +51,7 @@ public class Game extends Application {
       simulation.update(elapsedTime);
     }
     view.setSimulation(simulation);
-    view.draw();
+    view.update();
   }
 
   public static boolean loadNewSimulation(String configFileName) {
@@ -64,8 +65,6 @@ public class Game extends Application {
   private static boolean updateGridFromConfig(String configFileName) {
     return false;
   }
-
-
 
 //    public static boolean reloadGridFromConfig() {
 //        // Load grid configuration from file and update the grid

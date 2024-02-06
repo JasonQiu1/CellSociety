@@ -2,8 +2,8 @@ package cellsociety.model;
 
 public class Simulation {
 
-  //    private cellsociety.model.RuleSet ruleSet;
-//    private cellsociety.model.Grid grid;
+  private cellsociety.model.RuleSet ruleSet;
+  private cellsociety.model.Grid grid;
   private boolean isPaused;
   private double simulationSpeed;
   private double lastUpdateTime;
@@ -11,10 +11,10 @@ public class Simulation {
   private String description;
 
 
-  //    public Simulation(cellsociety.model.RuleSet ruleSet, cellsociety.model.Grid initialGrid) {
-  public Simulation() {
-//        this.ruleSet = ruleSet;
-//        this.grid = initialGrid;
+  public Simulation(cellsociety.model.RuleSet ruleSet, cellsociety.model.Grid initialGrid) {
+//  public Simulation() {
+    this.ruleSet = ruleSet;
+    this.grid = initialGrid;
     this.isPaused = true;
     this.simulationSpeed = 1.0;
     this.lastUpdateTime = 0;
@@ -39,7 +39,7 @@ public class Simulation {
 
         // Apply the rules to the grid
         // Note: Implement the logic to update the grid based on the elapsed time and simulation speed
-        // grid = ruleSet.applyRules(grid);
+         grid.setGrid(ruleSet.applyRules(grid.getGrid()));
 
         // Update the last update time
         System.out.println("I am updating the gid");
@@ -67,7 +67,7 @@ public class Simulation {
   }
 
   public Grid getGrid() {
-    return null;
+    return grid;
 //    return grid;
   }
 

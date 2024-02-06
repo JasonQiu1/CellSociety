@@ -45,6 +45,7 @@ class GridView {
         GridPane.setColumnIndex(cellViewGrid[row][col], col);
       }
     }
+    gridPane.getStyleClass().add("grid-view");
   }
 
   public GridPane getGridPane() {
