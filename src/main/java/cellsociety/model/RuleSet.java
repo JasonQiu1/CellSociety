@@ -1,6 +1,6 @@
 package cellsociety.model;
 
-public abstract class RuleSet implements Rules {
+public class RuleSet implements Rules {
 
   private static final int NEIGHBOR_SIZE = 3;
   private Cell[][] grid;
@@ -24,7 +24,7 @@ public abstract class RuleSet implements Rules {
     return grid;
   }
 
-  public abstract void setUpdateFlag(Cell[][] neighbors, Cell c1);
+  public void setUpdateFlag(Cell[][] neighbors, Cell c1){};
 
   public void applyUpdate(Cell c1) {
     c1.setCurrentState(c1.getNextState());

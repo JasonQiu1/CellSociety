@@ -1,6 +1,7 @@
 package cellsociety.config;
 
 import cellsociety.model.FiniteGrid;
+import cellsociety.model.GameOfLife;
 import cellsociety.model.Grid;
 import cellsociety.model.InitializeGrid;
 import cellsociety.model.RuleSet;
@@ -33,9 +34,10 @@ public class ConfigLoader {
     this.fileName = fileName;
     try {
       Document doc = readXmlFile(FILE_PATH+ fileName);
-      System.out.println(doc);
-      this.grid = buildGrid(doc);
+//      System.out.println(doc);
       this.ruleSet = buildRuleSet(doc);
+      this.grid = buildGrid(doc);
+
       buildRuleSet(doc);
       simulation = new Simulation(ruleSet, grid);
       parseSimulationDetails(doc);
@@ -79,8 +81,8 @@ public class ConfigLoader {
         // set cell status in the grid here based on your cellsociety.model.Grid class implementation
       }
     }
-    return grid;
-//    return gridInitializer.getGrid();
+//    return grid;
+    return gridInitializer.getGrid();
   }
   private String getTextValue(Element e, String tagName) {
     NodeList nodeList = e.getElementsByTagName(tagName);
@@ -103,7 +105,7 @@ public class ConfigLoader {
     simulation.setDescription(description);
   }
 //  private RuleSet buildRuleSet(Document doc) {
-  private void buildRuleSet(Document doc) {
+  private RuleSet buildRuleSet(Document doc) {
     Element root = doc.getDocumentElement();
     String simulationType = getTextValue(root, "SimulationType");
     System.out.println(simulationType);
@@ -122,7 +124,7 @@ public class ConfigLoader {
     System.out.println(parameters);
 
     // Assuming RuleSet constructor takes a simulation type string and a parameters map
-    ruleSet = new RuleSet(grid.getGrid());
+    ruleSet = new GameOfLife(this.grid.getGrid());
     return ruleSet;
   }
 
