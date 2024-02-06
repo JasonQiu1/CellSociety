@@ -40,6 +40,7 @@ public class Controller {
     if (currentSimulation == null) {
       return;
     }
+    currentSimulation.unpause();
     // send a message to currentSimulation to start/unpause the simulation
   }
 

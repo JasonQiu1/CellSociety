@@ -20,7 +20,7 @@ public class RuleSet implements Rules {
         setUpdateFlag(neighbors, grid[i][j]);
       }
     }
-    update();
+    update(grid);
     return grid;
   }
 
@@ -30,10 +30,10 @@ public class RuleSet implements Rules {
     c1.setCurrentState(c1.getNextState());
   }
 
-  public void update() {
+  public void update(Cell[][] grid) {
     for (int i = 0; i<grid.length;i++) {
       for (int j = 0; j <grid[0].length; j++) {
-        if (grid[i][j].getCurrentState()!=grid[i][j].getNextState()) {
+        if (grid[i][j] != null && grid[i][j].getCurrentState()!=grid[i][j].getNextState()) {
           applyUpdate(grid[i][j]);
         }
       }

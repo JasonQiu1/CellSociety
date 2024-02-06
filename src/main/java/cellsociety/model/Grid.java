@@ -12,5 +12,7 @@ public interface Grid {
 
   public Cell[][] getGrid();
 
+  public int getNumStates();
+
   public void setGrid(Cell[][] cells);
 }

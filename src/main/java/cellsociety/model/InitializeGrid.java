@@ -1,10 +1,12 @@
 package cellsociety.model;
 
 public class InitializeGrid {
-  Grid grid;
+  Cell[][] grid;
   public InitializeGrid(int rows, int columns) {
     Cell[][] cells = new Cell[rows][columns];
-    this.grid = new FiniteGrid();
+    this.grid = cells;
+//    return grid;
+//    this.grid = new FiniteGrid();
   }
   public Cell[][] getGrid () {
     return grid;

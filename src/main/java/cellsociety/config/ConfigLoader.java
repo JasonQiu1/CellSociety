@@ -1,5 +1,6 @@
 package cellsociety.config;
 
+import cellsociety.model.Cell;
 import cellsociety.model.FiniteGrid;
 import cellsociety.model.GameOfLife;
 import cellsociety.model.Grid;
@@ -23,7 +24,7 @@ public class ConfigLoader {
 
   //    private Document configDocument;
   public Simulation simulation;
-  public Grid grid;
+  public Cell[][] grid;
   public RuleSet ruleSet;
   public String fileName;
   public String FILE_PATH = "./data/";
@@ -37,6 +38,7 @@ public class ConfigLoader {
 //      System.out.println(doc);
       this.ruleSet = buildRuleSet(doc);
       this.grid = buildGrid(doc);
+//      System.out.println(grid);
 
       buildRuleSet(doc);
       simulation = new Simulation(ruleSet, grid);
@@ -58,13 +60,13 @@ public class ConfigLoader {
     return dBuilder.parse(xmlFile);
   }
 
-  private Grid buildGrid(Document doc) {
+  private Cell[][] buildGrid(Document doc) {
     Element root = doc.getDocumentElement();
     int width = Integer.parseInt(getTextValue(root, "Width"));
     int height = Integer.parseInt(getTextValue(root, "Height"));
     InitializeGrid gridInitializer = new InitializeGrid(width, height);
-    System.out.println(width);
-    System.out.println(height);
+//    System.out.println(width);
+//    System.out.println(height);
 
     NodeList cellList = doc.getElementsByTagName("Cell");
     for (int i = 0; i < cellList.getLength(); i++) {
@@ -75,9 +77,10 @@ public class ConfigLoader {
         int col = Integer.parseInt(cell.getAttribute("col"));
         int val = Integer.parseInt(cell.getTextContent().trim());
         gridInitializer.setCellState(row, col, val);
-        System.out.println(row);
-        System.out.println(col);
-        System.out.println(val);
+//        System.out.println("row");
+//        System.out.println(row);
+//        System.out.println(col);
+//        System.out.println(val);
         // set cell status in the grid here based on your cellsociety.model.Grid class implementation
       }
     }
@@ -123,8 +126,7 @@ public class ConfigLoader {
     }
     System.out.println(parameters);
 
-    // Assuming RuleSet constructor takes a simulation type string and a parameters map
-    ruleSet = new GameOfLife(this.grid.getGrid());
+    ruleSet = new GameOfLife(this.grid);
     return ruleSet;
   }
 

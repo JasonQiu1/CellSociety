@@ -47,7 +47,7 @@ public class Game extends Application {
   private static void step(double elapsedTime) {
     // Update simulation and UI based on elapsed time
     if (simulation != null) {
-//      System.out.println("bbbb");
+//      System.out.println("bbbb\n\n\n\nccc");
       simulation.update(elapsedTime);
     }
     view.setSimulation(simulation);
