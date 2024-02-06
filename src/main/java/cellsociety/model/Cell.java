@@ -1,7 +1,7 @@
 package cellsociety.model;
 
 public class Cell {
-
+  // simple class to hold current and next state for cell
   private int currentState;
   private int nextState;
 

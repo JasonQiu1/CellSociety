@@ -1,7 +1,6 @@
 package cellsociety.model;
 
 public interface Rules {
-
   public Cell[][] findNeighbors(int xCord, int yCord);
 
   public void setUpdateFlag(Cell[][] neighbors, Cell c1);

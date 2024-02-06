@@ -13,6 +13,7 @@ public class Segregation extends RuleSet {
 
   public Segregation(Cell[][] grid) {
     super(grid);
+    // finds all empty cells
     emptyCells = findEmptyCells();
     segregationFraction = 0.3;
   }
@@ -24,6 +25,7 @@ public class Segregation extends RuleSet {
 
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
+    // finds ratio of samegroup to othergroup
     int sameGroupCounter = 0;
     int otherGroupCounter = 0;
     for (int i = 0; i < neighbors.length; i++) {
@@ -45,6 +47,7 @@ public class Segregation extends RuleSet {
   }
   @Override
   public void applyUpdate(Cell c1) {
+    // switches unhappy cell with random empty cell
     int randomSpot = (int)(Math.random()*emptyCells.size());
     emptyCells.get(randomSpot).setCurrentState(c1.getCurrentState());
     emptyCells.get(randomSpot).setNextState(c1.getCurrentState());
@@ -53,6 +56,7 @@ public class Segregation extends RuleSet {
     emptyCells.add(c1);
   }
   public ArrayList<Cell> findEmptyCells () {
+    // creates ArrayList of empty cells (no group there)
     ArrayList<Cell> empty = new ArrayList<>();
     for (int i = 0; i<getGrid().length; i++ ) {
       for (int j = 0; j<getGrid()[0].length;j++) {

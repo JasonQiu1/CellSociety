@@ -1,6 +1,7 @@
 package cellsociety.model;
 
 public class InitializeGrid {
+  // class used to initialize the grid to later be passed to finite grid and Rulset
   Cell[][] grid;
   public InitializeGrid(int rows, int columns) {
     grid = new Cell[rows][columns];

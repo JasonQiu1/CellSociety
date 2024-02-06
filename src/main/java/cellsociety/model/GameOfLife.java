@@ -3,6 +3,7 @@ package cellsociety.model;
 public class GameOfLife extends RuleSet {
 
   public GameOfLife(Cell[][] grid) {
+    // default constructor
     super(grid);
   }
   // 0 dead
@@ -10,6 +11,8 @@ public class GameOfLife extends RuleSet {
 
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
+    // overide setUpdateflag
+    // count number of neighbors who are alive and update cell state accordingly
     int liveNeighborCount = 0;
     boolean isAlive = c1.getCurrentState() == 1;
     for (int i = 0; i < neighbors.length; i++) {
