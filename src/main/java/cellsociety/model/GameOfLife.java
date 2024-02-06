@@ -3,6 +3,7 @@ package cellsociety.model;
 public class GameOfLife extends RuleSet {
 
   public GameOfLife(Cell[][] grid) {
+    // default constructor
     super(grid);
   }
   // 0 dead

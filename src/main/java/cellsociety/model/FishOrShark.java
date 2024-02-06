@@ -1,6 +1,7 @@
 package cellsociety.model;
 
 public class FishOrShark extends Cell {
+  // adds some data to be stored for WaterWorld
   private int chrononsSurvived;
   private int energy;
 

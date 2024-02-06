@@ -1,7 +1,7 @@
 package cellsociety.model;
 
 public interface Grid {
-
+// simple grid interface
   public void update();
 
   public int getCellState(int row, int column);

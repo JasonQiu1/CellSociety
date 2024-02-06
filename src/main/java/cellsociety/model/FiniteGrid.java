@@ -9,6 +9,9 @@ public class FiniteGrid implements Grid {
   private RuleSet rules;
 
   public FiniteGrid(RuleSet rules) {
+    // takes in ruleset to best used to update the grid
+    // grid is initially taken from the Rulset as some changes need to be made to the initial grid
+    // for some implementations
     this.rules = rules;
     grid = rules.getGrid();
   }

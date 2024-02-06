@@ -18,6 +18,7 @@ public class WaterWorld extends RuleSet {
   }
 
   public WaterWorld(Cell[][] grid, int REPRODUCTION_MOVES, int ENERGY_FROM_FISH, int START_ENERGY) {
+    // makes cells into FishOrShark objects which extends Cell
     setGrid(makeFishOrShark(grid));
     this.REPRODUCTION_MOVES = REPRODUCTION_MOVES;
     this.ENERGY_FROM_FISH = ENERGY_FROM_FISH;
@@ -25,6 +26,7 @@ public class WaterWorld extends RuleSet {
 
   }
   public Cell[][] makeFishOrShark(Cell[][] grids) {
+    // takes in cell array and make it into FishOrShark cell array
     Cell[][] updatedGrid = new Cell[grids.length][grids[0].length];
     for (int i = 0; i<grids.length; i++) {
       for (int j = 0; j<grids[0].length; j++) {
@@ -41,6 +43,7 @@ public class WaterWorld extends RuleSet {
       for (int i = 0; i < getGrid().length; i++) {
         for (int j = 0; j < getGrid()[0].length; j++) {
           if (k == getGrid()[i][j].getCurrentState()) {
+            // find neighbors of sharks and fish
             Cell[][] neighbors = findNeighbors(i, j);
             setUpdateFlag(neighbors, getGrid()[i][j]);
           }
@@ -63,6 +66,7 @@ public class WaterWorld extends RuleSet {
   }
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
+    // applies fish or shark logic
     int currentState = c1.getCurrentState();
     if (currentState==2) {
       sharkLogic((FishOrShark)c1, neighbors);
@@ -72,6 +76,7 @@ public class WaterWorld extends RuleSet {
     }
   }
   private ArrayList<FishOrShark> generateList(Cell[][] neighbors, int state) {
+    // generates list of all neighbor cells of a current state
     ArrayList<FishOrShark> list = new ArrayList<>();
     for (int i = 0; i<neighbors.length; i++) {
       if (neighbors[i][0]!= null && neighbors[i][0].getCurrentState() == state && neighbors[i][0].getNextState() == state) {
@@ -81,6 +86,7 @@ public class WaterWorld extends RuleSet {
     return list;
   }
   private void reproduction(FishOrShark animal, FishOrShark animalMove) {
+    // switches animal with animalMove. Leaves behind animal if it was supposed to reproduce
       animalMove.setNextState(animal.getCurrentState());
       animalMove.setChrononsSurvived(animal.getChrononsSurvived());
       if (animal.getChrononsSurvived()>=REPRODUCTION_MOVES) {
@@ -89,12 +95,13 @@ public class WaterWorld extends RuleSet {
         animal.setEnergy(START_ENERGY);
       }
       else {
+        // increase the amount of turns the animal has survived
         animal.setNextState(0);
         animalMove.setChrononsSurvived(animal.getChrononsSurvived()+1);
       }
     }
   private void sharkLogic(FishOrShark f1, Cell[][] neighbors) {
-    System.out.println(f1.getEnergy());
+    // if out of energy, kill shark
     if (f1.getEnergy() <= 0) {
       f1.setNextState(0);
     }
@@ -103,16 +110,19 @@ public class WaterWorld extends RuleSet {
       ArrayList<FishOrShark> fish = generateList(neighbors, 1);
       ArrayList<FishOrShark> empty = generateList(neighbors, 0);
       if (!fish.isEmpty()) {
+        // if there is a neighbor fish, eat it
         int randomChooser = (int)(Math.random() * fish.size());
         reproduction(f1, fish.get(randomChooser));
         fish.get(randomChooser).setEnergy(currentEnergy+ENERGY_FROM_FISH-1);
       }
       else if (!empty.isEmpty()) {
+        // if there is no neighbor fish, move to empty neighbor cell
         int randomChooser = (int) (Math.random() * empty.size());
         reproduction(f1, empty.get(randomChooser));
         empty.get(randomChooser).setEnergy(currentEnergy-1);
       }
       else {
+        // if surrounded by sharks stay put.
         f1.setChrononsSurvived(f1.getChrononsSurvived()+1);
         f1.setEnergy(currentEnergy-1);
       }
@@ -122,10 +132,12 @@ public class WaterWorld extends RuleSet {
     ArrayList<FishOrShark> empty = generateList(neighbors, 0);
 
     if (!empty.isEmpty()) {
+      // move to random empty spot around it
       int randomChooser = (int) (Math.random() * empty.size());
       reproduction(f1, empty.get(randomChooser));
     }
     else {
+      // if no empty spots, then stay put
       f1.setChrononsSurvived(f1.getChrononsSurvived()+1);
     }
   }
