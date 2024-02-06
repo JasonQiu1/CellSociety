@@ -1,7 +1,7 @@
 package cellsociety.model;
 
-public abstract class RuleSet implements Rules {
-// determines size of neighbors array (currently 3x3)
+public class RuleSet implements Rules {
+
   private static final int NEIGHBOR_SIZE = 3;
   private Cell[][] grid;
 
@@ -23,22 +23,21 @@ public abstract class RuleSet implements Rules {
         setUpdateFlag(neighbors, grid[i][j]);
       }
     }
-    update();
+    update(grid);
     return grid;
   }
 
-  public abstract void setUpdateFlag(Cell[][] neighbors, Cell c1);
+  public void setUpdateFlag(Cell[][] neighbors, Cell c1){};
 
   public void applyUpdate(Cell c1) {
     // used by the majority of children
     c1.setCurrentState(c1.getNextState());
   }
 
-  public void update() {
-    // used by all children
+  public void update(Cell[][] grid) {
     for (int i = 0; i<grid.length;i++) {
       for (int j = 0; j <grid[0].length; j++) {
-        if (grid[i][j].getCurrentState()!=grid[i][j].getNextState()) {
+        if (grid[i][j] != null && grid[i][j].getCurrentState()!=grid[i][j].getNextState()) {
           applyUpdate(grid[i][j]);
         }
       }

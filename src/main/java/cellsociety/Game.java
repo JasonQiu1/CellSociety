@@ -1,6 +1,7 @@
 package cellsociety;
 
 import cellsociety.config.ConfigLoader;
+import cellsociety.config.SimulationSaver;
 import cellsociety.model.Simulation;
 import cellsociety.view.View;
 import javafx.animation.KeyFrame;
@@ -24,10 +25,29 @@ public class Game extends Application {
     launch(args);
   }
 
-  //    @Override
+  @Override
+  public void start(Stage stage) {
+    view = new View(stage, VIEW_RESOURCE_BUNDLE_NAME);
+//    configLoader = new ConfigLoader("example.xml");
+    //    this will need to be done by the ui but for testing it's here
+//    simulation = new Simulation();
+//    simulation.unpause();
+//    view.setSimulation(simulation);
+//    simulation.setAuthor("prince 2");
+//    simulation.setDescription("i am saving this file");
+//    SimulationSaver saver = new SimulationSaver();
+//    saver.saveSimulationState(simulation, "simulation_state.xml");
+    Timeline animation = new Timeline();
+    animation.setCycleCount(Timeline.INDEFINITE);
+    animation.getKeyFrames()
+        .add(new KeyFrame(Duration.seconds(SECOND_DELAY), e -> step(SECOND_DELAY)));
+    animation.play();
+  }
+
   private static void step(double elapsedTime) {
     // Update simulation and UI based on elapsed time
     if (simulation != null) {
+//      System.out.println("bbbb\n\n\n\nccc");
       simulation.update(elapsedTime);
     }
     view.setSimulation(simulation);
@@ -46,35 +66,13 @@ public class Game extends Application {
     return false;
   }
 
-  @Override
-  public void start(Stage stage) {
-    // Initialize UI and components here
-    view = new View(stage, VIEW_RESOURCE_BUNDLE_NAME);
-//        simulation = new Simulation();
-//        this configloader shouldn't it return me the simulation
-//        what else do I need the config loader for?
-//        it will return a simulation make it into a instance variable
-//        configLoader = new ConfigLoader();
-
-//        code from breakout that might be useful
-    Timeline animation = new Timeline();
-    animation.setCycleCount(Timeline.INDEFINITE);
-    animation.getKeyFrames()
-        .add(new KeyFrame(Duration.seconds(SECOND_DELAY), e -> step(SECOND_DELAY)));
-    animation.play();
-//        // Configure and show the primary stage
-//        stage.show();
-//        // Start the game loop
-//        gameLoop();
-  }
-
 //    public static boolean reloadGridFromConfig() {
 //        // Load grid configuration from file and update the grid
 ////        simulation set grid = to whatever the config says it was
 //        return configLoader.loadCurrentConfigWithoutParams();
 //    }
 //
-//    public static boolean saveSimulationToConfig(String configFileName) {
+//    public static boolean saveSimulationToConfig(String configFileName, Map<String,String> Metadata) {
 //        // Save current simulation state to a configuration file
 //        return configLoader.saveConfig(configFileName, simulation);
 //    }

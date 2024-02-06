@@ -13,5 +13,5 @@ public interface Rules {
 
   public void applyUpdate(Cell c1);
 
-  public void update();
+  public void update(Cell[][] grid);
 }
