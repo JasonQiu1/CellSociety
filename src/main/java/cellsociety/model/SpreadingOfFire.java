@@ -1,13 +1,16 @@
 package cellsociety.model;
 
 public class SpreadingOfFire extends RuleSet {
+
   private final double probabilityTree;
   private final double probabilityIgnite;
+
   public SpreadingOfFire(Cell[][] grid) {
     super(grid);
     probabilityIgnite = 0.5;
     probabilityTree = 0.5;
   }
+
   public SpreadingOfFire(Cell[][] grid, double probabilityIgnite, double probabilityTree) {
     super(grid);
     this.probabilityIgnite = probabilityIgnite;
@@ -25,26 +28,26 @@ public class SpreadingOfFire extends RuleSet {
       c1.setNextState(0);
     }
     if (currentState == 1) {
-      if (Math.random()<probabilityIgnite) {
+      if (Math.random() < probabilityIgnite) {
         // randomly ignite some trees
         c1.setNextState(2);
       }
       boolean leaveLoops = false;
       for (int i = 0; i < neighbors.length; i++) {
         for (int j = 0; j < neighbors[0].length; j++) {
-          if (neighbors[i][j]!= null && neighbors[i][j].getCurrentState()==2) {
+          if (neighbors[i][j] != null && neighbors[i][j].getCurrentState() == 2) {
             // if tree next to burning tree make it burn
             c1.setNextState(2);
             leaveLoops = true;
             break;
           }
         }
-        if(leaveLoops) {
+        if (leaveLoops) {
           break;
         }
       }
     }
-    if(currentState == 0 && (Math.random()<probabilityTree)) {
+    if (currentState == 0 && (Math.random() < probabilityTree)) {
       // plant some trees in empty spots
       c1.setNextState(1);
     }

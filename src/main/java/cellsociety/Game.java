@@ -1,7 +1,6 @@
 package cellsociety;
 
 import cellsociety.config.ConfigLoader;
-import cellsociety.config.SimulationSaver;
 import cellsociety.model.Simulation;
 import cellsociety.view.View;
 import javafx.animation.KeyFrame;
@@ -25,25 +24,6 @@ public class Game extends Application {
     launch(args);
   }
 
-  @Override
-  public void start(Stage stage) {
-    view = new View(stage, VIEW_RESOURCE_BUNDLE_NAME);
-//    configLoader = new ConfigLoader("example.xml");
-    //    this will need to be done by the ui but for testing it's here
-//    simulation = new Simulation();
-//    simulation.unpause();
-//    view.setSimulation(simulation);
-//    simulation.setAuthor("prince 2");
-//    simulation.setDescription("i am saving this file");
-//    SimulationSaver saver = new SimulationSaver();
-//    saver.saveSimulationState(simulation, "simulation_state.xml");
-    Timeline animation = new Timeline();
-    animation.setCycleCount(Timeline.INDEFINITE);
-    animation.getKeyFrames()
-        .add(new KeyFrame(Duration.seconds(SECOND_DELAY), e -> step(SECOND_DELAY)));
-    animation.play();
-  }
-
   private static void step(double elapsedTime) {
     // Update simulation and UI based on elapsed time
     if (simulation != null) {
@@ -64,6 +44,25 @@ public class Game extends Application {
 
   private static boolean updateGridFromConfig(String configFileName) {
     return false;
+  }
+
+  @Override
+  public void start(Stage stage) {
+    view = new View(stage, VIEW_RESOURCE_BUNDLE_NAME);
+//    configLoader = new ConfigLoader("example.xml");
+    //    this will need to be done by the ui but for testing it's here
+//    simulation = new Simulation();
+//    simulation.unpause();
+//    view.setSimulation(simulation);
+//    simulation.setAuthor("prince 2");
+//    simulation.setDescription("i am saving this file");
+//    SimulationSaver saver = new SimulationSaver();
+//    saver.saveSimulationState(simulation, "simulation_state.xml");
+    Timeline animation = new Timeline();
+    animation.setCycleCount(Timeline.INDEFINITE);
+    animation.getKeyFrames()
+        .add(new KeyFrame(Duration.seconds(SECOND_DELAY), e -> step(SECOND_DELAY)));
+    animation.play();
   }
 
 //    public static boolean reloadGridFromConfig() {

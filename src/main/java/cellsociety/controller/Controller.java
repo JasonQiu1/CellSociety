@@ -5,13 +5,15 @@ import cellsociety.model.Simulation;
 import java.util.Map;
 
 /**
- * Responsible for telling cellsociety.Game or Simulation what to do given user input. Doesn't need
+ * Responsible for telling cellsociety. Game or Simulation what to do given user input. Doesn't need
  * to be instantiated.
  *
  * @author Jason Qiu (jq48)
  */
 public class Controller {
 
+  // how much to adjust updates per second
+  public static final int SPEED_ADJUSTMENT = 5;
   Simulation currentSimulation;
 
   public Controller() {
@@ -34,6 +36,7 @@ public class Controller {
   public void handleSaveConfigurationFileButtonPress(String saveFileName,
       Map<String, String> saveFileMetadata) {
     // send a message to Game to save the simulation with the given metadata
+
   }
 
   public void handleStartSimulationButtonPress() {
@@ -41,28 +44,27 @@ public class Controller {
       return;
     }
     currentSimulation.unpause();
-    // send a message to currentSimulation to start/unpause the simulation
   }
 
   public void handlePauseSimulationButtonPress() {
     if (currentSimulation == null) {
       return;
     }
-    // send a message to currentSimulation to pause the simulation
+    currentSimulation.pause();
   }
 
   public void handleSpeedUpSimulationButtonPress() {
     if (currentSimulation == null) {
       return;
     }
-    // send a message to currentSimulation to speed up a certain amount
+    currentSimulation.setSimulationSpeed(currentSimulation.getSimulationSpeed() + SPEED_ADJUSTMENT);
   }
 
   public void handleSlowDownSimulationButtonPress() {
     if (currentSimulation == null) {
       return;
     }
-    // send a message to currentSimulation to slow down a certain amount
+    currentSimulation.setSimulationSpeed(currentSimulation.getSimulationSpeed() - SPEED_ADJUSTMENT);
   }
 
   public void handleResetGridButtonPress() {

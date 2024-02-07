@@ -1,9 +1,7 @@
 package cellsociety.config;
 
 import cellsociety.model.Cell;
-import cellsociety.model.FiniteGrid;
 import cellsociety.model.GameOfLife;
-import cellsociety.model.Grid;
 import cellsociety.model.InitializeGrid;
 import cellsociety.model.RuleSet;
 import cellsociety.model.Simulation;
@@ -34,7 +32,7 @@ public class ConfigLoader {
   public ConfigLoader(String fileName) {
     this.fileName = fileName;
     try {
-      Document doc = readXmlFile(FILE_PATH+ fileName);
+      Document doc = readXmlFile(FILE_PATH + fileName);
 //      System.out.println(doc);
       this.ruleSet = buildRuleSet(doc);
       this.grid = buildGrid(doc);
@@ -87,6 +85,7 @@ public class ConfigLoader {
 //    return grid;
     return gridInitializer.getGrid();
   }
+
   private String getTextValue(Element e, String tagName) {
     NodeList nodeList = e.getElementsByTagName(tagName);
     if (nodeList.getLength() > 0) {
@@ -96,6 +95,7 @@ public class ConfigLoader {
       return "";
     }
   }
+
   private void parseSimulationDetails(Document doc) {
     Element root = doc.getDocumentElement();
     String author = getTextValue(root, "Author");
@@ -107,7 +107,8 @@ public class ConfigLoader {
     simulation.setAuthor(author);
     simulation.setDescription(description);
   }
-//  private RuleSet buildRuleSet(Document doc) {
+
+  //  private RuleSet buildRuleSet(Document doc) {
   private RuleSet buildRuleSet(Document doc) {
     Element root = doc.getDocumentElement();
     String simulationType = getTextValue(root, "SimulationType");
@@ -132,16 +133,6 @@ public class ConfigLoader {
 
 }
 
-
-
-
-
-
-
-
-
-
-
 //    public ConfigLoader(String fileName) {
 //        this.fileName = fileName;
 //        loadConfigFile();
@@ -163,8 +154,6 @@ public class ConfigLoader {
 //            e.printStackTrace(); // Replace with more robust error handling
 //        }
 //    }
-
-
 
 //  private void parseSimulationDetails() {
 //    Element simulationTypeElement = (Element) configDocument.getElementsByTagName("Simulation Type")

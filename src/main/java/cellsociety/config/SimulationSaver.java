@@ -1,6 +1,5 @@
 package cellsociety.config;
 
-import cellsociety.model.Grid;
 import cellsociety.model.Simulation;
 import java.io.File;
 import java.util.HashMap;
@@ -97,11 +96,13 @@ public class SimulationSaver {
   private void addGridStateTest(Document doc, Element rootElement, int[][] grid) {
     // First, add the Width and Height elements based on the grid dimensions
     Element widthElement = doc.createElement("Width");
-    widthElement.setTextContent(String.valueOf(grid[0].length)); // Assuming grid[0].length gives the width
+    widthElement.setTextContent(
+        String.valueOf(grid[0].length)); // Assuming grid[0].length gives the width
     rootElement.appendChild(widthElement);
 
     Element heightElement = doc.createElement("Height");
-    heightElement.setTextContent(String.valueOf(grid.length)); // The length of the grid array gives the height
+    heightElement.setTextContent(
+        String.valueOf(grid.length)); // The length of the grid array gives the height
     rootElement.appendChild(heightElement);
 
     // Then, add the InitialConfig element with all the Cell elements

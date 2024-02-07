@@ -98,5 +98,4 @@ public class View {
     gridDrawer.setNumStates(simulation.getNumStates());
     controller.setSimulation(simulation);
   }
-
 }

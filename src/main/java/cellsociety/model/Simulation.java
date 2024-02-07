@@ -85,6 +85,11 @@ public class Simulation {
 //    return grid;
   }
 
+  // Additional getters for author and description if needed
+  public String getAuthor() {
+    return author;
+  }
+
   public void setAuthor(String author) {
     if (author != null && !author.trim().isEmpty()) {
       this.author = author;
@@ -93,21 +98,16 @@ public class Simulation {
     }
   }
 
+  public String getDescription() {
+    return description;
+  }
+
   public void setDescription(String description) {
     if (description != null && !description.trim().isEmpty()) {
       this.description = description;
     } else {
       throw new IllegalArgumentException("Description cannot be null or empty.");
     }
-  }
-
-  // Additional getters for author and description if needed
-  public String getAuthor() {
-    return author;
-  }
-
-  public String getDescription() {
-    return description;
   }
 
 //    public void setGrid(cellsociety.model.Grid grid) {
