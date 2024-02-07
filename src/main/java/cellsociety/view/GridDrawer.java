@@ -35,15 +35,16 @@ class GridDrawer extends UserInterfacePanel {
    * @param currentGrid the non-null grid to draw.
    */
   public void update(Grid currentGrid) {
-    if (currentGrid == null || gridView == null) {
+    if (currentGrid == null) {
       return;
     }
     // reinitialize the grid if it's a different size
-    if (currentGrid.getNumRows() != gridView.getNumRows()
+    if (gridView == null
+        || currentGrid.getNumRows() != gridView.getNumRows()
         || currentGrid.getNumCols() != gridView.getNumColumns()) {
       initializeGridView(currentGrid.getNumRows(), currentGrid.getNumCols());
+      setNumStates(currentGrid.getNumStates());
     }
-    System.out.println("nnnnnnn");
     updateGridView(currentGrid);
   }
 
