@@ -1,16 +1,16 @@
 <config>
   <Author>Prince</Author>
   <Description>This is an example of what the project will look like</Description>
-  <Width>100</Width>
-  <Height>100</Height>
+  <Width>10</Width>
+  <Height>10</Height>
   <InitialConfig>
     <Cell col="1" row="1">1</Cell>
     <Cell col="1" row="2">1</Cell>
-    <Cell col="56" row="67">1</Cell>
+    <Cell col="6" row="7">1</Cell>
   </InitialConfig>
   <Parameters>
     <Distance>5</Distance>
     <Probability>0.9</Probability>
   </Parameters>
-  <SimulationType>Game of Life/Percolation</SimulationType>
+  <SimulationType>GameOfLife</SimulationType>
 </config>

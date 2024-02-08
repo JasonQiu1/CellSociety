@@ -2,10 +2,15 @@ package cellsociety.config;
 
 import cellsociety.model.Cell;
 import cellsociety.model.FiniteGrid;
+import cellsociety.model.FishOrShark;
 import cellsociety.model.GameOfLife;
 import cellsociety.model.InitializeGrid;
+import cellsociety.model.Percolation;
 import cellsociety.model.RuleSet;
+import cellsociety.model.Segregation;
 import cellsociety.model.Simulation;
+import cellsociety.model.SpreadingOfFire;
+import cellsociety.model.WaterWorld;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -128,11 +133,47 @@ public class ConfigLoader {
     }
     System.out.println(parameters);
 
-    ruleSet = new GameOfLife(this.grid);
+//    ruleSet = new GameOfLife(this.grid);
 //    FiniteGrid f1 = new FiniteGrid(ruleSet);
 //    f1.update();
+    return buildGameRuleSet(simulationType, this.grid, parameters);
+  }
+  private RuleSet buildGameRuleSet(String simulationType, Cell[][] grid, Map<String, String> parameters) {
+    RuleSet ruleSet = null;
+
+    // Determine the type of simulation and instantiate the appropriate RuleSet
+    switch (simulationType) {
+      case "GameOfLife":
+        ruleSet = new GameOfLife(grid);
+        break;
+      case "SpreadingOfFire":
+        ruleSet = new SpreadingOfFire(grid);
+        break;
+      case "Percolation":
+        ruleSet = new Percolation(grid);
+        break;
+      case "Segregation":
+        ruleSet = new Segregation(grid);
+        break;
+      case "WaterWorld":
+        ruleSet = new WaterWorld(grid);
+        break;
+//      case "FishOrShark":
+//        ruleSet = new FishOrShark(grid);
+//        break;
+      // Add more cases for different simulation types as needed
+      default:
+        System.err.println("Unsupported simulation type: " + simulationType);
+        break;
+    }
+
+    if (ruleSet == null) {
+      throw new IllegalArgumentException("No valid RuleSet could be created for the given simulation type: " + simulationType);
+    }
+
     return ruleSet;
   }
+
 
 }
 
