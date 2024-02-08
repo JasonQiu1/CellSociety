@@ -27,13 +27,14 @@ class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
   public ConfigurationPanel(Pane pane, Controller controller) {
     super(pane, "configuration-panel");
 
+    // TODO: REMOVE HANDLER, DON'T DO ANYTHING ON ENTER
     configPathInput = makeInputField(10, event -> updateCurrentConfigPath());
     // TODO: handle invalid user input to avoid crashes
     Button load = makeButton("load" + PROPERTY_SUFFIX,
-        event -> controller.handleLoadConfigurationFileButtonPress(currentConfigPath));
+        event -> controller.handleLoadConfigurationFileButtonPress(configPathInput.getText()));
     // TODO: create edit save popout window and functionality, pass metadata map as second argument
     Button save = makeButton("save" + PROPERTY_SUFFIX,
-        event -> controller.handleSaveConfigurationFileButtonPress(currentConfigPath));
+        event -> controller.handleSaveConfigurationFileButtonPress(configPathInput.getText()));
 
     // TODO: create config information box
 
