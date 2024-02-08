@@ -32,25 +32,18 @@ public class SpreadingOfFire extends RuleSet {
         // randomly ignite some trees
         c1.setNextState(2);
       }
-      boolean leaveLoops = false;
-      for (int i = 0; i < neighbors.length; i++) {
-        for (int j = 0; j < neighbors[0].length; j++) {
-          if (neighbors[i][j] != null && neighbors[i][j].getCurrentState() == 2) {
-            // if tree next to burning tree make it burn
-            c1.setNextState(2);
-            leaveLoops = true;
-            break;
-          }
-        }
-        if (leaveLoops) {
-          break;
-        }
-      }
+      neighborLoop(neighbors, c1);
     }
     if (currentState == 0 && (Math.random() < probabilityTree)) {
       // plant some trees in empty spots
       c1.setNextState(1);
     }
   }
-}
 
+  @Override
+  public void nextLogic(Cell currentCell, Cell neighborCell) {
+    if (neighborCell.getCurrentState() == 2) {
+      currentCell.setNextState(2);
+    }
+  }
+}

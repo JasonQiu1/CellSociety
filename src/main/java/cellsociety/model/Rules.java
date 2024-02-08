@@ -17,4 +17,8 @@ public interface Rules {
   public void update();
 
   public int countLoop(Cell[][] neighbor, int state);
+
+  public void neighborLoop(Cell[][] neighbor, Cell c1);
+
+  public void nextLogic(Cell currentCell, Cell neighborCell);
 }

@@ -15,14 +15,14 @@ public class Percolation extends RuleSet {
     if (c1.getCurrentState() == 1 || c1.getCurrentState() == 2) {
       c1.setNextState(c1.getCurrentState());
       if (c1.getCurrentState() == 2) {
-        for (int i = 0; i < neighbors.length; i++) {
-          for (int j = 0; j < neighbors[0].length; j++) {
-            if (neighbors[i][j] != null && neighbors[i][j].getCurrentState() != 0) {
-              neighbors[i][j].setNextState(2);
-            }
-          }
-        }
+        neighborLoop(neighbors, c1);
       }
     }
+  }
+
+  public void nextLogic(Cell currentCell, Cell neighborCell) {
+      if(neighborCell.getCurrentState()!= 0) {
+        neighborCell.setNextState(2);
+      }
   }
 }

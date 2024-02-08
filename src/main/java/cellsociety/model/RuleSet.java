@@ -78,6 +78,20 @@ public abstract class RuleSet implements Rules {
     return neighbors;
   }
 
+  public void neighborLoop(Cell[][] neighbor, Cell c1) {
+    for (int i = 0; i < neighbor.length; i++) {
+      for (int j = 0; j < neighbor[0].length; j++) {
+        if (neighbor[i][j] != null) {
+          nextLogic(c1, neighbor[i][j]);
+        }
+      }
+    }
+  }
+
+  public void nextLogic(Cell currentCell, Cell neighborCell) {}
+
+
+
   public Cell[][] getGrid() {
     return grid;
   }
