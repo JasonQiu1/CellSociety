@@ -54,7 +54,7 @@ public class WaterWorld extends RuleSet {
         }
       }
     }
-    update(grid);
+    update();
     return grid;
   }
 
