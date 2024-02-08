@@ -72,10 +72,10 @@ public class Game extends Application {
 //        return configLoader.loadCurrentConfigWithoutParams();
 //    }
 //
-    public static void saveSimulationToConfig(Simulation simulation, String configFileName) {
-        // Save current simulation state to a configuration file
-      SimulationSaver.saveSimulationState(simulation, configFileName);
-    }
+  public static void saveSimulationToConfig(Simulation simulation, String configFileName) {
+    // Save current simulation state to a configuration file
+    SimulationSaver.saveSimulationState(simulation, configFileName);
+  }
 //
 
 }
