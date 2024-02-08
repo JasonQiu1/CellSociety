@@ -33,8 +33,7 @@ class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
         event -> controller.handleLoadConfigurationFileButtonPress(currentConfigPath));
     // TODO: create edit save popout window and functionality, pass metadata map as second argument
     Button save = makeButton("save" + PROPERTY_SUFFIX,
-        event -> controller.handleSaveConfigurationFileButtonPress(currentConfigPath,
-            null));
+        event -> controller.handleSaveConfigurationFileButtonPress(currentConfigPath));
 
     // TODO: create config information box
 

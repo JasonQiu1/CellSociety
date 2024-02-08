@@ -2,7 +2,6 @@ package cellsociety.controller;
 
 import cellsociety.Game;
 import cellsociety.model.Simulation;
-import java.util.Map;
 
 /**
  * Responsible for telling cellsociety. Game or Simulation what to do given user input. Doesn't need
@@ -33,9 +32,9 @@ public class Controller {
     Game.loadNewSimulation(configurationFileName);
   }
 
-  public void handleSaveConfigurationFileButtonPress(String saveFileName,
-      Map<String, String> saveFileMetadata) {
+  public void handleSaveConfigurationFileButtonPress(String saveFileName) {
     // send a message to Game to save the simulation with the given metadata
+    Game.saveSimulationToConfig(currentSimulation, saveFileName);
   }
 
   public void handleStartSimulationButtonPress() {
