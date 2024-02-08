@@ -1,6 +1,7 @@
 package cellsociety.model;
 
 public abstract class RuleSet implements Rules {
+
   // determines size of neighbors array (currently 3x3)
   private static final int NEIGHBOR_SIZE = 3;
   private Cell[][] grid;
@@ -8,7 +9,6 @@ public abstract class RuleSet implements Rules {
   public RuleSet(Cell[][] grid) {
     this.grid = grid;
   }
-
   public RuleSet() {
     grid = null;
   }
@@ -30,16 +30,16 @@ public abstract class RuleSet implements Rules {
 
   public abstract void setUpdateFlag(Cell[][] neighbors, Cell c1);
 
-
   public void applyUpdate(Cell c1) {
     // used by the majority of children
     c1.setCurrentState(c1.getNextState());
   }
 
   public void update() {
-    for (int i = 0; i < grid.length; i++) {
-      for (int j = 0; j < grid[0].length; j++) {
-        if (grid[i][j].getCurrentState() != grid[i][j].getNextState()) {
+    // used by all children
+    for (int i = 0; i<grid.length;i++) {
+      for (int j = 0; j <grid[0].length; j++) {
+        if (grid[i][j].getCurrentState()!=grid[i][j].getNextState()) {
           applyUpdate(grid[i][j]);
         }
       }
@@ -55,9 +55,9 @@ public abstract class RuleSet implements Rules {
         if (x == xCord && y == yCord) {
           neighbors[loopInt][loopInt] = null;
         } else if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length) {
-          neighbors[x - xCord + loopInt][y - yCord + loopInt] = grid[x][y];
+          neighbors[x - xCord + loopInt][y - yCord+loopInt] = grid[x][y];
         } else {
-          neighbors[x - xCord + loopInt][y - yCord + loopInt] = null;
+          neighbors[x - xCord+loopInt][y - yCord+loopInt] = null;
         }
       }
     }
