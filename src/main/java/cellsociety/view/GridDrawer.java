@@ -84,8 +84,10 @@ class GridDrawer extends UserInterfacePanel {
    * @param currentGrid the model's cellsociety.model.Grid instance.
    */
   private void updateGridView(Grid currentGrid) {
+
     for (int row = 0; row < currentGrid.getNumRows(); row++) {
       for (int col = 0; col < currentGrid.getNumCols(); col++) {
+        System.out.println(currentGrid.getCellState(row, col));
         gridView.setCellViewColor(row, col,
             colorGenerator.getColor(currentGrid.getCellState(row, col)));
       }

@@ -76,6 +76,8 @@ public class View {
    */
   public void update() {
     if (currentSimulation != null) {
+//      System.out.printf("\n\n\n\n\n\n\n\n");
+//      System.out.println(currentSimulation.getGrid());
       gridDrawer.update(currentSimulation.getGrid());
     }
     uiDrawer.update();

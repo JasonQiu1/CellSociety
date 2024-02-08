@@ -1,6 +1,7 @@
 package cellsociety.config;
 
 import cellsociety.model.Cell;
+import cellsociety.model.FiniteGrid;
 import cellsociety.model.GameOfLife;
 import cellsociety.model.InitializeGrid;
 import cellsociety.model.RuleSet;
@@ -128,6 +129,8 @@ public class ConfigLoader {
     System.out.println(parameters);
 
     ruleSet = new GameOfLife(this.grid);
+//    FiniteGrid f1 = new FiniteGrid(ruleSet);
+//    f1.update();
     return ruleSet;
   }
 
