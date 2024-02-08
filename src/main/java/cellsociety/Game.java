@@ -1,6 +1,7 @@
 package cellsociety;
 
 import cellsociety.config.ConfigLoader;
+import cellsociety.config.SimulationSaver;
 import cellsociety.model.Simulation;
 import cellsociety.view.View;
 import javafx.animation.KeyFrame;
@@ -71,10 +72,10 @@ public class Game extends Application {
 //        return configLoader.loadCurrentConfigWithoutParams();
 //    }
 //
-//    public static boolean saveSimulationToConfig(String configFileName, Map<String,String> Metadata) {
-//        // Save current simulation state to a configuration file
-//        return configLoader.saveConfig(configFileName, simulation);
-//    }
+    public static void saveSimulationToConfig(Simulation simulation, String configFileName) {
+        // Save current simulation state to a configuration file
+      SimulationSaver.saveSimulationState(simulation, configFileName);
+    }
 //
 
 }
