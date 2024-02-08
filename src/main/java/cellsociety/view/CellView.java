@@ -20,7 +20,8 @@ class CellView extends Region {
     super();
     setColor(DEFAULT_COLOR);
     this.getStyleClass().add("cell-view");
-    // the label is never used but for some reason GridPanes do not display if they only contain layouts
+    // the label is never used but for some reason
+    // GridPanes do not display if they only contain layouts
     this.getChildren().add(new Label());
   }
 

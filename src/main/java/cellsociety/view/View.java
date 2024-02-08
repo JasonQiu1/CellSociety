@@ -30,11 +30,11 @@ public class View {
   private static final Paint STAGE_COLOR = Color.WHITE;
   private static final double GRID_TO_UI_RATIO = 0.8;
   // make resources accessible to all ui components, so they don't have to grab their own each time
+  // make this private and change to getter instead
   public static ResourceBundle resources;
-  private Stage stage;
-  private UserInterfaceDrawer uiDrawer;
-  private GridDrawer gridDrawer;
-  private Controller controller;
+  private final UserInterfaceDrawer uiDrawer;
+  private final GridDrawer gridDrawer;
+  private final Controller controller;
   private Simulation currentSimulation;
 
   /**
@@ -47,7 +47,6 @@ public class View {
     // resource bundle loading line from nanobrowser lab:
     // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
     resources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + resourcesFileName);
-    this.stage = stage;
     controller = new Controller();
 
     Pane gridPane = new Pane();
@@ -84,7 +83,8 @@ public class View {
   /**
    * Update's the grid reference that gridDrawer draws from. Also points the controller's user input
    * handling functions to the correct simulation.
-   * TODO: refactor later so that main just passes cellsociety.model.Grid into draw for the GridDrawer
+   * TODO: refactor later so that main just passes cellsociety.model.Grid
+   *    into draw for the GridDrawer
    * TODO: make main create the controller instead and pass it into View constructor to hook
    *    Removes the need for this function in View, will be responsibility of main
    *

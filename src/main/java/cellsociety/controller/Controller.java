@@ -36,7 +36,6 @@ public class Controller {
   public void handleSaveConfigurationFileButtonPress(String saveFileName,
       Map<String, String> saveFileMetadata) {
     // send a message to Game to save the simulation with the given metadata
-
   }
 
   public void handleStartSimulationButtonPress() {

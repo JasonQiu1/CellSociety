@@ -21,11 +21,12 @@ interface UserInputable {
   // makes a button using either an image or a label
   default Button makeButton(String property, EventHandler<ActionEvent> handler) {
     // represent all supported image suffixes
-    final String IMAGE_FILE_SUFFIXES = String.format(".*\\.(%s)",
+    final String imageFileSuffixes = String.format(".*\\.(%s)",
         String.join("|", ImageIO.getReaderFileSuffixes()));
+
     Button result = new Button();
     String label = View.resources.getString(property);
-    if (label.matches(IMAGE_FILE_SUFFIXES)) {
+    if (label.matches(imageFileSuffixes)) {
       result.setGraphic(new ImageView(new Image(
           Objects.requireNonNull(
               getClass().getResourceAsStream(View.DEFAULT_RESOURCE_FOLDER + label)))));

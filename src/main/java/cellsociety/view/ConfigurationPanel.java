@@ -15,9 +15,7 @@ import javafx.scene.layout.Pane;
 class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
 
   private static final String PROPERTY_SUFFIX = "ConfigurationPanel";
-  private Button load;
-  private Button save;
-  private TextField configPathInput;
+  private final TextField configPathInput;
   private String currentConfigPath;
 
   /**
@@ -31,11 +29,11 @@ class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
 
     configPathInput = makeInputField(10, event -> updateCurrentConfigPath());
     // TODO: handle invalid user input to avoid crashes
-    load = makeButton("load" + PROPERTY_SUFFIX,
-        event -> controller.handleLoadConfigurationFileButtonPress(configPathInput.getText()));
+    Button load = makeButton("load" + PROPERTY_SUFFIX,
+        event -> controller.handleLoadConfigurationFileButtonPress(currentConfigPath));
     // TODO: create edit save popout window and functionality, pass metadata map as second argument
-    save = makeButton("save" + PROPERTY_SUFFIX,
-        event -> controller.handleSaveConfigurationFileButtonPress(configPathInput.getText(),
+    Button save = makeButton("save" + PROPERTY_SUFFIX,
+        event -> controller.handleSaveConfigurationFileButtonPress(currentConfigPath,
             null));
 
     // TODO: create config information box
