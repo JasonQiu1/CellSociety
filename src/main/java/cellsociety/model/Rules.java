@@ -15,4 +15,6 @@ public interface Rules {
   public void applyUpdate(Cell c1);
 
   public void update();
+
+  public int countLoop(Cell[][] neighbor, int state);
 }

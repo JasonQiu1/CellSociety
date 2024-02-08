@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WaterWorld extends RuleSet {
-
   // 0 nothing
   // 1 fish
   // 2 shark
@@ -12,23 +11,21 @@ public class WaterWorld extends RuleSet {
   private final int reproductionMoves;
   private final int energyFromFish;
   private final int startEnergy;
-
   public WaterWorld(Cell[][] grid) {
     super();
+    reproductionMoves = 5;
+    energyFromFish = 30;
+    startEnergy = 35;
     setGrid(makeFishOrShark(grid));
-    reproductionMoves = 15;
-    energyFromFish = 10;
-    startEnergy = 5;
   }
 
   public WaterWorld(Cell[][] grid, int reproductionMoves, int energyFromFish, int startEnergy) {
     super();
     // makes cells into FishOrShark objects which extends Cell
-    setGrid(makeFishOrShark(grid));
     this.reproductionMoves = reproductionMoves;
     this.energyFromFish = energyFromFish;
     this.startEnergy = startEnergy;
-
+    setGrid(makeFishOrShark(grid));
   }
 
   public Cell[][] makeFishOrShark(Cell[][] grids) {

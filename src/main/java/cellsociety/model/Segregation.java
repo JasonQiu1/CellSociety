@@ -29,21 +29,12 @@ public class Segregation extends RuleSet {
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
     // finds ratio of samegroup to othergroup
-    int sameGroupCounter = 0;
-    int otherGroupCounter = 0;
-    for (int i = 0; i < neighbors.length; i++) {
-      for (int j = 0; j < neighbors[0].length; j++) {
-        if (neighbors[i][j] != null) {
-          if (neighbors[i][j].getCurrentState() == c1.getCurrentState()) {
-            sameGroupCounter++;
-          } else if (neighbors[i][j].getCurrentState() == 0) {
-            continue;
-          } else {
-            otherGroupCounter++;
-          }
-        }
-      }
+    int sameGroupCounter = countLoop(neighbors, c1.getCurrentState());
+    int otherState = 1;
+    if (c1.getCurrentState() == 1) {
+      otherState = 2;
     }
+    int otherGroupCounter = countLoop(neighbors, otherState);
     if (((double) sameGroupCounter) / ((double) otherGroupCounter) < segregationFraction
         && c1.getCurrentState() != 0) {
       c1.setNextState(0);
