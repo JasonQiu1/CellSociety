@@ -158,10 +158,6 @@ public class ConfigLoader {
       case "WaterWorld":
         ruleSet = new WaterWorld(grid);
         break;
-//      case "FishOrShark":
-//        ruleSet = new FishOrShark(grid);
-//        break;
-      // Add more cases for different simulation types as needed
       default:
         System.err.println("Unsupported simulation type: " + simulationType);
         break;

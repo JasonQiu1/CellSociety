@@ -26,10 +26,20 @@ public class FiniteGrid implements Grid {
 
   @Override
   public void update() {
+    print(grid);
     System.out.println("\n\n\n\naaaaa grid is updating");
     grid = rules.applyRules(grid);
-    System.out.println(grid);
+
   }
+  public void print(Cell[][] grid) {
+    for (int i = 0; i<grid.length; i++) {
+      for (int j = 0; j<grid.length; j++) {
+        System.out.print(grid[i][j].getCurrentState() + " ");
+      }
+      System.out.println(" ");
+    }
+  }
+
 
   @Override
   public int getCellState(int row, int column) {
