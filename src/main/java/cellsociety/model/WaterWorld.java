@@ -1,6 +1,7 @@
 package cellsociety.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WaterWorld extends RuleSet {
 
@@ -13,6 +14,7 @@ public class WaterWorld extends RuleSet {
   private final int startEnergy;
 
   public WaterWorld(Cell[][] grid) {
+    super();
     setGrid(makeFishOrShark(grid));
     reproductionMoves = 15;
     energyFromFish = 10;
@@ -20,6 +22,7 @@ public class WaterWorld extends RuleSet {
   }
 
   public WaterWorld(Cell[][] grid, int reproductionMoves, int energyFromFish, int startEnergy) {
+    super();
     // makes cells into FishOrShark objects which extends Cell
     setGrid(makeFishOrShark(grid));
     this.reproductionMoves = reproductionMoves;
@@ -82,9 +85,9 @@ public class WaterWorld extends RuleSet {
     }
   }
 
-  private ArrayList<FishOrShark> generateList(Cell[][] neighbors, int state) {
+  private List<FishOrShark> generateList(Cell[][] neighbors, int state) {
     // generates list of all neighbor cells of a current state
-    ArrayList<FishOrShark> list = new ArrayList<>();
+    List<FishOrShark> list = new ArrayList<>();
     for (int i = 0; i < neighbors.length; i++) {
       if (neighbors[i][0] != null && neighbors[i][0].getCurrentState() == state
           && neighbors[i][0].getNextState() == state) {
@@ -115,8 +118,8 @@ public class WaterWorld extends RuleSet {
       f1.setNextState(0);
     } else {
       int currentEnergy = f1.getEnergy();
-      ArrayList<FishOrShark> fish = generateList(neighbors, 1);
-      ArrayList<FishOrShark> empty = generateList(neighbors, 0);
+      List<FishOrShark> fish = generateList(neighbors, 1);
+      List<FishOrShark> empty = generateList(neighbors, 0);
       if (!fish.isEmpty()) {
         // if there is a neighbor fish, eat it
         int randomChooser = (int) (Math.random() * fish.size());
@@ -136,7 +139,7 @@ public class WaterWorld extends RuleSet {
   }
 
   private void fishLogic(FishOrShark f1, Cell[][] neighbors) {
-    ArrayList<FishOrShark> empty = generateList(neighbors, 0);
+    List<FishOrShark> empty = generateList(neighbors, 0);
 
     if (!empty.isEmpty()) {
       // move to random empty spot around it

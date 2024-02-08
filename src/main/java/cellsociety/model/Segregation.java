@@ -1,6 +1,7 @@
 package cellsociety.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Segregation extends RuleSet {
 
@@ -10,7 +11,7 @@ public class Segregation extends RuleSet {
   // ...
   private final double segregationFraction;
 
-  private ArrayList<Cell> emptyCells;
+  private List<Cell> emptyCells;
 
   public Segregation(Cell[][] grid) {
     super(grid);
@@ -60,9 +61,9 @@ public class Segregation extends RuleSet {
     emptyCells.add(c1);
   }
 
-  public ArrayList<Cell> findEmptyCells() {
+  public List<Cell> findEmptyCells() {
     // creates ArrayList of empty cells (no group there)
-    ArrayList<Cell> empty = new ArrayList<>();
+    List<Cell> empty = new ArrayList<>();
     for (int i = 0; i < getGrid().length; i++) {
       for (int j = 0; j < getGrid()[0].length; j++) {
         if (getGrid()[i][j].getCurrentState() == 0) {
