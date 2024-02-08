@@ -13,7 +13,7 @@ import java.util.Map;
 public class Controller {
 
   // how much to adjust updates per second
-  public static final int SPEED_ADJUSTMENT = 5;
+  public static final int SPEED_ADJUSTMENT = 1;
   Simulation currentSimulation;
 
   public Controller() {
