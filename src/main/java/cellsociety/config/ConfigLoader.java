@@ -67,8 +67,7 @@ public class ConfigLoader {
     int width = Integer.parseInt(getTextValue(root, "Width"));
     int height = Integer.parseInt(getTextValue(root, "Height"));
     InitializeGrid gridInitializer = new InitializeGrid(width, height);
-//    System.out.println(width);
-//    System.out.println(height);
+
 
     NodeList cellList = doc.getElementsByTagName("Cell");
     for (int i = 0; i < cellList.getLength(); i++) {
