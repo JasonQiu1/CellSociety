@@ -30,7 +30,7 @@ public class Game extends Application {
 //      System.out.println("bbbb\n\n\n\nccc");
       simulation.update(elapsedTime);
     }
-    view.setSimulation(simulation);
+//    view.setSimulation(simulation);
     view.update();
   }
 

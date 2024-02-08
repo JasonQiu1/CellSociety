@@ -53,8 +53,8 @@ public class Simulation {
 //          }
 //          System.out.println();  // New line at the end of each row
 //        }
-        grid.setGrid(ruleSet.applyRules(grid.getGrid()));
-
+//        grid.setGrid(ruleSet.applyRules(grid.getGrid()));
+          grid.update();
         // Update the last update time
         System.out.println("I am updating the gid");
         System.out.println(elapsedTime);
