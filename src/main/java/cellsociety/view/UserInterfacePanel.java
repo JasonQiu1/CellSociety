@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 abstract class UserInterfacePanel {
 
   // the root javafx pane to add ui components to
-  private Pane root;
+  private final Pane root;
 
   /**
    * Sets the root to the given pane and also adds a css class for configurable styling.

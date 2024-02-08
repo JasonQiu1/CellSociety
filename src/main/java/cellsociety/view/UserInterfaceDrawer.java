@@ -1,7 +1,6 @@
 package cellsociety.view;
 
 import cellsociety.controller.Controller;
-import cellsociety.model.Simulation;
 import javafx.scene.layout.Pane;
 
 /**
@@ -25,13 +24,13 @@ class UserInterfaceDrawer extends UserInterfacePanel {
     Pane configRoot = new Pane();
     configRoot.setPrefSize(pane.getPrefWidth() * CONFIG_TO_SIMULATION_PANEL_RATIO,
         pane.getPrefHeight());
-    ConfigurationPanel configPanel = new ConfigurationPanel(configRoot, controller);
+    new ConfigurationPanel(configRoot, controller);
 
     Pane simulationRoot = new Pane();
     simulationRoot.setLayoutX(pane.getPrefWidth() * CONFIG_TO_SIMULATION_PANEL_RATIO);
     simulationRoot.setPrefSize(pane.getPrefWidth() * (1 - CONFIG_TO_SIMULATION_PANEL_RATIO),
         pane.getPrefHeight());
-    SimulationControlPanel simulationPanel = new SimulationControlPanel(simulationRoot, controller);
+    new SimulationControlPanel(simulationRoot, controller);
 
     pane.getChildren().addAll(configRoot, simulationRoot);
   }

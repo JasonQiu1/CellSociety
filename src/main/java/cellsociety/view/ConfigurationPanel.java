@@ -15,8 +15,8 @@ import javafx.scene.layout.Pane;
 class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
 
   private static final String PROPERTY_SUFFIX = "ConfigurationPanel";
+  private static final int INPUT_FIELD_WIDTH = 10;
   private final TextField configPathInput;
-  private String currentConfigPath;
 
   /**
    * Create all config components, including the config info panel, input field, and buttons
@@ -27,8 +27,8 @@ class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
   public ConfigurationPanel(Pane pane, Controller controller) {
     super(pane, "configuration-panel");
 
-    // TODO: REMOVE HANDLER, DON'T DO ANYTHING ON ENTER
-    configPathInput = makeInputField(10, event -> updateCurrentConfigPath());
+    configPathInput = new TextField();
+    configPathInput.setPrefColumnCount(INPUT_FIELD_WIDTH);
     // TODO: handle invalid user input to avoid crashes
     Button load = makeButton("load" + PROPERTY_SUFFIX,
         event -> controller.handleLoadConfigurationFileButtonPress(configPathInput.getText()));
@@ -49,7 +49,4 @@ class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
   }
 
   // TODO: sanitize input to allow only possibly-valid paths
-  private void updateCurrentConfigPath() {
-    currentConfigPath = configPathInput.getText();
-  }
 }

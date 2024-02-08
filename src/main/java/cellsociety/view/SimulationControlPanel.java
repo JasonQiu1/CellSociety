@@ -13,11 +13,6 @@ import javafx.scene.layout.Pane;
 class SimulationControlPanel extends UserInterfacePanel implements UserInputable {
 
   private static final String PROPERTY_SUFFIX = "SimulationControl";
-  private Button start;
-  private Button pause;
-  private Button speedUp;
-  private Button slowDown;
-  private Button reset;
 
   /**
    * Create all simulation control buttons and lay them out.
@@ -28,15 +23,15 @@ class SimulationControlPanel extends UserInterfacePanel implements UserInputable
   public SimulationControlPanel(Pane pane, Controller controller) {
     super(pane, "simulation-control-panel");
 
-    start = makeButton("start" + PROPERTY_SUFFIX,
+    Button start = makeButton("start" + PROPERTY_SUFFIX,
         event -> controller.handleStartSimulationButtonPress());
-    pause = makeButton("pause" + PROPERTY_SUFFIX,
+    Button pause = makeButton("pause" + PROPERTY_SUFFIX,
         event -> controller.handlePauseSimulationButtonPress());
-    speedUp = makeButton("speedUp" + PROPERTY_SUFFIX,
+    Button speedUp = makeButton("speedUp" + PROPERTY_SUFFIX,
         event -> controller.handleSpeedUpSimulationButtonPress());
-    slowDown = makeButton("slowDown" + PROPERTY_SUFFIX,
+    Button slowDown = makeButton("slowDown" + PROPERTY_SUFFIX,
         event -> controller.handleSlowDownSimulationButtonPress());
-    reset = makeButton("reset" + PROPERTY_SUFFIX,
+    Button reset = makeButton("reset" + PROPERTY_SUFFIX,
         event -> controller.handleResetGridButtonPress());
 
     GridPane layout = new GridPane();
