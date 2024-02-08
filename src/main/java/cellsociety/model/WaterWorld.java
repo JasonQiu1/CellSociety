@@ -8,23 +8,23 @@ public class WaterWorld extends RuleSet {
   // 1 fish
   // 2 shark
   private static final int STATES = 2;
-  private final int REPRODUCTION_MOVES;
-  private final int ENERGY_FROM_FISH;
-  private final int START_ENERGY;
+  private final int reproductionMoves;
+  private final int energyFromFish;
+  private final int startEnergy;
 
   public WaterWorld(Cell[][] grid) {
     setGrid(makeFishOrShark(grid));
-    REPRODUCTION_MOVES = 15;
-    ENERGY_FROM_FISH = 10;
-    START_ENERGY = 5;
+    reproductionMoves = 15;
+    energyFromFish = 10;
+    startEnergy = 5;
   }
 
-  public WaterWorld(Cell[][] grid, int REPRODUCTION_MOVES, int ENERGY_FROM_FISH, int START_ENERGY) {
+  public WaterWorld(Cell[][] grid, int reproductionMoves, int energyFromFish, int startEnergy) {
     // makes cells into FishOrShark objects which extends Cell
     setGrid(makeFishOrShark(grid));
-    this.REPRODUCTION_MOVES = REPRODUCTION_MOVES;
-    this.ENERGY_FROM_FISH = ENERGY_FROM_FISH;
-    this.START_ENERGY = START_ENERGY;
+    this.reproductionMoves = reproductionMoves;
+    this.energyFromFish = energyFromFish;
+    this.startEnergy = startEnergy;
 
   }
 
@@ -33,7 +33,7 @@ public class WaterWorld extends RuleSet {
     Cell[][] updatedGrid = new Cell[grids.length][grids[0].length];
     for (int i = 0; i < grids.length; i++) {
       for (int j = 0; j < grids[0].length; j++) {
-        updatedGrid[i][j] = new FishOrShark(grids[i][j].getCurrentState(), START_ENERGY);
+        updatedGrid[i][j] = new FishOrShark(grids[i][j].getCurrentState(), startEnergy);
       }
     }
     return updatedGrid;
@@ -98,10 +98,10 @@ public class WaterWorld extends RuleSet {
     // switches animal with animalMove. Leaves behind animal if it was supposed to reproduce
     animalMove.setNextState(animal.getCurrentState());
     animalMove.setChrononsSurvived(animal.getChrononsSurvived());
-    if (animal.getChrononsSurvived() >= REPRODUCTION_MOVES) {
+    if (animal.getChrononsSurvived() >= reproductionMoves) {
       animalMove.setChrononsSurvived(0);
       animal.setChrononsSurvived(0);
-      animal.setEnergy(START_ENERGY);
+      animal.setEnergy(startEnergy);
     } else {
       // increase the amount of turns the animal has survived
       animal.setNextState(0);
@@ -121,7 +121,7 @@ public class WaterWorld extends RuleSet {
         // if there is a neighbor fish, eat it
         int randomChooser = (int) (Math.random() * fish.size());
         reproduction(f1, fish.get(randomChooser));
-        fish.get(randomChooser).setEnergy(currentEnergy + ENERGY_FROM_FISH - 1);
+        fish.get(randomChooser).setEnergy(currentEnergy + energyFromFish - 1);
       } else if (!empty.isEmpty()) {
         // if there is no neighbor fish, move to empty neighbor cell
         int randomChooser = (int) (Math.random() * empty.size());
