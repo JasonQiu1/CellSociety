@@ -13,17 +13,8 @@ public class GameOfLife extends RuleSet {
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
     // overide setUpdateflag
     // count number of neighbors who are alive and update cell state accordingly
-    int liveNeighborCount = 0;
     boolean isAlive = c1.getCurrentState() == 1;
-    for (int i = 0; i < neighbors.length; i++) {
-      for (int j = 0; j < neighbors[0].length; j++) {
-        if (neighbors[i][j] != null) {
-          if (neighbors[i][j].getCurrentState() == 1) {
-            liveNeighborCount++;
-          }
-        }
-      }
-    }
+    int liveNeighborCount = countLoop(neighbors, 1);
     if (isAlive && (liveNeighborCount < 2 || liveNeighborCount > 3)) {
       c1.setNextState(0);
     } else if (!isAlive && liveNeighborCount == 3) {

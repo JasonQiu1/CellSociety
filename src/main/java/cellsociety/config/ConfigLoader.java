@@ -29,7 +29,7 @@ public class ConfigLoader {
   public Cell[][] grid;
   public RuleSet ruleSet;
   public String fileName;
-  public String FILE_PATH = "./data/";
+  public static final String FILE_PATH = "./data/";
   public Map<String, String> parameters;
 
 
@@ -38,11 +38,12 @@ public class ConfigLoader {
     try {
       Document doc = readXmlFile(FILE_PATH + fileName);
 //      System.out.println(doc);
-      this.ruleSet = buildRuleSet(doc);
       this.grid = buildGrid(doc);
+      this.ruleSet = buildRuleSet(doc);
+
 //      System.out.println(grid);
 
-      buildRuleSet(doc);
+//      buildRuleSet(doc);
       simulation = new Simulation(ruleSet, grid);
       parseSimulationDetails(doc);
 //            // rule object can be initialized here with buildRuleset method
@@ -58,8 +59,8 @@ public class ConfigLoader {
       throws ParserConfigurationException, IOException, SAXException {
     File xmlFile = new File(fileName);
     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-    return dBuilder.parse(xmlFile);
+    DocumentBuilder docBuilder = dbFactory.newDocumentBuilder();
+    return docBuilder.parse(xmlFile);
   }
 
   private Cell[][] buildGrid(Document doc) {
@@ -82,7 +83,6 @@ public class ConfigLoader {
 //        System.out.println(row);
 //        System.out.println(col);
 //        System.out.println(val);
-        // set cell status in the grid here based on your cellsociety.model.Grid class implementation
       }
     }
 //    return grid;
@@ -173,59 +173,6 @@ public class ConfigLoader {
 
 }
 
-//    public ConfigLoader(String fileName) {
-//        this.fileName = fileName;
-//        loadConfigFile();
-//        parseSimulationDetails();
-//        buildGrid();
-//        buildRuleSet();
-//        trackParameters();
-//        buildSimulation();
-//    }
-//
-//    private void loadConfigFile() {
-//        try {
-//            File configFile = new File(fileName);
-//            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-//            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-//            configDocument = dBuilder.parse(configFile);
-//            configDocument.getDocumentElement().normalize();
-//        } catch (Exception e) {
-//            e.printStackTrace(); // Replace with more robust error handling
-//        }
-//    }
-
-//  private void parseSimulationDetails() {
-//    Element simulationTypeElement = (Element) configDocument.getElementsByTagName("Simulation Type")
-//        .item(0);
-//    String simulationType = simulationTypeElement.getTextContent();
-//
-//    Element authorElement = (Element) configDocument.getElementsByTagName("Author").item(0);
-//    String author = authorElement.getTextContent();
-//
-//    Element descriptionElement = (Element) configDocument.getElementsByTagName("Description")
-//        .item(0);
-//    String description = descriptionElement.getTextContent();
-//
-//    // Use these details as needed, perhaps storing them or passing them to the Simulation constructor
-//  }
-//
-//    private void buildGrid() {
-//        int width = Integer.parseInt(configDocument.getElementsByTagName("Width").item(0).getTextContent());
-//        int height = Integer.parseInt(configDocument.getElementsByTagName("Height").item(0).getTextContent());
-//
-//        grid = new cellsociety.model.Grid(width, height); // Assuming cellsociety.model.Grid constructor takes width and height
-//
-//        NodeList cells = configDocument.getElementsByTagName("Cell");
-//        for (int i = 0; i < cells.getLength(); i++) {
-//            Element cell = (Element) cells.item(i);
-//            int row = Integer.parseInt(cell.getAttribute("row"));
-//            int col = Integer.parseInt(cell.getAttribute("col"));
-//            String state = cell.getTextContent();
-//
-//            grid.setCell(row, col, state); // Assuming cellsociety.model.Grid has a method to set the state of a cell
-//        }
-//    }
 
 
 

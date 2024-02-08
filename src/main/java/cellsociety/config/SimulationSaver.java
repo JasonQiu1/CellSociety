@@ -61,7 +61,8 @@ public class SimulationSaver {
     }
   }
 
-  private static void addSimulationDetails(Document doc, Element rootElement, Simulation simulation) {
+  private static void addSimulationDetails(Document doc,
+      Element rootElement, Simulation simulation) {
     Element authorElement = doc.createElement("Author");
     authorElement.setTextContent(simulation.getAuthor());
     rootElement.appendChild(authorElement);
@@ -77,7 +78,8 @@ public class SimulationSaver {
 //    rootElement.appendChild(widthElement);
 //
 //    Element heightElement = doc.createElement("Height");
-//    heightElement.setTextContent(String.valueOf(grid.getNumRows())); // The length of the grid array gives the height
+//    heightElement.setTextContent(String.valueOf(grid.getNumRows()));
+// The length of the grid array gives the height
 //    rootElement.appendChild(heightElement);
 //    // Assuming you have a way to iterate over the grid and get cell states
 //    Element gridElement = doc.createElement("InitialConfig");
@@ -86,7 +88,8 @@ public class SimulationSaver {
 //        Element cellElement = doc.createElement("Cell");
 //        cellElement.setAttribute("col", String.valueOf(col));
 //        cellElement.setAttribute("row", String.valueOf(row));
-//        cellElement.setTextContent(String.valueOf(grid.getCellState(row, col))); // Assuming getCellState method exists
+//        cellElement.setTextContent(String.valueOf(grid.getCellState(row, col)));
+// Assuming getCellState method exists
 //        gridElement.appendChild(cellElement);
 //      }
 //    }

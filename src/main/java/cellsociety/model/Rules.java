@@ -2,7 +2,7 @@ package cellsociety.model;
 
 public interface Rules {
 
-  public Cell[][] findNeighbors(int xCord, int yCord);
+  public Cell[][] findNeighbors(int cordX, int cordY);
 
   public void setUpdateFlag(Cell[][] neighbors, Cell c1);
 
@@ -15,4 +15,6 @@ public interface Rules {
   public void applyUpdate(Cell c1);
 
   public void update();
+
+  public int countLoop(Cell[][] neighbor, int state);
 }

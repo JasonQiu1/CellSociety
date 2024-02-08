@@ -1,8 +1,8 @@
 <config>
   <Author>Prince</Author>
   <Description>Glider in Game of Life</Description>
-  <Width>10</Width>
-  <Height>10</Height>
+  <Width>100</Width>
+  <Height>100</Height>
   <InitialConfig>
     <Cell col="3" row="3">1</Cell>
     <Cell col="4" row="4">1</Cell>

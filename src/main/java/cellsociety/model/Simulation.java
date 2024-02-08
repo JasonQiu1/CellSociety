@@ -32,32 +32,9 @@ public class Simulation {
   public void update(double elapsedTime) {
     lastUpdateTime += elapsedTime;
     if (!isPaused) {
-//      System.out.println("\n\nbbbbccvvvv");
-//      System.out.println(lastUpdateTime);
-//      System.out.println(1.0 / simulationSpeed);
-      // Apply the rules to the grid
-      // Note: You would need to implement the logic to update the grid based on the elapsed time and simulation speed
       if (lastUpdateTime >= 1.0 / simulationSpeed) {
-//        Cell[][] updatedGrid = grid.getGrid();
-//        System.out.println("\n\n\n\n\n\n\naaaaaaa");
-//        System.out.println(updatedGrid.length);
-//        System.out.println("Updated Grid:");
-//        for (int row = 0; row < updatedGrid.length; row++) {
-//          for (int col = 0; col < updatedGrid[row].length; col++) {
-//            // Check if the cell is not null to avoid NullPointerException
-//            if (updatedGrid[row][col] != null) {
-//              System.out.print(updatedGrid[row][col].getCurrentState() + " ");
-//            } else {
-//              System.out.print("null ");
-//            }
-//          }
-//          System.out.println();  // New line at the end of each row
-//        }
-//        grid.setGrid(ruleSet.applyRules(grid.getGrid()));
         grid.update();
-        // Update the last update time
         System.out.println("I am updating the gid");
-//        System.out.println(elapsedTime);
         lastUpdateTime = 0;
       }
     }
@@ -111,15 +88,5 @@ public class Simulation {
     }
   }
 
-//    public void setGrid(cellsociety.model.Grid grid) {
-//        if (grid != null) {
-//            this.grid = grid;
-//        } else {
-//            throw new IllegalArgumentException("cellsociety.model.Grid cannot be null.");
-//        }
-//    }
-
-  // Additional methods to interact with the simulation might be needed here
-  // For example, getting the current state of the grid for rendering purposes
 }
 
