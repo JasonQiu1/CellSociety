@@ -16,10 +16,6 @@ public class FiniteGrid implements Grid {
     grid = rules.getGrid();
   }
 
-  public Cell[][] getGrid() {
-    return grid;
-  }
-
   public void setGrid(Cell[][] grid) {
     this.grid = grid;
   }

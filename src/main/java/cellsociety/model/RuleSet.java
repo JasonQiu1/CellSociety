@@ -35,6 +35,19 @@ public abstract class RuleSet implements Rules {
     // used by the majority of children
     c1.setCurrentState(c1.getNextState());
   }
+  public int countLoop (Cell[][] neighbors, int state) {
+    int counter = 0;
+    for (int i = 0; i < neighbors.length; i++) {
+      for (int j = 0; j < neighbors[0].length; j++) {
+        if (neighbors[i][j] != null) {
+          if (neighbors[i][j].getCurrentState() == state) {
+            counter++;
+          }
+        }
+      }
+    }
+    return counter;
+  }
 
   public void update() {
     // used by all children
@@ -46,7 +59,6 @@ public abstract class RuleSet implements Rules {
       }
     }
   }
-
   public Cell[][] findNeighbors(int xCord, int yCord) {
     // fills in NEIGHBOR_SIZE by NEIGHBOR_SIZE array of neighbors
     Cell[][] neighbors = new Cell[NEIGHBOR_SIZE][NEIGHBOR_SIZE];

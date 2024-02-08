@@ -65,7 +65,7 @@ public class Game extends Application {
         .add(new KeyFrame(Duration.seconds(SECOND_DELAY), e -> step(SECOND_DELAY)));
     animation.play();
   }
-
+  
 //    public static boolean reloadGridFromConfig() {
 //        // Load grid configuration from file and update the grid
 ////        simulation set grid = to whatever the config says it was
