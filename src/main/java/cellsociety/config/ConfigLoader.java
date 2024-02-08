@@ -1,8 +1,6 @@
 package cellsociety.config;
 
 import cellsociety.model.Cell;
-import cellsociety.model.FiniteGrid;
-import cellsociety.model.FishOrShark;
 import cellsociety.model.GameOfLife;
 import cellsociety.model.InitializeGrid;
 import cellsociety.model.Percolation;
@@ -138,7 +136,9 @@ public class ConfigLoader {
 //    f1.update();
     return buildGameRuleSet(simulationType, this.grid, parameters);
   }
-  private RuleSet buildGameRuleSet(String simulationType, Cell[][] grid, Map<String, String> parameters) {
+
+  private RuleSet buildGameRuleSet(String simulationType, Cell[][] grid,
+      Map<String, String> parameters) {
     RuleSet ruleSet = null;
 
     // Determine the type of simulation and instantiate the appropriate RuleSet
@@ -164,7 +164,8 @@ public class ConfigLoader {
     }
 
     if (ruleSet == null) {
-      throw new IllegalArgumentException("No valid RuleSet could be created for the given simulation type: " + simulationType);
+      throw new IllegalArgumentException(
+          "No valid RuleSet could be created for the given simulation type: " + simulationType);
     }
 
     return ruleSet;

@@ -2,12 +2,9 @@ package cellsociety.view;
 
 
 import cellsociety.model.Grid;
-import com.sun.tools.jconsole.JConsoleContext;
 import javafx.geometry.Pos;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.RowConstraints;
 
 /**
  * Responsible for drawing the given grid onto the given pane.

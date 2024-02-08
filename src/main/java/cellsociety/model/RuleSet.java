@@ -9,6 +9,7 @@ public abstract class RuleSet implements Rules {
   public RuleSet(Cell[][] grid) {
     this.grid = grid;
   }
+
   public RuleSet() {
     grid = null;
   }
@@ -37,9 +38,9 @@ public abstract class RuleSet implements Rules {
 
   public void update() {
     // used by all children
-    for (int i = 0; i<grid.length;i++) {
-      for (int j = 0; j <grid[0].length; j++) {
-        if (grid[i][j].getCurrentState()!=grid[i][j].getNextState()) {
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[0].length; j++) {
+        if (grid[i][j].getCurrentState() != grid[i][j].getNextState()) {
           applyUpdate(grid[i][j]);
         }
       }
@@ -55,9 +56,9 @@ public abstract class RuleSet implements Rules {
         if (x == xCord && y == yCord) {
           neighbors[loopInt][loopInt] = null;
         } else if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length) {
-          neighbors[x - xCord + loopInt][y - yCord+loopInt] = grid[x][y];
+          neighbors[x - xCord + loopInt][y - yCord + loopInt] = grid[x][y];
         } else {
-          neighbors[x - xCord+loopInt][y - yCord+loopInt] = null;
+          neighbors[x - xCord + loopInt][y - yCord + loopInt] = null;
         }
       }
     }

@@ -31,9 +31,10 @@ public class FiniteGrid implements Grid {
     grid = rules.applyRules(grid);
 
   }
+
   public void print(Cell[][] grid) {
-    for (int i = 0; i<grid.length; i++) {
-      for (int j = 0; j<grid.length; j++) {
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid.length; j++) {
         System.out.print(grid[i][j].getCurrentState() + " ");
       }
       System.out.println(" ");

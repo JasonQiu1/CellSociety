@@ -49,7 +49,7 @@ class GridView {
     }
 
     // Column constraints:
-    for (int x = 0 ; x < numColumns ; x++) {
+    for (int x = 0; x < numColumns; x++) {
       ColumnConstraints cc = new ColumnConstraints();
       cc.setPercentWidth(100.0 / numColumns);
       cc.setFillWidth(true);
@@ -57,7 +57,7 @@ class GridView {
     }
 
     // row constraints:
-    for (int y = 0 ; y < numRows; y++) {
+    for (int y = 0; y < numRows; y++) {
       RowConstraints rc = new RowConstraints();
       rc.setPercentHeight(100.0 / numRows);
       rc.setFillHeight(true);
