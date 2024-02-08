@@ -4,8 +4,10 @@ package cellsociety.view;
 import cellsociety.model.Grid;
 import com.sun.tools.jconsole.JConsoleContext;
 import javafx.geometry.Pos;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.RowConstraints;
 
 /**
  * Responsible for drawing the given grid onto the given pane.
@@ -72,7 +74,7 @@ class GridDrawer extends UserInterfacePanel {
     }
     gridView = new GridView(numRows, numCols);
     GridPane gridPane = gridView.getGridPane();
-    gridPane.setPrefSize(getRoot().getMaxWidth(), getRoot().getMaxHeight());
+    gridPane.setPrefSize(getRoot().getPrefWidth(), getRoot().getPrefHeight());
     gridPane.setAlignment(Pos.CENTER);
     gridPane.setGridLinesVisible(true);
     getRoot().getChildren().add(gridPane);

@@ -1,6 +1,8 @@
 package cellsociety.view;
 
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Paint;
 
 /**
@@ -45,6 +47,23 @@ class GridView {
         GridPane.setColumnIndex(cellViewGrid[row][col], col);
       }
     }
+
+    // Column constraints:
+    for (int x = 0 ; x < numColumns ; x++) {
+      ColumnConstraints cc = new ColumnConstraints();
+      cc.setPercentWidth(100.0 / numColumns);
+      cc.setFillWidth(true);
+      gridPane.getColumnConstraints().add(cc);
+    }
+
+    // row constraints:
+    for (int y = 0 ; y < numRows; y++) {
+      RowConstraints rc = new RowConstraints();
+      rc.setPercentHeight(100.0 / numRows);
+      rc.setFillHeight(true);
+      gridPane.getRowConstraints().add(rc);
+    }
+
     gridPane.getStyleClass().add("grid-view");
   }
 

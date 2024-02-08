@@ -1,5 +1,6 @@
 package cellsociety.view;
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Region;
@@ -19,6 +20,8 @@ class CellView extends Region {
     super();
     setColor(DEFAULT_COLOR);
     this.getStyleClass().add("cell-view");
+    // the label is never used but for some reason GridPanes do not display if they only contain layouts
+    this.getChildren().add(new Label());
   }
 
   public void setColor(Paint color) {
