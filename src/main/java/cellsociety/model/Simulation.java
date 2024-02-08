@@ -32,7 +32,7 @@ public class Simulation {
   public void update(double elapsedTime) {
     lastUpdateTime += elapsedTime;
     if (!isPaused) {
-      System.out.println("\n\nbbbbccvvvv");
+//      System.out.println("\n\nbbbbccvvvv");
 //      System.out.println(lastUpdateTime);
 //      System.out.println(1.0 / simulationSpeed);
       // Apply the rules to the grid
@@ -57,7 +57,7 @@ public class Simulation {
           grid.update();
         // Update the last update time
         System.out.println("I am updating the gid");
-        System.out.println(elapsedTime);
+//        System.out.println(elapsedTime);
         lastUpdateTime = 0;
       }
     }
@@ -71,7 +71,8 @@ public class Simulation {
     if (speed > 0) {
       simulationSpeed = speed;
     } else {
-      throw new IllegalArgumentException("Speed must be positive.");
+      simulationSpeed = 0.1;
+//      throw new IllegalArgumentException("Speed must be positive.");
     }
   }
 
