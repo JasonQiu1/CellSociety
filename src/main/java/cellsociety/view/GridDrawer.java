@@ -2,6 +2,7 @@ package cellsociety.view;
 
 
 import cellsociety.model.Grid;
+import com.sun.tools.jconsole.JConsoleContext;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
