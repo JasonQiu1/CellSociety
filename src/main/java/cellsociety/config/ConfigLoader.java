@@ -38,11 +38,12 @@ public class ConfigLoader {
     try {
       Document doc = readXmlFile(FILE_PATH + fileName);
 //      System.out.println(doc);
-      this.ruleSet = buildRuleSet(doc);
       this.grid = buildGrid(doc);
+      this.ruleSet = buildRuleSet(doc);
+
 //      System.out.println(grid);
 
-      buildRuleSet(doc);
+//      buildRuleSet(doc);
       simulation = new Simulation(ruleSet, grid);
       parseSimulationDetails(doc);
 //            // rule object can be initialized here with buildRuleset method
