@@ -1,0 +1,18 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Glider in Game of Life</Description>
+  <Width>10</Width>
+  <Height>10</Height>
+  <InitialConfig>
+    <Cell col="3" row="3">1</Cell>
+    <Cell col="4" row="4">1</Cell>
+    <Cell col="4" row="5">1</Cell>
+    <Cell col="3" row="5">1</Cell>
+    <Cell col="2" row="5">1</Cell>
+  </InitialConfig>
+  <Parameters>
+    <Distance>5</Distance> <!-- This parameter may not be relevant for Game of Life but included for consistency -->
+    <Probability>0.9</Probability> <!-- Same as above -->
+  </Parameters>
+  <SimulationType>GameOfLife</SimulationType>
+</config>
