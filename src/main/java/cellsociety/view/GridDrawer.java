@@ -2,6 +2,7 @@ package cellsociety.view;
 
 
 import cellsociety.model.Grid;
+import com.sun.tools.jconsole.JConsoleContext;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -87,7 +88,7 @@ class GridDrawer extends UserInterfacePanel {
 
     for (int row = 0; row < currentGrid.getNumRows(); row++) {
       for (int col = 0; col < currentGrid.getNumCols(); col++) {
-        System.out.println(currentGrid.getCellState(row, col));
+//        System.out.println(currentGrid.getCellState(row, col));
         gridView.setCellViewColor(row, col,
             colorGenerator.getColor(currentGrid.getCellState(row, col)));
       }

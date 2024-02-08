@@ -26,7 +26,9 @@ public class FiniteGrid implements Grid {
 
   @Override
   public void update() {
+    System.out.println("\n\n\n\naaaaa grid is updating");
     grid = rules.applyRules(grid);
+    System.out.println(grid);
   }
 
   @Override
