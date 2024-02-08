@@ -16,10 +16,10 @@ import org.w3c.dom.Element;
 
 public class SimulationSaver {
 
-  public String FILE_SAVE_PATH = "./data/saves/";
+  public static String FILE_SAVE_PATH = "./data/saves/";
 
 
-  public void saveSimulationState(Simulation simulation, String filePath) {
+  public static void saveSimulationState(Simulation simulation, String filePath) {
     System.out.println("\n\n\n llllllllll");
     try {
       DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -61,7 +61,7 @@ public class SimulationSaver {
     }
   }
 
-  private void addSimulationDetails(Document doc, Element rootElement, Simulation simulation) {
+  private static void addSimulationDetails(Document doc, Element rootElement, Simulation simulation) {
     Element authorElement = doc.createElement("Author");
     authorElement.setTextContent(simulation.getAuthor());
     rootElement.appendChild(authorElement);
@@ -93,7 +93,7 @@ public class SimulationSaver {
 //    rootElement.appendChild(gridElement);
 //  }
 
-  private void addGridStateTest(Document doc, Element rootElement, int[][] grid) {
+  private static void addGridStateTest(Document doc, Element rootElement, int[][] grid) {
     // First, add the Width and Height elements based on the grid dimensions
     Element widthElement = doc.createElement("Width");
     widthElement.setTextContent(
@@ -120,7 +120,7 @@ public class SimulationSaver {
   }
 
 
-  private void addSimulationParameters(Document doc, Element rootElement,
+  private static void addSimulationParameters(Document doc, Element rootElement,
       Map<String, String> parameters) {
     Element parametersElement = doc.createElement("Parameters");
     for (Map.Entry<String, String> entry : parameters.entrySet()) {
