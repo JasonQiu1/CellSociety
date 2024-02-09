@@ -14,9 +14,8 @@ public abstract class RuleSet implements Rules {
     grid = null;
   }
 
-  public Cell[][] applyRules(Cell[][] grid) {
+  public Cell[][] applyRules() {
     // default applyRules. used by almost all children
-    setGrid(grid);
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[0].length; j++) {
         Cell[][] neighbors = findNeighbors(i, j);
@@ -92,12 +91,10 @@ public abstract class RuleSet implements Rules {
   public void nextLogic(Cell currentCell, Cell neighborCell) {
   }
 
-
-  public Cell[][] getGrid() {
-    return grid;
-  }
-
   public void setGrid(Cell[][] grid) {
     this.grid = grid;
+  }
+  public Cell[][] getGrid() {
+    return grid;
   }
 }

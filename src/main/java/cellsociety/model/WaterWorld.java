@@ -43,8 +43,7 @@ public class WaterWorld extends RuleSet {
   }
 
   @Override
-  public Cell[][] applyRules(Cell[][] grid) {
-    setGrid(grid);
+  public Cell[][] applyRules() {
     // first for loop ensures that shark logic occurs before fish logic (sharks move before fish)
     for (int k = STATES; k > 0; k--) {
       for (int i = 0; i < getGrid().length; i++) {

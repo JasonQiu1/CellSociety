@@ -6,7 +6,7 @@ public interface Rules {
 
   public void setUpdateFlag(Cell[][] neighbors, Cell c1);
 
-  public Cell[][] applyRules(Cell[][] grid);
+  public Cell[][] applyRules();
 
   public Cell[][] getGrid();
 
