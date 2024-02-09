@@ -22,7 +22,7 @@ public class SimulationWindow {
   private static final int WINDOW_HEIGHT = 500;
   private static final Paint STAGE_COLOR = Color.WHITE;
   private static final double GRID_TO_UI_RATIO = 0.8;
-  private final UserInterfaceDrawer uiDrawer;
+  private final SimulationControlPanel controlPanel;
   private final GridDrawer gridDrawer;
   private final Controller controller;
   private final Simulation simulation;
@@ -36,12 +36,12 @@ public class SimulationWindow {
     gridDrawer = new GridDrawer(gridPane);
     gridDrawer.setNumStates(simulation.getNumStates());
 
-    Pane uiPane = new Pane();
-    uiPane.setLayoutY(WINDOW_HEIGHT * GRID_TO_UI_RATIO);
-    uiPane.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT * (1 - GRID_TO_UI_RATIO));
-    uiDrawer = new UserInterfaceDrawer(uiPane, controller);
+    Pane controlPane = new Pane();
+    controlPane.setLayoutY(WINDOW_HEIGHT * GRID_TO_UI_RATIO);
+    controlPane.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT * (1 - GRID_TO_UI_RATIO));
+    controlPanel = new SimulationControlPanel(controlPane, controller);
 
-    Group sceneRoot = new Group(uiPane, gridPane);
+    Group sceneRoot = new Group(controlPane, gridPane);
     Scene scene = new Scene(sceneRoot, WINDOW_WIDTH, WINDOW_HEIGHT, STAGE_COLOR);
     // stylesheets line from nanobrowser lab:
     // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
@@ -57,9 +57,6 @@ public class SimulationWindow {
   }
 
   public void update() {
-    if (simulation != null) {
-      gridDrawer.update(simulation.getGrid());
-    }
-    uiDrawer.update();
+    gridDrawer.update(simulation.getGrid());
   }
 }
