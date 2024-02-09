@@ -7,8 +7,8 @@ public class SpreadingOfFire extends RuleSet {
 
   public SpreadingOfFire(Cell[][] grid) {
     super(grid);
-    probabilityIgnite = 0.5;
-    probabilityTree = 0.5;
+    probabilityIgnite = 0.1;
+    probabilityTree = 0.1;
   }
 
   public SpreadingOfFire(Cell[][] grid, double probabilityIgnite, double probabilityTree) {
