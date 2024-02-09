@@ -2,6 +2,8 @@ package cellsociety.view;
 
 import cellsociety.model.Simulation;
 import java.util.ResourceBundle;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -31,6 +33,10 @@ public class View {
     // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
     resources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + resourcesFileName);
     simulationWindow = new SimulationWindow();
+
+    Pane mainWindowRoot = Util.makeLoadConfigurationPanel(10);
+    stage.setScene(new Scene(mainWindowRoot));
+    stage.show();
   }
 
   /**

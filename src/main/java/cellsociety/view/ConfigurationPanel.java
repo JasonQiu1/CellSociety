@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
  *
  * @author Jason Qiu
  */
-class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
+class ConfigurationPanel extends UserInterfacePanel {
 
   private static final String PROPERTY_SUFFIX = "ConfigurationPanel";
   private static final int INPUT_FIELD_WIDTH = 10;
@@ -29,18 +29,15 @@ class ConfigurationPanel extends UserInterfacePanel implements UserInputable {
 
     configPathInput = new TextField();
     configPathInput.setPrefColumnCount(INPUT_FIELD_WIDTH);
-    // TODO: handle invalid user input to avoid crashes
-    Button load = makeButton("load" + PROPERTY_SUFFIX,
-        event -> controller.handleLoadConfigurationFileButtonPress(configPathInput.getText()));
     // TODO: create edit save popout window and functionality, pass metadata map as second argument
-    Button save = makeButton("save" + PROPERTY_SUFFIX,
+    Button save = Util.makeButton("save" + PROPERTY_SUFFIX,
         event -> controller.handleSaveConfigurationFileButtonPress(configPathInput.getText()));
 
     // TODO: create config information box
 
     GridPane layout = new GridPane();
     // reserve columns 0 and 1 for configuration info
-    layout.addColumn(2, configPathInput, load, save);
+    layout.addColumn(2, configPathInput, save);
     getRoot().getChildren().add(layout);
   }
 

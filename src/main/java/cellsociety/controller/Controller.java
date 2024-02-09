@@ -19,6 +19,10 @@ public class Controller {
     currentSimulation = null;
   }
 
+  public static void handleLoadConfigurationFileButtonPress(String configurationFileName) {
+    Game.loadNewSimulation(configurationFileName);
+  }
+
   /**
    * Updates the internal reference to the current simulation.
    *
@@ -26,10 +30,6 @@ public class Controller {
    */
   public void setSimulation(Simulation simulation) {
     currentSimulation = simulation;
-  }
-
-  public void handleLoadConfigurationFileButtonPress(String configurationFileName) {
-    Game.loadNewSimulation(configurationFileName);
   }
 
   public void handleSaveConfigurationFileButtonPress(String saveFileName) {
