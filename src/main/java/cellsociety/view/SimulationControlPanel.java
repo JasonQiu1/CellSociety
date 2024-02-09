@@ -2,6 +2,7 @@ package cellsociety.view;
 
 import cellsociety.controller.Controller;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
@@ -13,6 +14,7 @@ import javafx.scene.layout.Pane;
 class SimulationControlPanel extends UserInterfacePanel {
 
   private static final String PROPERTY_SUFFIX = "SimulationControl";
+  private static final int INPUT_FIELD_WIDTH = 10;
 
   /**
    * Create all simulation control buttons and lay them out.
@@ -34,10 +36,17 @@ class SimulationControlPanel extends UserInterfacePanel {
     Button reset = Util.makeButton("reset" + PROPERTY_SUFFIX,
         event -> controller.handleResetGridButtonPress());
 
+    TextField configPathInput = new TextField();
+    configPathInput.setPrefColumnCount(INPUT_FIELD_WIDTH);
+    // TODO: catch invalid user input exceptions to avoid crashes
+    Button save = Util.makeButton("saveConfigurationButton",
+        event -> controller.handleSaveConfigurationFileButtonPress(configPathInput.getText()));
+
     GridPane layout = new GridPane();
     layout.addRow(0, start, pause);
     layout.addRow(1, speedUp, slowDown);
     layout.addRow(2, reset);
+    layout.addRow(3, configPathInput, save);
     getRoot().getChildren().add(layout);
   }
 }
