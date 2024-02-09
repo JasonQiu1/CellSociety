@@ -13,56 +13,47 @@ public class Controller {
 
   // how much to adjust updates per second
   public static final int SPEED_ADJUSTMENT = 1;
-  Simulation currentSimulation;
+  private final Simulation simulation;
 
-  public Controller() {
-    currentSimulation = null;
+  public Controller(Simulation simulation) {
+    this.simulation = simulation;
   }
 
   public static void handleLoadConfigurationFileButtonPress(String configurationFileName) {
     Game.loadNewSimulation(configurationFileName);
   }
 
-  /**
-   * Updates the internal reference to the current simulation.
-   *
-   * @param simulation the new simulation to send messages to.
-   */
-  public void setSimulation(Simulation simulation) {
-    currentSimulation = simulation;
-  }
-
   public void handleSaveConfigurationFileButtonPress(String saveFileName) {
     // send a message to Game to save the simulation with the given metadata
-    Game.saveSimulationToConfig(currentSimulation, saveFileName);
+    Game.saveSimulationToConfig(simulation, saveFileName);
   }
 
   public void handleStartSimulationButtonPress() {
-    if (currentSimulation == null) {
+    if (simulation == null) {
       return;
     }
-    currentSimulation.unpause();
+    simulation.unpause();
   }
 
   public void handlePauseSimulationButtonPress() {
-    if (currentSimulation == null) {
+    if (simulation == null) {
       return;
     }
-    currentSimulation.pause();
+    simulation.pause();
   }
 
   public void handleSpeedUpSimulationButtonPress() {
-    if (currentSimulation == null) {
+    if (simulation == null) {
       return;
     }
-    currentSimulation.setSimulationSpeed(currentSimulation.getSimulationSpeed() + SPEED_ADJUSTMENT);
+    simulation.setSimulationSpeed(simulation.getSimulationSpeed() + SPEED_ADJUSTMENT);
   }
 
   public void handleSlowDownSimulationButtonPress() {
-    if (currentSimulation == null) {
+    if (simulation == null) {
       return;
     }
-    currentSimulation.setSimulationSpeed(currentSimulation.getSimulationSpeed() - SPEED_ADJUSTMENT);
+    simulation.setSimulationSpeed(simulation.getSimulationSpeed() - SPEED_ADJUSTMENT);
   }
 
   public void handleResetGridButtonPress() {

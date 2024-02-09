@@ -27,14 +27,16 @@ public class SimulationWindow {
   private final UserInterfaceDrawer uiDrawer;
   private final GridDrawer gridDrawer;
   private final Controller controller;
-  private Simulation simulation;
+  private final Simulation simulation;
 
-  public SimulationWindow() {
-    controller = new Controller();
+  public SimulationWindow(Simulation simulation) {
+    this.simulation = simulation;
+    controller = new Controller(simulation);
 
     Pane gridPane = new Pane();
     gridPane.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT * GRID_TO_UI_RATIO);
     gridDrawer = new GridDrawer(gridPane);
+    gridDrawer.setNumStates(simulation.getNumStates());
 
     Pane uiPane = new Pane();
     uiPane.setLayoutY(WINDOW_HEIGHT * GRID_TO_UI_RATIO);
@@ -59,11 +61,5 @@ public class SimulationWindow {
       gridDrawer.update(simulation.getGrid());
     }
     uiDrawer.update();
-  }
-
-  public void setSimulation(Simulation simulation) {
-    this.simulation = simulation;
-    gridDrawer.setNumStates(simulation.getNumStates());
-    controller.setSimulation(simulation);
   }
 }
