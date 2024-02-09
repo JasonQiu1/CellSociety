@@ -10,8 +10,8 @@
     <Cell col="0" row="2">1</Cell>
     <Cell col="0" row="3">1</Cell>
     <Cell col="1" row="3">1</Cell>
-    <Cell col="2" row="3">1</Cell>
-    <Cell col="3" row="3">1</Cell>
+    <Cell col="2" row="3">2</Cell>
+    <Cell col="3" row="3">2</Cell>
     <Cell col="3" row="4">1</Cell>
     <Cell col="3" row="5">1</Cell>
     <Cell col="4" row="5">1</Cell>
