@@ -2,16 +2,17 @@ package cellsociety.view;
 
 
 import cellsociety.model.Grid;
+import cellsociety.model.Simulation;
 import javafx.geometry.Pos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
- * Responsible for drawing the given grid onto the given pane.
+ * Responsible for drawing the given simulation onto the given pane as a grid.
  *
  * @author Jason Qiu (jq48)
  */
-class GridDrawer extends UserInterfacePanel {
+class SimulationGridView extends SimulationView {
 
   GridView gridView;
   StateColorGenerator colorGenerator;
@@ -22,30 +23,26 @@ class GridDrawer extends UserInterfacePanel {
    *
    * @param pane the root to add window objects to.
    */
-  public GridDrawer(Pane pane) {
-    super(pane, "grid-drawer");
-    gridView = null;
-    colorGenerator = null;
+  public SimulationGridView(Simulation simulation, Pane pane) {
+    super(simulation, pane, "grid-drawer");
+    setNumStates(simulation.getNumStates());
   }
 
 
   /**
    * Draws the current simulation's grid onto the cell grid.
-   *
-   * @param currentGrid the non-null grid to draw.
    */
-  public void update(Grid currentGrid) {
-    if (currentGrid == null) {
-      return;
-    }
+  @Override
+  public void update() {
+    Grid grid = getSimulation().getGrid();
     // reinitialize the grid if it's a different size
     if (gridView == null
-        || currentGrid.getNumRows() != gridView.getNumRows()
-        || currentGrid.getNumCols() != gridView.getNumColumns()) {
-      initializeGridView(currentGrid.getNumRows(), currentGrid.getNumCols());
-      setNumStates(currentGrid.getNumStates());
+        || grid.getNumRows() != gridView.getNumRows()
+        || grid.getNumCols() != gridView.getNumColumns()) {
+      initializeGridView(grid.getNumRows(), grid.getNumCols());
+      setNumStates(grid.getNumStates());
     }
-    updateGridView(currentGrid);
+    updateGridView(grid);
   }
 
   /**
@@ -84,7 +81,6 @@ class GridDrawer extends UserInterfacePanel {
    * @param currentGrid the model's cellsociety.model.Grid instance.
    */
   private void updateGridView(Grid currentGrid) {
-
     for (int row = 0; row < currentGrid.getNumRows(); row++) {
       for (int col = 0; col < currentGrid.getNumCols(); col++) {
         gridView.setCellViewColor(row, col,
