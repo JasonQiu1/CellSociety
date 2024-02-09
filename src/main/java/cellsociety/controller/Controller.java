@@ -23,6 +23,13 @@ public class Controller {
     Game.loadNewSimulation(configurationFileName);
   }
 
+  /**
+   * Send a message to Game to remove the simulation this controller is responsible for.
+   */
+  public void removeSimulation() {
+    Game.removeSimulation(simulation);
+  }
+
   public void handleSaveConfigurationFileButtonPress(String saveFileName) {
     // send a message to Game to save the simulation with the given metadata
     Game.saveSimulationToConfig(simulation, saveFileName);
