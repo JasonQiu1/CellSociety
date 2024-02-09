@@ -1,0 +1,94 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Water World base test</Description>
+  <Width>20</Width>
+  <Height>20</Height>
+  <InitialConfig>
+    <Cell col="3" row="3">2</Cell>
+    <Cell col="5" row="3">2</Cell>
+    <Cell col="4" row="4">1</Cell>
+    <Cell col="4" row="5">2</Cell>
+    <Cell col="3" row="5">1</Cell>
+    <Cell col="2" row="5">2</Cell>
+    <Cell col="15" row="15">1</Cell>
+    <Cell col="6" row="8">2</Cell>
+    <Cell col="12" row="10">1</Cell>
+    <Cell col="7" row="14">2</Cell>
+    <Cell col="18" row="17">1</Cell>
+    <Cell col="10" row="2">2</Cell>
+    <Cell col="9" row="18">1</Cell>
+    <Cell col="14" row="7">2</Cell>
+    <Cell col="11" row="12">1</Cell>
+    <Cell col="1" row="16">1</Cell>
+    <Cell col="16" row="1">1</Cell>
+    <Cell col="19" row="19">2</Cell>
+    <Cell col="13" row="6">1</Cell>
+    <Cell col="8" row="11">2</Cell>
+    <Cell col="17" row="13">1</Cell>
+    <Cell col="3" row="18">1</Cell>
+    <Cell col="14" row="16">2</Cell>
+    <Cell col="19" row="4">1</Cell>
+    <Cell col="7" row="9">2</Cell>
+    <Cell col="11" row="1">1</Cell>
+    <Cell col="4" row="14">2</Cell>
+    <Cell col="16" row="19">1</Cell>
+    <Cell col="10" row="6">2</Cell>
+    <Cell col="2" row="10">2</Cell>
+    <Cell col="15" row="3">1</Cell>
+    <Cell col="13" row="17">2</Cell>
+    <Cell col="18" row="4">1</Cell>
+    <Cell col="6" row="19">2</Cell>
+    <Cell col="9" row="14">1</Cell>
+    <Cell col="1" row="7">2</Cell>
+    <Cell col="5" row="13">1</Cell>
+    <Cell col="16" row="8">2</Cell>
+    <Cell col="12" row="16">1</Cell>
+    <Cell col="17" row="2">2</Cell>
+    <Cell col="8" row="5">1</Cell>
+    <Cell col="14" row="11">2</Cell>
+    <Cell col="19" row="18">1</Cell>
+    <Cell col="4" row="8">2</Cell>
+    <Cell col="2" row="15">1</Cell>
+    <Cell col="11" row="9">2</Cell>
+    <Cell col="7" row="5">1</Cell>
+    <Cell col="18" row="14">2</Cell>
+    <Cell col="3" row="12">1</Cell>
+    <Cell col="5" row="16">2</Cell>
+    <Cell col="10" row="15">1</Cell>
+    <Cell col="13" row="8">2</Cell>
+    <Cell col="16" row="4">1</Cell>
+    <Cell col="1" row="11">2</Cell>
+    <Cell col="9" row="7">1</Cell>
+    <Cell col="6" row="18">2</Cell>
+    <Cell col="12" row="5">1</Cell>
+    <Cell col="8" row="13">2</Cell>
+    <Cell col="17" row="10">1</Cell>
+    <Cell col="14" row="14">2</Cell>
+    <Cell col="4" row="19">1</Cell>
+    <Cell col="11" row="3">2</Cell>
+    <Cell col="15" row="11">1</Cell>
+    <Cell col="7" row="17">1</Cell>
+    <Cell col="18" row="8">2</Cell>
+    <Cell col="2" row="14">1</Cell>
+    <Cell col="5" row="8">2</Cell>
+    <Cell col="16" row="12">1</Cell>
+    <Cell col="13" row="18">2</Cell>
+    <Cell col="9" row="3">1</Cell>
+    <Cell col="6" row="11">2</Cell>
+    <Cell col="11" row="7">1</Cell>
+    <Cell col="3" row="16">2</Cell>
+    <Cell col="14" row="5">1</Cell>
+    <Cell col="10" row="19">2</Cell>
+    <Cell col="17" row="1">1</Cell>
+    <Cell col="12" row="17">2</Cell>
+    <Cell col="8" row="4">1</Cell>
+    <Cell col="4" row="12">2</Cell>
+    <Cell col="1" row="5">1</Cell>
+    <Cell col="15" row="7">1</Cell>
+    <Cell col="19" row="3">2</Cell>
+  </InitialConfig>
+  <Parameters>
+    <Probability>0.9</Probability>
+  </Parameters>
+  <SimulationType>Segregation</SimulationType>
+</config>

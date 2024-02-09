@@ -5,10 +5,12 @@
   <Height>20</Height>
   <InitialConfig>
     <Cell col="3" row="3">2</Cell>
+    <Cell col="5" row="3">2</Cell>
     <Cell col="4" row="4">1</Cell>
     <Cell col="4" row="5">1</Cell>
     <Cell col="3" row="5">1</Cell>
     <Cell col="2" row="5">1</Cell>
+    <Cell col="15" row="15">1</Cell>
   </InitialConfig>
   <Parameters>
     <Probability>0.9</Probability>

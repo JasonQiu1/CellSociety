@@ -15,7 +15,6 @@ public class Simulation {
 //  public Simulation() {
     this.ruleSet = ruleSet;
     this.grid = new FiniteGrid(ruleSet);
-    grid.setGrid(initialGrid);
     this.isPaused = true;
     this.simulationSpeed = 1.0;
     this.lastUpdateTime = 0;

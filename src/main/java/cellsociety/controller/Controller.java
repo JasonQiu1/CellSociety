@@ -4,8 +4,7 @@ import cellsociety.Game;
 import cellsociety.model.Simulation;
 
 /**
- * Responsible for telling cellsociety. Game or Simulation what to do given user input. Doesn't need
- * to be instantiated.
+ * Responsible for telling Game or Simulation what to do given user input.
  *
  * @author Jason Qiu (jq48)
  */
@@ -13,56 +12,59 @@ public class Controller {
 
   // how much to adjust updates per second
   public static final int SPEED_ADJUSTMENT = 1;
-  Simulation currentSimulation;
+  private final Simulation simulation;
 
-  public Controller() {
-    currentSimulation = null;
+  public Controller(Simulation simulation) {
+    this.simulation = simulation;
   }
 
   /**
-   * Updates the internal reference to the current simulation.
+   * Send a message to Game to load up a new simulation based on the given file name.
    *
-   * @param simulation the new simulation to send messages to.
+   * @param configurationFileName the configuration file to load the new simulation from.
    */
-  public void setSimulation(Simulation simulation) {
-    currentSimulation = simulation;
+  public static void handleLoadConfigurationFileButtonPress(String configurationFileName) {
+    Game.loadNewSimulation(configurationFileName);
   }
 
-  public void handleLoadConfigurationFileButtonPress(String configurationFileName) {
-    Game.loadNewSimulation(configurationFileName);
+  /**
+   * Send a message to Game to remove the simulation this controller is responsible for.
+   */
+  public void removeSimulation() {
+    Game.removeSimulation(simulation);
   }
 
   public void handleSaveConfigurationFileButtonPress(String saveFileName) {
     // send a message to Game to save the simulation with the given metadata
-    Game.saveSimulationToConfig(currentSimulation, saveFileName);
+    Game.saveSimulationToConfig(simulation, saveFileName);
   }
 
   public void handleStartSimulationButtonPress() {
-    if (currentSimulation == null) {
+    if (simulation == null) {
       return;
     }
-    currentSimulation.unpause();
+    simulation.unpause();
   }
 
   public void handlePauseSimulationButtonPress() {
-    if (currentSimulation == null) {
+    if (simulation == null) {
       return;
     }
-    currentSimulation.pause();
+    simulation.pause();
   }
 
   public void handleSpeedUpSimulationButtonPress() {
-    if (currentSimulation == null) {
+    if (simulation == null) {
       return;
     }
-    currentSimulation.setSimulationSpeed(currentSimulation.getSimulationSpeed() + SPEED_ADJUSTMENT);
+    simulation.setSimulationSpeed(simulation.getSimulationSpeed() + SPEED_ADJUSTMENT);
   }
 
   public void handleSlowDownSimulationButtonPress() {
-    if (currentSimulation == null) {
+    if (simulation == null) {
       return;
     }
-    currentSimulation.setSimulationSpeed(currentSimulation.getSimulationSpeed() - SPEED_ADJUSTMENT);
+    simulation.setSimulationSpeed(simulation.getSimulationSpeed() - SPEED_ADJUSTMENT);
   }
 
   public void handleResetGridButtonPress() {
