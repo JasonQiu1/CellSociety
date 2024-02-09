@@ -61,10 +61,7 @@ public class View {
    *
    * @param simulation the new simulation.
    */
-  public void setSimulation(Simulation simulation) {
-    if (simulation == null) {
-      return;
-    }
+  public void addSimulation(Simulation simulation) {
     simulationWindows.add(new SimulationWindow(simulation));
   }
 }

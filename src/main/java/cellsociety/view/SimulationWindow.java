@@ -50,9 +50,11 @@ public class SimulationWindow {
     scene.getStylesheets().add(
         Objects.requireNonNull(getClass().getResource(View.DEFAULT_RESOURCE_FOLDER + STYLESHEET))
             .toExternalForm());
+
     Stage stage = new Stage();
     stage.setScene(scene);
     stage.setTitle("Cell Society");
+    stage.setOnCloseRequest(event -> controller.removeSimulation());
     stage.show();
   }
 
