@@ -1,0 +1,21 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Diagonal Flow Percolation</Description>
+  <Width>10</Width>
+  <Height>10</Height>
+  <InitialConfig>
+    <!-- Diagonal path for fluid -->
+    <Cell col="0" row="0">1</Cell>
+    <Cell col="1" row="1">1</Cell>
+    <Cell col="2" row="2">1</Cell>
+    <Cell col="3" row="3">1</Cell>
+    <Cell col="4" row="4">1</Cell>
+    <Cell col="5" row="5">1</Cell>
+    <Cell col="6" row="6">1</Cell>
+    <Cell col="7" row="7">1</Cell>
+    <Cell col="8" row="8">1</Cell>
+    <Cell col="9" row="9">1</Cell>
+  </InitialConfig>
+  <Parameters></Parameters>
+  <SimulationType>Percolation</SimulationType>
+</config>

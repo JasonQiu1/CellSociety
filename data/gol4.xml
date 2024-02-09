@@ -1,0 +1,22 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Lightweight Spaceship in Game of Life</Description>
+  <Width>40</Width>
+  <Height>40</Height>
+  <InitialConfig>
+    <Cell col="20" row="20">1</Cell>
+    <Cell col="23" row="20">1</Cell>
+    <Cell col="24" row="21">1</Cell>
+    <Cell col="24" row="22">1</Cell>
+    <Cell col="24" row="23">1</Cell>
+    <Cell col="23" row="24">1</Cell>
+    <Cell col="22" row="24">1</Cell>
+    <Cell col="21" row="24">1</Cell>
+    <Cell col="20" row="23">1</Cell>
+  </InitialConfig>
+  <Parameters>
+    <Distance>5</Distance>
+    <Probability>0.9</Probability>
+  </Parameters>
+  <SimulationType>GameOfLife</SimulationType>
+</config>
