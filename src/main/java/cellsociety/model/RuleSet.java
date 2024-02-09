@@ -4,7 +4,7 @@ public abstract class RuleSet implements Rules {
 
   // determines size of neighbors array (currently 3x3)
   private static final int NEIGHBOR_SIZE = 3;
-  private Cell[][] grid;
+  protected Cell[][] grid;
 
   public RuleSet(Cell[][] grid) {
     this.grid = grid;
@@ -14,7 +14,7 @@ public abstract class RuleSet implements Rules {
     grid = null;
   }
 
-  public Cell[][] applyRules() {
+  public void applyRules() {
     // default applyRules. used by almost all children
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[0].length; j++) {
@@ -25,7 +25,6 @@ public abstract class RuleSet implements Rules {
       }
     }
     update();
-    return grid;
   }
 
   public abstract void setUpdateFlag(Cell[][] neighbors, Cell c1);
@@ -89,12 +88,5 @@ public abstract class RuleSet implements Rules {
   }
 
   public void nextLogic(Cell currentCell, Cell neighborCell) {
-  }
-
-  public void setGrid(Cell[][] grid) {
-    this.grid = grid;
-  }
-  public Cell[][] getGrid() {
-    return grid;
   }
 }
