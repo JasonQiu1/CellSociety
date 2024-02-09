@@ -1,14 +1,7 @@
 package cellsociety.view;
 
-import cellsociety.controller.Controller;
 import cellsociety.model.Simulation;
-import java.util.Objects;
 import java.util.ResourceBundle;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 /**
@@ -24,18 +17,8 @@ public class View {
   public static final String DEFAULT_RESOURCE_PACKAGE = "cellsociety.";
   public static final String DEFAULT_RESOURCE_FOLDER =
       "/" + DEFAULT_RESOURCE_PACKAGE.replace(".", "/");
-  public static final String STYLESHEET = "default.css";
-  private static final int STAGE_WIDTH = 750;
-  private static final int STAGE_HEIGHT = 500;
-  private static final Paint STAGE_COLOR = Color.WHITE;
-  private static final double GRID_TO_UI_RATIO = 0.8;
-  // make resources accessible to all ui components, so they don't have to grab their own each time
-  // make this private and change to getter instead
   public static ResourceBundle resources;
-  private final UserInterfaceDrawer uiDrawer;
-  private final GridDrawer gridDrawer;
-  private final Controller controller;
-  private Simulation currentSimulation;
+  private SimulationWindow simulationWindow;
 
   /**
    * Splits the given Stage into two portions for the cell grid and the user interface. Sets up the
@@ -47,37 +30,14 @@ public class View {
     // resource bundle loading line from nanobrowser lab:
     // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
     resources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE + resourcesFileName);
-    controller = new Controller();
-
-    Pane gridPane = new Pane();
-    gridPane.setPrefSize(STAGE_WIDTH, STAGE_HEIGHT * GRID_TO_UI_RATIO);
-    gridDrawer = new GridDrawer(gridPane);
-
-    Pane uiPane = new Pane();
-    uiPane.setLayoutY(STAGE_HEIGHT * GRID_TO_UI_RATIO);
-    uiPane.setPrefSize(STAGE_WIDTH, STAGE_HEIGHT * (1 - GRID_TO_UI_RATIO));
-    uiDrawer = new UserInterfaceDrawer(uiPane, controller);
-
-    Group sceneRoot = new Group(uiPane, gridPane);
-    Scene scene = new Scene(sceneRoot, STAGE_WIDTH, STAGE_HEIGHT, STAGE_COLOR);
-    // stylesheets line from nanobrowser lab:
-    // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser
-    scene.getStylesheets().add(
-        Objects.requireNonNull(getClass().getResource(DEFAULT_RESOURCE_FOLDER + STYLESHEET))
-            .toExternalForm());
-    stage.setScene(scene);
-    stage.setTitle("Cell Society");
-    stage.show();
+    simulationWindow = new SimulationWindow();
   }
 
   /**
    * Updates the current simulation's grid and user interface.
    */
   public void update() {
-    if (currentSimulation != null) {
-      gridDrawer.update(currentSimulation.getGrid());
-    }
-    uiDrawer.update();
+    simulationWindow.update();
   }
 
   /**
@@ -94,8 +54,6 @@ public class View {
     if (simulation == null) {
       return;
     }
-    currentSimulation = simulation;
-    gridDrawer.setNumStates(simulation.getNumStates());
-    controller.setSimulation(simulation);
+    simulationWindow.setSimulation(simulation);
   }
 }
