@@ -22,7 +22,6 @@ public class SimulationWindow {
   private static final int WINDOW_HEIGHT = 500;
   private static final Paint STAGE_COLOR = Color.WHITE;
   private static final double GRID_TO_UI_RATIO = 0.8;
-  private final SimulationControlPanel controlPanel;
   private final GridDrawer gridDrawer;
   private final Controller controller;
   private final Simulation simulation;
@@ -39,7 +38,7 @@ public class SimulationWindow {
     Pane controlPane = new Pane();
     controlPane.setLayoutY(WINDOW_HEIGHT * GRID_TO_UI_RATIO);
     controlPane.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT * (1 - GRID_TO_UI_RATIO));
-    controlPanel = new SimulationControlPanel(controlPane, controller);
+    new SimulationControlPanel(controlPane, controller);
 
     Group sceneRoot = new Group(controlPane, gridPane);
     Scene scene = new Scene(sceneRoot, WINDOW_WIDTH, WINDOW_HEIGHT, STAGE_COLOR);
@@ -56,6 +55,9 @@ public class SimulationWindow {
     stage.show();
   }
 
+  /**
+   * Updates the simulation view.
+   */
   public void update() {
     gridDrawer.update(simulation.getGrid());
   }
