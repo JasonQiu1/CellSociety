@@ -7,7 +7,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
- * Responsible for implementing the start, pause, speed up, slow down, and reset simulation buttons
+ * Responsible for implementing the start, pause, speed up, slow down, reset, and save simulation
+ * buttons
  *
  * @author Jason Qiu
  */

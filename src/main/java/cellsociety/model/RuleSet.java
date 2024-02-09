@@ -35,6 +35,7 @@ public abstract class RuleSet implements Rules {
     // used by the majority of children
     c1.setCurrentState(c1.getNextState());
   }
+
   public int countLoop(Cell[][] neighbors, int state) {
     int counter = 0;
     for (int i = 0; i < neighbors.length; i++) {
@@ -88,8 +89,8 @@ public abstract class RuleSet implements Rules {
     }
   }
 
-  public void nextLogic(Cell currentCell, Cell neighborCell) {}
-
+  public void nextLogic(Cell currentCell, Cell neighborCell) {
+  }
 
 
   public Cell[][] getGrid() {

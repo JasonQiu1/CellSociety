@@ -9,8 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * Responsible for drawing anything visible on the screen. Delegates user input handling to a
- * Controller instance.
+ * Main controller for drawing anything visible on the screen.
  *
  * @author Jason Qiu (jq48)
  */
@@ -25,8 +24,7 @@ public class View {
   public List<SimulationWindow> simulationWindows;
 
   /**
-   * Splits the given Stage into two portions for the cell grid and the user interface. Sets up the
-   * drawers for the cell grid, ui, and controller.
+   * Sets up resources and creates the main window which loads new simulations.
    *
    * @param stage the stage to draw everything on.
    */
@@ -52,12 +50,7 @@ public class View {
   }
 
   /**
-   * Update's the grid reference that gridDrawer draws from. Also points the controller's user input
-   * handling functions to the correct simulation.
-   * TODO: refactor later so that main just passes cellsociety.model.Grid
-   *    into draw for the GridDrawer
-   * TODO: make main create the controller instead and pass it into View constructor to hook
-   *    Removes the need for this function in View, will be responsibility of main
+   * Creates a new simulation window for the given simulation.
    *
    * @param simulation the new simulation.
    */

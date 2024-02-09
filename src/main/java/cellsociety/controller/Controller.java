@@ -4,8 +4,7 @@ import cellsociety.Game;
 import cellsociety.model.Simulation;
 
 /**
- * Responsible for telling cellsociety. Game or Simulation what to do given user input. Doesn't need
- * to be instantiated.
+ * Responsible for telling Game or Simulation what to do given user input.
  *
  * @author Jason Qiu (jq48)
  */
@@ -19,6 +18,11 @@ public class Controller {
     this.simulation = simulation;
   }
 
+  /**
+   * Send a message to Game to load up a new simulation based on the given file name.
+   *
+   * @param configurationFileName the configuration file to load the new simulation from.
+   */
   public static void handleLoadConfigurationFileButtonPress(String configurationFileName) {
     Game.loadNewSimulation(configurationFileName);
   }
