@@ -29,7 +29,7 @@ public class Util {
         String.join("|", ImageIO.getReaderFileSuffixes()));
 
     Button result = new Button();
-    String label = View.resources.getString(property);
+    String label = View.getResources().getString(property);
     if (label.matches(imageFileSuffixes)) {
       result.setGraphic(new ImageView(new Image(
           Objects.requireNonNull(

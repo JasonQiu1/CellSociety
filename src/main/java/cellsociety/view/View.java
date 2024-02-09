@@ -20,7 +20,7 @@ public class View {
   public static final String DEFAULT_RESOURCE_PACKAGE = "cellsociety.";
   public static final String DEFAULT_RESOURCE_FOLDER =
       "/" + DEFAULT_RESOURCE_PACKAGE.replace(".", "/");
-  public static ResourceBundle resources;
+  private static ResourceBundle resources;
   public List<SimulationWindow> simulationWindows;
 
   /**
@@ -38,6 +38,10 @@ public class View {
     stage.setScene(new Scene(mainWindowRoot));
     stage.setTitle("Cell Society");
     stage.show();
+  }
+
+  public static ResourceBundle getResources() {
+    return resources;
   }
 
   /**
