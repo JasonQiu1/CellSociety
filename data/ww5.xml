@@ -1,0 +1,19 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Edge Shark Invasion</Description>
+  <Width>20</Width>
+  <Height>20</Height>
+  <InitialConfig>
+    <!-- Sharks along the left edge -->
+    <Cell col="0" row="5">2</Cell>
+    <Cell col="0" row="6">2</Cell>
+    <Cell col="0" row="7">1</Cell>
+    <!-- Sharks along the right edge -->
+    <Cell col="19" row="12">1</Cell>
+    <Cell col="19" row="13">2</Cell>
+    <Cell col="19" row="14">2</Cell>
+  </InitialConfig>
+  <Parameters></Parameters>
+
+  <SimulationType>WaterWorld</SimulationType>
+</config>

@@ -1,0 +1,20 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Central Feeding Frenzy</Description>
+  <Width>40</Width>
+  <Height>40</Height>
+  <InitialConfig>
+    <!-- Central sharks -->
+    <Cell col="19" row="19">2</Cell>
+    <Cell col="20" row="19">2</Cell>
+    <Cell col="19" row="20">2</Cell>
+    <Cell col="20" row="20">2</Cell>
+    <!-- Surrounding fish -->
+    <Cell col="18" row="18">2</Cell>
+    <Cell col="21" row="21">1</Cell>
+    <!-- Add more cells around sharks -->
+  </InitialConfig>
+  <Parameters></Parameters>
+
+  <SimulationType>WaterWorld</SimulationType>
+</config>

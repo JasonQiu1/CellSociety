@@ -1,0 +1,17 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Random Small Fires</Description>
+  <Width>40</Width>
+  <Height>40</Height>
+  <InitialConfig>
+    <Cell col="5" row="5">2</Cell>
+    <Cell col="35" row="35">2</Cell>
+    <Cell col="20" row="10">2</Cell>
+    <Cell col="10" row="30">1</Cell>
+  </InitialConfig>
+  <Parameters>
+    <probabilityIgnite>0.2</probabilityIgnite>
+    <probabilityTree>0.2</probabilityTree>
+  </Parameters>
+  <SimulationType>SpreadingOfFire</SimulationType>
+</config>

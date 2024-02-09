@@ -1,0 +1,53 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Gosper Glider Gun in Game of Life</Description>
+  <Width>38</Width>
+  <Height>38</Height>
+  <InitialConfig>
+    <!-- Left square -->
+    <Cell col="1" row="5">1</Cell>
+    <Cell col="1" row="6">1</Cell>
+    <Cell col="2" row="5">1</Cell>
+    <Cell col="2" row="6">1</Cell>
+
+    <!-- Left part of the gun -->
+    <Cell col="11" row="5">1</Cell>
+    <Cell col="11" row="6">1</Cell>
+    <Cell col="11" row="7">1</Cell>
+    <Cell col="12" row="4">1</Cell>
+    <Cell col="12" row="8">1</Cell>
+    <Cell col="13" row="3">1</Cell>
+    <Cell col="13" row="9">1</Cell>
+    <Cell col="14" row="3">1</Cell>
+    <Cell col="14" row="9">1</Cell>
+    <Cell col="15" row="6">1</Cell>
+    <Cell col="16" row="4">1</Cell>
+    <Cell col="16" row="8">1</Cell>
+    <Cell col="17" row="5">1</Cell>
+    <Cell col="17" row="6">1</Cell>
+    <Cell col="17" row="7">1</Cell>
+    <Cell col="18" row="6">1</Cell>
+
+    <!-- Right part of the gun -->
+    <Cell col="21" row="3">1</Cell>
+    <Cell col="21" row="4">1</Cell>
+    <Cell col="21" row="5">1</Cell>
+    <Cell col="22" row="3">1</Cell>
+    <Cell col="22" row="4">1</Cell>
+    <Cell col="22" row="5">1</Cell>
+    <Cell col="23" row="2">1</Cell>
+    <Cell col="23" row="6">1</Cell>
+    <Cell col="25" row="1">1</Cell>
+    <Cell col="25" row="2">1</Cell>
+    <Cell col="25" row="6">1</Cell>
+    <Cell col="25" row="7">1</Cell>
+
+    <!-- Right square -->
+    <Cell col="35" row="3">1</Cell>
+    <Cell col="35" row="4">1</Cell>
+    <Cell col="36" row="3">1</Cell>
+    <Cell col="36" row="4">1</Cell>
+  </InitialConfig>
+  <Parameters></Parameters>
+  <SimulationType>GameOfLife</SimulationType>
+</config>

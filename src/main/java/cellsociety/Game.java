@@ -37,7 +37,7 @@ public class Game extends Application {
 
   public static boolean loadNewSimulation(String configFileName) {
     // Load a new simulation from a configuration file
-    configLoader = new ConfigLoader(configFileName);
+    configLoader = new ConfigLoader(configFileName + ".xml");
     simulation = configLoader.simulation;
     view.setSimulation(simulation);
     return updateGridFromConfig(configFileName);

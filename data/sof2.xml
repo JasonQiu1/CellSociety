@@ -1,0 +1,17 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Initial Spread of Fire</Description>
+  <Width>40</Width>
+  <Height>40</Height>
+  <InitialConfig>
+    <Cell col="10" row="10">1</Cell>
+    <Cell col="30" row="30">2</Cell>
+    <Cell col="20" row="15">2</Cell>
+    <Cell col="15" row="25">2</Cell>
+  </InitialConfig>
+  <Parameters>
+    <probabilityIgnite>0.7</probabilityIgnite>
+    <probabilityTree>0.5</probabilityTree>
+  </Parameters>
+  <SimulationType>SpreadingOfFire</SimulationType>
+</config>

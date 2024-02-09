@@ -1,0 +1,18 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Edge Glider in Game of Life</Description>
+  <Width>100</Width>
+  <Height>100</Height>
+  <InitialConfig>
+    <Cell col="0" row="0">1</Cell>
+    <Cell col="1" row="1">1</Cell>
+    <Cell col="1" row="2">1</Cell>
+    <Cell col="0" row="2">1</Cell>
+    <Cell col="99" row="2">1</Cell>
+  </InitialConfig>
+  <Parameters>
+    <Distance>5</Distance>
+    <Probability>0.9</Probability>
+  </Parameters>
+  <SimulationType>GameOfLife</SimulationType>
+</config>

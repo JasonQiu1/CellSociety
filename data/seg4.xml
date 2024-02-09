@@ -1,0 +1,21 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Segregated Corners in Schelling's Model</Description>
+  <Width>40</Width>
+  <Height>40</Height>
+  <InitialConfig>
+    <!-- Top left corner with type 1 -->
+    <Cell col="1" row="1">1</Cell>
+    <Cell col="2" row="1">1</Cell>
+    <Cell col="1" row="2">1</Cell>
+    <!-- Bottom right corner with type 2 -->
+    <Cell col="38" row="38">2</Cell>
+    <Cell col="37" row="38">2</Cell>
+    <Cell col="38" row="37">2</Cell>
+    <!-- Add more cells to fill corners as desired -->
+  </InitialConfig>
+  <Parameters>
+    <segregationFactor>0.8</segregationFactor>
+  </Parameters>
+  <SimulationType>Segregation</SimulationType>
+</config>
