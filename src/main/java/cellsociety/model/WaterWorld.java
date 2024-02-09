@@ -7,6 +7,7 @@ public class WaterWorld extends RuleSet {
   // 0 nothing
   // 1 fish
   // 2 shark
+
   private static final int STATES = 2;
   private final int reproductionMoves;
   private final int energyFromFish;
@@ -14,9 +15,9 @@ public class WaterWorld extends RuleSet {
 
   public WaterWorld(Cell[][] grid) {
     super();
-    reproductionMoves = 5;
-    energyFromFish = 30;
-    startEnergy = 35;
+    reproductionMoves = 10;
+    energyFromFish = 15;
+    startEnergy = 5;
     setGrid(makeFishOrShark(grid));
   }
 
@@ -56,7 +57,7 @@ public class WaterWorld extends RuleSet {
       }
     }
     update();
-    return grid;
+    return getGrid();
   }
 
   @Override
