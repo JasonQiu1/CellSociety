@@ -15,7 +15,8 @@ abstract class UserInterfacePanel {
   /**
    * Sets the root to the given pane and also adds a css class for configurable styling.
    *
-   * @param pane the new root of the panel.
+   * @param pane         the new root of the panel.
+   * @param cssClassName the name of the css class for the panel
    */
   protected UserInterfacePanel(Pane pane, String cssClassName) {
     root = pane;

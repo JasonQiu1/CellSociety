@@ -1,0 +1,26 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Central Cluster in Schelling's Model</Description>
+  <Width>25</Width>
+  <Height>25</Height>
+  <InitialConfig>
+    <!-- Central cluster of type 1 -->
+    <Cell col="18" row="18">1</Cell>
+    <Cell col="19" row="18">1</Cell>
+    <Cell col="20" row="18">1</Cell>
+    <Cell col="18" row="19">1</Cell>
+    <Cell col="19" row="19">1</Cell>
+    <Cell col="20" row="19">1</Cell>
+    <Cell col="18" row="20">1</Cell>
+    <Cell col="19" row="20">1</Cell>
+    <Cell col="20" row="20">1</Cell>
+    <!-- Surrounding area of type 2 -->
+    <Cell col="15" row="15">2</Cell>
+    <Cell col="24" row="24">2</Cell>
+    <!-- Add more cells as needed -->
+  </InitialConfig>
+  <Parameters>
+    <segregationFactor>0.7</segregationFactor>
+  </Parameters>
+  <SimulationType>Segregation</SimulationType>
+</config>

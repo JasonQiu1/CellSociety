@@ -1,0 +1,22 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Encircled Fire</Description>
+  <Width>40</Width>
+  <Height>40</Height>
+  <InitialConfig>
+    <!-- Encircling fire -->
+    <Cell col="15" row="15">1</Cell>
+    <Cell col="15" row="16">2</Cell>
+    <Cell col="15" row="17">2</Cell>
+    <Cell col="16" row="15">2</Cell>
+    <Cell col="17" row="15">2</Cell>
+    <Cell col="17" row="17">1</Cell>
+    <Cell col="16" row="17">2</Cell>
+    <Cell col="17" row="16">2</Cell>
+  </InitialConfig>
+  <Parameters>
+    <probabilityIgnite>0.1</probabilityIgnite>
+    <probabilityTree>0.3</probabilityTree>
+  </Parameters>
+  <SimulationType>SpreadingOfFire</SimulationType>
+</config>

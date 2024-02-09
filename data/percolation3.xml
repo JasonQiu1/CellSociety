@@ -1,0 +1,26 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Edge Percolation</Description>
+  <Width>10</Width>
+  <Height>10</Height>
+  <InitialConfig>
+    <!-- Open cells along the left edge and a path leading to the bottom -->
+    <Cell col="0" row="0">2</Cell>
+    <Cell col="0" row="1">1</Cell>
+    <Cell col="0" row="2">1</Cell>
+    <Cell col="0" row="3">1</Cell>
+    <Cell col="1" row="3">1</Cell>
+    <Cell col="2" row="3">1</Cell>
+    <Cell col="3" row="3">1</Cell>
+    <Cell col="3" row="4">1</Cell>
+    <Cell col="3" row="5">1</Cell>
+    <Cell col="4" row="5">1</Cell>
+    <Cell col="5" row="5">1</Cell>
+    <Cell col="5" row="6">1</Cell>
+    <Cell col="5" row="7">1</Cell>
+    <Cell col="5" row="8">1</Cell>
+    <Cell col="5" row="9">1</Cell>
+  </InitialConfig>
+  <Parameters></Parameters>
+  <SimulationType>Percolation</SimulationType>
+</config>

@@ -10,6 +10,7 @@ public interface Grid {
   public int getNumRows();
 
   public int getNumCols();
+
   public void setGrid(Cell[][] cells);
 
   public int getNumStates();

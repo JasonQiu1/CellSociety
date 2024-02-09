@@ -1,0 +1,23 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Edge Fire Spread</Description>
+  <Width>40</Width>
+  <Height>40</Height>
+  <InitialConfig>
+    <!-- Top edge -->
+    <Cell col="0" row="0">2</Cell>
+    <Cell col="1" row="0">2</Cell>
+    <Cell col="2" row="0">2</Cell>
+    <!-- Right edge -->
+    <Cell col="39" row="1">2</Cell>
+    <Cell col="39" row="2">2</Cell>
+    <!-- Bottom edge -->
+    <Cell col="37" row="39">2</Cell>
+    <Cell col="38" row="39">2</Cell>
+    <Cell col="39" row="39">2</Cell>
+  </InitialConfig>
+  <Parameters>
+    <CatchProbability>0.6</CatchProbability>
+  </Parameters>
+  <SimulationType>SpreadingOfFire</SimulationType>
+</config>

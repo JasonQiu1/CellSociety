@@ -1,0 +1,19 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Random Distribution in Schelling's Model</Description>
+  <Width>10</Width>
+  <Height>10</Height>
+  <InitialConfig>
+    <!-- Randomly distributed agents, ensure a truly random distribution in your grid -->
+    <Cell col="3" row="4">1</Cell>
+    <Cell col="5" row="6">2</Cell>
+    <Cell col="7" row="8">1</Cell>
+    <Cell col="9" row="9">2</Cell>
+    <Cell col="7" row="9">2</Cell>
+    <!-- Add many more cells for a truly random initial state -->
+  </InitialConfig>
+  <Parameters>
+    <segregationFactor>0.5</segregationFactor>
+  </Parameters>
+  <SimulationType>Segregation</SimulationType>
+</config>

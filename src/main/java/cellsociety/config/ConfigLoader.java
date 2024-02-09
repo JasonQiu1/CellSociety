@@ -24,12 +24,12 @@ import org.xml.sax.SAXException;
 
 public class ConfigLoader {
 
+  public static final String FILE_PATH = "./data/";
   //    private Document configDocument;
   public Simulation simulation;
   public Cell[][] grid;
   public RuleSet ruleSet;
   public String fileName;
-  public static final String FILE_PATH = "./data/";
   public Map<String, String> parameters;
 
 
@@ -68,7 +68,6 @@ public class ConfigLoader {
     int width = Integer.parseInt(getTextValue(root, "Width"));
     int height = Integer.parseInt(getTextValue(root, "Height"));
     InitializeGrid gridInitializer = new InitializeGrid(width, height);
-
 
     NodeList cellList = doc.getElementsByTagName("Cell");
     for (int i = 0; i < cellList.getLength(); i++) {
@@ -146,13 +145,13 @@ public class ConfigLoader {
         ruleSet = new GameOfLife(grid);
         break;
       case "SpreadingOfFire":
-        ruleSet = new SpreadingOfFire(grid);
+        ruleSet = new SpreadingOfFire(grid, Double.valueOf(parameters.get("probabilityIgnite")) , Double.valueOf(parameters.get("probabilityTree")));
         break;
       case "Percolation":
         ruleSet = new Percolation(grid);
         break;
       case "Segregation":
-        ruleSet = new Segregation(grid);
+        ruleSet = new Segregation(grid, Double.valueOf(parameters.get("segregationFactor")));
         break;
       case "WaterWorld":
         ruleSet = new WaterWorld(grid);

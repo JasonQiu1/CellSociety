@@ -1,0 +1,15 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Center Fire Spread</Description>
+  <Width>40</Width>
+  <Height>40</Height>
+  <InitialConfig>
+    <Cell col="20" row="20">2</Cell>
+    <Cell col="21" row="20">1</Cell>
+  </InitialConfig>
+  <Parameters>
+    <probabilityIgnite>0.5</probabilityIgnite>
+    <probabilityTree>0.6</probabilityTree>
+  </Parameters>
+  <SimulationType>SpreadingOfFire</SimulationType>
+</config>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WaterWorld extends RuleSet {
+
   // 0 nothing
   // 1 fish
   // 2 shark

@@ -1,0 +1,17 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Static Square in Game of Life</Description>
+  <Width>60</Width>
+  <Height>60</Height>
+  <InitialConfig>
+    <Cell col="45" row="45">1</Cell>
+    <Cell col="45" row="46">1</Cell>
+    <Cell col="46" row="45">1</Cell>
+    <Cell col="46" row="46">1</Cell>
+  </InitialConfig>
+  <Parameters>
+    <Distance>5</Distance>
+    <Probability>0.9</Probability>
+  </Parameters>
+  <SimulationType>GameOfLife</SimulationType>
+</config>

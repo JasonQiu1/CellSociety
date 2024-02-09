@@ -1,0 +1,22 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Fish School</Description>
+  <Width>30</Width>
+  <Height>30</Height>
+  <InitialConfig>
+    <!-- Central cluster of fish -->
+    <!-- Add more cells to form a large group -->
+    <Cell col="14" row="14">1</Cell>
+    <Cell col="15" row="14">1</Cell>
+    <Cell col="16" row="14">1</Cell>
+    <Cell col="14" row="15">1</Cell>
+    <Cell col="15" row="15">1</Cell>
+    <Cell col="16" row="15">1</Cell>
+    <Cell col="14" row="16">1</Cell>
+    <Cell col="15" row="16">1</Cell>
+    <Cell col="16" row="16">1</Cell>
+  </InitialConfig>
+  <Parameters></Parameters>
+
+  <SimulationType>WaterWorld</SimulationType>
+</config>

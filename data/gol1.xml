@@ -1,0 +1,102 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Pulsar in Game of Life</Description>
+  <Width>17</Width>
+  <Height>17</Height>
+  <InitialConfig>
+    <!-- Top left quadrant -->
+    <Cell col="4" row="2">1</Cell>
+    <Cell col="5" row="2">1</Cell>
+    <Cell col="6" row="2">1</Cell>
+    <Cell col="10" row="2">1</Cell>
+    <Cell col="11" row="2">1</Cell>
+    <Cell col="12" row="2">1</Cell>
+
+    <Cell col="2" row="4">1</Cell>
+    <Cell col="7" row="4">1</Cell>
+    <Cell col="9" row="4">1</Cell>
+    <Cell col="14" row="4">1</Cell>
+
+    <Cell col="2" row="5">1</Cell>
+    <Cell col="7" row="5">1</Cell>
+    <Cell col="9" row="5">1</Cell>
+    <Cell col="14" row="5">1</Cell>
+
+    <Cell col="2" row="6">1</Cell>
+    <Cell col="7" row="6">1</Cell>
+    <Cell col="9" row="6">1</Cell>
+    <Cell col="14" row="6">1</Cell>
+
+    <!-- Top right quadrant (mirror top left horizontally) -->
+    <Cell col="4" row="14">1</Cell>
+    <Cell col="5" row="14">1</Cell>
+    <Cell col="6" row="14">1</Cell>
+    <Cell col="10" row="14">1</Cell>
+    <Cell col="11" row="14">1</Cell>
+    <Cell col="12" row="14">1</Cell>
+
+    <Cell col="2" row="10">1</Cell>
+    <Cell col="7" row="10">1</Cell>
+    <Cell col="9" row="10">1</Cell>
+    <Cell col="14" row="10">1</Cell>
+
+    <Cell col="2" row="11">1</Cell>
+    <Cell col="7" row="11">1</Cell>
+    <Cell col="9" row="11">1</Cell>
+    <Cell col="14" row="11">1</Cell>
+
+    <Cell col="2" row="12">1</Cell>
+    <Cell col="7" row="12">1</Cell>
+    <Cell col="9" row="12">1</Cell>
+    <Cell col="14" row="12">1</Cell>
+
+    <!-- Bottom left quadrant (mirror top left vertically) -->
+    <Cell col="14" row="4">1</Cell>
+    <Cell col="13" row="4">1</Cell>
+    <Cell col="12" row="4">1</Cell>
+    <Cell col="8" row="4">1</Cell>
+    <Cell col="7" row="4">1</Cell>
+    <Cell col="6" row="4">1</Cell>
+
+    <Cell col="14" row="2">1</Cell>
+    <Cell col="9" row="2">1</Cell>
+    <Cell col="7" row="2">1</Cell>
+    <Cell col="4" row="2">1</Cell>
+
+    <Cell col="13" row="2">1</Cell>
+    <Cell col="9" row="2">1</Cell>
+    <Cell col="7" row="2">1</Cell>
+    <Cell col="3" row="2">1</Cell>
+
+    <Cell col="12" row="2">1</Cell>
+    <Cell col="9" row="2">1</Cell>
+    <Cell col="7" row="2">1</Cell>
+    <Cell col="2" row="2">1</Cell>
+
+    <!-- Bottom right quadrant (mirror top right vertically) -->
+    <Cell col="14" row="14">1</Cell>
+    <Cell col="13" row="14">1</Cell>
+    <Cell col="12" row="14">1</Cell>
+    <Cell col="8" row="14">1</Cell>
+    <Cell col="7" row="14">1</Cell>
+    <Cell col="6" row="14">1</Cell>
+
+    <Cell col="14" row="10">1</Cell>
+    <Cell col="9" row="10">1</Cell>
+    <Cell col="7" row="10">1</Cell>
+    <Cell col="4" row="10">1</Cell>
+
+    <Cell col="13" row="10">1</Cell>
+    <Cell col="9" row="10">1</Cell>
+    <Cell col="7" row="10">1</Cell>
+    <Cell col="3" row="10">1</Cell>
+
+    <Cell col="12" row="10">1</Cell>
+    <Cell col="9" row="10">1</Cell>
+    <Cell col="7" row="10">1</Cell>
+    <Cell col="2" row="10">1</Cell>
+  </InitialConfig>
+  <Parameters>
+  </Parameters>
+  <SimulationType>GameOfLife</SimulationType>
+</config>
