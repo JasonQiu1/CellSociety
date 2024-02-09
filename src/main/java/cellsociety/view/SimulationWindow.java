@@ -18,15 +18,14 @@ import javafx.stage.Stage;
 public class SimulationWindow {
 
   public static final String STYLESHEET = "default.css";
-  private static final int WINDOW_WIDTH = 750;
-  private static final int WINDOW_HEIGHT = 500;
-  private static final Paint STAGE_COLOR = Color.WHITE;
-  private static final double GRID_TO_UI_RATIO = 0.8;
+  public static final int WINDOW_WIDTH = 750;
+  public static final int WINDOW_HEIGHT = 500;
+  public static final Paint STAGE_COLOR = Color.WHITE;
+  public static final double GRID_TO_UI_RATIO = 0.8;
   private final SimulationView simulationView;
-  private final Controller controller;
 
   public SimulationWindow(Simulation simulation) {
-    controller = new Controller(simulation);
+    Controller controller = new Controller(simulation);
 
     Pane gridPane = new Pane();
     gridPane.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT * GRID_TO_UI_RATIO);
