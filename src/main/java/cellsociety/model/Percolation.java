@@ -21,8 +21,8 @@ public class Percolation extends RuleSet {
   }
 
   public void nextLogic(Cell currentCell, Cell neighborCell) {
-      if(neighborCell.getCurrentState()!= 0) {
-        neighborCell.setNextState(2);
-      }
+    if (neighborCell.getCurrentState() != 0) {
+      neighborCell.setNextState(2);
+    }
   }
 }

@@ -12,6 +12,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javax.imageio.ImageIO;
 
+/**
+ * Utility class to make ui components that don't contain any state nor belong to any specific
+ * class.
+ *
+ * @author Jason Qiu
+ */
 public class Util {
 
   // makeButton code from nanobrowser lab:
@@ -38,6 +44,8 @@ public class Util {
 
   /**
    * Create load config components, including input field and load button
+   *
+   * @param inputFieldWidth the width of the input field for the config file path.
    */
   public static Pane makeLoadConfigurationPanel(int inputFieldWidth) {
     Pane root = new Pane();
@@ -45,7 +53,6 @@ public class Util {
 
     TextField configPathInput = new TextField();
     configPathInput.setPrefColumnCount(inputFieldWidth);
-    // TODO: catch invalid user input exceptions to avoid crashes
     Button load = makeButton("loadConfigurationButton",
         event -> Controller.handleLoadConfigurationFileButtonPress(configPathInput.getText()));
 

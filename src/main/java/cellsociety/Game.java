@@ -54,6 +54,17 @@ public class Game extends Application {
     simulations.remove(simulation);
   }
 
+  //    public static boolean reloadGridFromConfig() {
+//        // Load grid configuration from file and update the grid
+////        simulation set grid = to whatever the config says it was
+//        return configLoader.loadCurrentConfigWithoutParams();
+//    }
+//
+  public static void saveSimulationToConfig(Simulation simulation, String configFileName) {
+    // Save current simulation state to a configuration file
+    SimulationSaver.saveSimulationState(simulation, configFileName);
+  }
+
   @Override
   public void start(Stage stage) {
     view = new View(stage, VIEW_RESOURCE_BUNDLE_NAME);
@@ -72,17 +83,6 @@ public class Game extends Application {
     animation.getKeyFrames()
         .add(new KeyFrame(Duration.seconds(SECOND_DELAY), e -> step(SECOND_DELAY)));
     animation.play();
-  }
-
-  //    public static boolean reloadGridFromConfig() {
-//        // Load grid configuration from file and update the grid
-////        simulation set grid = to whatever the config says it was
-//        return configLoader.loadCurrentConfigWithoutParams();
-//    }
-//
-  public static void saveSimulationToConfig(Simulation simulation, String configFileName) {
-    // Save current simulation state to a configuration file
-    SimulationSaver.saveSimulationState(simulation, configFileName);
   }
 //
 

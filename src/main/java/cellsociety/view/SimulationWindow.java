@@ -22,8 +22,6 @@ public class SimulationWindow {
   private static final int WINDOW_HEIGHT = 500;
   private static final Paint STAGE_COLOR = Color.WHITE;
   private static final double GRID_TO_UI_RATIO = 0.8;
-  // make resources accessible to all ui components, so they don't have to grab their own each time
-  // make this private and change to getter instead
   private final UserInterfaceDrawer uiDrawer;
   private final GridDrawer gridDrawer;
   private final Controller controller;
