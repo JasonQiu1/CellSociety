@@ -21,18 +21,13 @@ class UserInterfaceDrawer extends UserInterfacePanel {
   public UserInterfaceDrawer(Pane pane, Controller controller) {
     super(pane, "user-interface");
 
-    Pane configRoot = new Pane();
-    configRoot.setPrefSize(pane.getPrefWidth() * CONFIG_TO_SIMULATION_PANEL_RATIO,
-        pane.getPrefHeight());
-    new ConfigurationPanel(configRoot, controller);
-
     Pane simulationRoot = new Pane();
     simulationRoot.setLayoutX(pane.getPrefWidth() * CONFIG_TO_SIMULATION_PANEL_RATIO);
     simulationRoot.setPrefSize(pane.getPrefWidth() * (1 - CONFIG_TO_SIMULATION_PANEL_RATIO),
         pane.getPrefHeight());
     new SimulationControlPanel(simulationRoot, controller);
 
-    pane.getChildren().addAll(configRoot, simulationRoot);
+    pane.getChildren().addAll(simulationRoot);
   }
 
   public void update() {
