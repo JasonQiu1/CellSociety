@@ -22,18 +22,15 @@ public class SimulationWindow {
   private static final int WINDOW_HEIGHT = 500;
   private static final Paint STAGE_COLOR = Color.WHITE;
   private static final double GRID_TO_UI_RATIO = 0.8;
-  private final GridDrawer gridDrawer;
+  private final SimulationView simulationView;
   private final Controller controller;
-  private final Simulation simulation;
 
   public SimulationWindow(Simulation simulation) {
-    this.simulation = simulation;
     controller = new Controller(simulation);
 
     Pane gridPane = new Pane();
     gridPane.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT * GRID_TO_UI_RATIO);
-    gridDrawer = new GridDrawer(gridPane);
-    gridDrawer.setNumStates(simulation.getNumStates());
+    simulationView = new SimulationGridView(simulation, gridPane);
 
     Pane controlPane = new Pane();
     controlPane.setLayoutY(WINDOW_HEIGHT * GRID_TO_UI_RATIO);
@@ -56,9 +53,9 @@ public class SimulationWindow {
   }
 
   /**
-   * Updates the simulation view.
+   * Updates the simulation view. Make sure to catch any possible exceptions.
    */
   public void update() {
-    gridDrawer.update(simulation.getGrid());
+    simulationView.update();
   }
 }
