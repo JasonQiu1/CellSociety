@@ -20,7 +20,10 @@ public class View {
   public static final String DEFAULT_RESOURCE_PACKAGE = "cellsociety.";
   public static final String DEFAULT_RESOURCE_FOLDER =
       "/" + DEFAULT_RESOURCE_PACKAGE.replace(".", "/");
+  public static final int MAIN_WINDOW_WIDTH = 400;
+  public static final int MAIN_WINDOW_HEIGHT = 100;
   private static ResourceBundle resources;
+
   public List<SimulationWindow> simulationWindows;
 
   /**
@@ -35,8 +38,9 @@ public class View {
     simulationWindows = new ArrayList<SimulationWindow>();
 
     Pane mainWindowRoot = Util.makeLoadConfigurationPanel(10);
-    stage.setScene(new Scene(mainWindowRoot));
+    stage.setScene(new Scene(mainWindowRoot, MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT));
     stage.setTitle("Cell Society");
+    stage.setAlwaysOnTop(true);
     stage.show();
   }
 
