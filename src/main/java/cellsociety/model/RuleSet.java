@@ -61,6 +61,7 @@ public abstract class RuleSet implements Rules {
       }
     }
   }
+
   public Cell[][] getGrid() {
     return grid;
   }
@@ -74,8 +75,7 @@ public abstract class RuleSet implements Rules {
       for (int y = cordY - neighborSize; y <= cordY + neighborSize; y++) {
         if (toroidalNeighbor) {
           toroidalNeighbor(neighbors, cordX, cordY, x, y);
-        }
-        else {
+        } else {
           normalNeighbor(neighbors, cordX, cordY, x, y);
         }
       }
@@ -92,27 +92,26 @@ public abstract class RuleSet implements Rules {
     // fills in NEIGHBOR_SIZE by NEIGHBOR_SIZE array of neighbors
     int newX = x;
     int newY = y;
-    if (x<0) {
-      newX = grid.length+x;
+    if (x < 0) {
+      newX = grid.length + x;
     }
-    else if (x>=grid.length) {
-      newX = grid.length-x;
+    else if (x >= grid.length) {
+      newX = grid.length - x;
     }
-    if (y<0) {
-      newY = grid.length+y;
+    if (y < 0) {
+      newY = grid.length + y;
     }
-    else if (y>=grid[0].length) {
-      newY = grid[0].length-y;
+    else if (y >= grid[0].length) {
+      newY = grid[0].length - y;
     }
     if (x == cordX && y == cordY) {
       neighbors[neighborSize][neighborSize] = null;
-    }
-    else {
+    } else {
       neighbors[x - cordX + neighborSize][y - cordY + neighborSize] = grid[newX][newY];
     }
   }
 
-  public void normalNeighbor (Cell[][] neighbors, int cordX, int cordY, int x, int y){
+  public void normalNeighbor(Cell[][] neighbors, int cordX, int cordY, int x, int y) {
     if (x == cordX && y == cordY) {
       neighbors[neighborSize][neighborSize] = null;
     } else if (x >= 0 && x < grid.length && y >= 0 && y < grid[0].length) {

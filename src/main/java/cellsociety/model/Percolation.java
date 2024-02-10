@@ -16,7 +16,8 @@ public class Percolation extends RuleSet {
   // 2 is percolate
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
-    // check if an empty cell is in the Moore Neighborhood of a percolated cell and make that cell percolated on next iteration
+    // check if an empty cell is in the Moore Neighborhood
+    // of a percolated cell and make that cell percolated on next iteration
     if (c1.getCurrentState() == 1 || c1.getCurrentState() == 2) {
       c1.setNextState(c1.getCurrentState());
       if (c1.getCurrentState() == 2) {
