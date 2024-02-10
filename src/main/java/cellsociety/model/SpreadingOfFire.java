@@ -16,6 +16,13 @@ public class SpreadingOfFire extends RuleSet {
     this.probabilityIgnite = probabilityIgnite;
     this.probabilityTree = probabilityTree;
   }
+
+  public SpreadingOfFire(Cell[][] grid, double probabilityIgnite, double probabilityTree, int neighborSize) {
+    super(grid);
+    this.probabilityIgnite = probabilityIgnite;
+    this.probabilityTree = probabilityTree;
+    this.neighborSize = neighborSize;
+  }
   // 0 empty
   // 1 tree
   // 2 burning

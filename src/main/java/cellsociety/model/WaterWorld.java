@@ -16,6 +16,7 @@ public class WaterWorld extends RuleSet {
 
   public WaterWorld(Cell[][] grid) {
     super();
+    vonNeuman = true;
     reproductionMoves = 10;
     energyFromFish = 15;
     startEnergy = 5;
@@ -24,6 +25,7 @@ public class WaterWorld extends RuleSet {
 
   public WaterWorld(Cell[][] grid, int reproductionMoves, int energyFromFish, int startEnergy) {
     super();
+    vonNeuman = true;
     // makes cells into FishOrShark objects which extends Cell
     this.reproductionMoves = reproductionMoves;
     this.energyFromFish = energyFromFish;
@@ -57,18 +59,6 @@ public class WaterWorld extends RuleSet {
       }
     }
     update();
-  }
-
-  @Override
-  public Cell[][] findNeighbors(int cordX, int cordY) {
-    Cell[][] neighbors = super.findNeighbors(cordX, cordY);
-    // only adjacent count
-    Cell[][] adjNeighbors = new Cell[4][1];
-    adjNeighbors[0][0] = neighbors[(neighbors.length / 2) - 1][(neighbors.length / 2)];
-    adjNeighbors[1][0] = neighbors[(neighbors.length / 2) + 1][(neighbors.length / 2)];
-    adjNeighbors[2][0] = neighbors[(neighbors.length / 2)][(neighbors.length / 2) - 1];
-    adjNeighbors[3][0] = neighbors[(neighbors.length / 2)][(neighbors.length / 2) + 1];
-    return adjNeighbors;
   }
 
   @Override

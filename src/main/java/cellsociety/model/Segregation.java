@@ -25,6 +25,12 @@ public class Segregation extends RuleSet {
     emptyCells = findEmptyCells();
     this.segregationFraction = segregationFactor;
   }
+  public Segregation(Cell[][] grid, double segregationFactor, int neighborSize) {
+    super(grid);
+    emptyCells = findEmptyCells();
+    this.segregationFraction = segregationFactor;
+    this.neighborSize = neighborSize;
+  }
 
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {

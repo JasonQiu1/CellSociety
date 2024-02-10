@@ -6,6 +6,11 @@ public class Percolation extends RuleSet {
     super(grid);
   }
 
+  public Percolation(Cell[][] grid, int neighborSize) {
+    super(grid);
+    this.neighborSize = neighborSize;
+  }
+
   // 0 is nothing
   // 1 is block
   // 2 is percolate
