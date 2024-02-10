@@ -1,6 +1,7 @@
 package cellsociety.config;
 
 import cellsociety.model.Cell;
+import cellsociety.model.FallingSandWater;
 import cellsociety.model.GameOfLife;
 import cellsociety.model.InitializeGrid;
 import cellsociety.model.Percolation;
@@ -155,6 +156,9 @@ public class ConfigLoader {
         break;
       case "WaterWorld":
         ruleSet = new WaterWorld(grid);
+        break;
+      case "FallingSandWater":
+        ruleSet = new FallingSandWater(grid);
         break;
       default:
         System.err.println("Unsupported simulation type: " + simulationType);
