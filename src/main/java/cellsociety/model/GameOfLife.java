@@ -6,6 +6,13 @@ public class GameOfLife extends RuleSet {
     // default constructor
     super(grid);
   }
+
+  public GameOfLife(Cell[][] grid, int neighborSize) {
+    // default constructor
+    super(grid);
+    this.neighborSize = neighborSize;
+  }
+
   // 0 dead
   // 1 alive
 

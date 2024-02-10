@@ -16,19 +16,21 @@ public class WaterWorld extends RuleSet {
 
   public WaterWorld(Cell[][] grid) {
     super();
+    vonNeuman = true;
     reproductionMoves = 10;
     energyFromFish = 15;
     startEnergy = 5;
-    setGrid(makeFishOrShark(grid));
+    this.grid = (makeFishOrShark(grid));
   }
 
   public WaterWorld(Cell[][] grid, int reproductionMoves, int energyFromFish, int startEnergy) {
     super();
+    vonNeuman = true;
     // makes cells into FishOrShark objects which extends Cell
     this.reproductionMoves = reproductionMoves;
     this.energyFromFish = energyFromFish;
     this.startEnergy = startEnergy;
-    setGrid(makeFishOrShark(grid));
+    this.grid = (makeFishOrShark(grid));
   }
 
   public Cell[][] makeFishOrShark(Cell[][] grids) {
@@ -43,34 +45,20 @@ public class WaterWorld extends RuleSet {
   }
 
   @Override
-  public Cell[][] applyRules(Cell[][] grid) {
-    setGrid(grid);
+  public void applyRules() {
     // first for loop ensures that shark logic occurs before fish logic (sharks move before fish)
     for (int k = STATES; k > 0; k--) {
-      for (int i = 0; i < getGrid().length; i++) {
-        for (int j = 0; j < getGrid()[0].length; j++) {
-          if (k == getGrid()[i][j].getCurrentState()) {
+      for (int i = 0; i < grid.length; i++) {
+        for (int j = 0; j < grid[0].length; j++) {
+          if (k == grid[i][j].getCurrentState()) {
             // find neighbors of sharks and fish
             Cell[][] neighbors = findNeighbors(i, j);
-            setUpdateFlag(neighbors, getGrid()[i][j]);
+            setUpdateFlag(neighbors, grid[i][j]);
           }
         }
       }
     }
     update();
-    return getGrid();
-  }
-
-  @Override
-  public Cell[][] findNeighbors(int cordX, int cordY) {
-    Cell[][] neighbors = super.findNeighbors(cordX, cordY);
-    // only adjacent count
-    Cell[][] adjNeighbors = new Cell[4][1];
-    adjNeighbors[0][0] = neighbors[(neighbors.length / 2) - 1][(neighbors.length / 2)];
-    adjNeighbors[1][0] = neighbors[(neighbors.length / 2) + 1][(neighbors.length / 2)];
-    adjNeighbors[2][0] = neighbors[(neighbors.length / 2)][(neighbors.length / 2) - 1];
-    adjNeighbors[3][0] = neighbors[(neighbors.length / 2)][(neighbors.length / 2) + 1];
-    return adjNeighbors;
   }
 
   @Override
