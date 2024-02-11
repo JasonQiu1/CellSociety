@@ -39,7 +39,6 @@ class SimulationControlPanel extends UserInterfacePanel {
 
     TextField configPathInput = new TextField();
     configPathInput.setPrefColumnCount(INPUT_FIELD_WIDTH);
-    // TODO: catch invalid user input exceptions to avoid crashes
     Button save = Util.makeButton("saveConfigurationButton",
         event -> controller.handleSaveConfigurationFileButtonPress(configPathInput.getText()));
 

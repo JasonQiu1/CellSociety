@@ -2,9 +2,11 @@ package cellsociety.controller;
 
 import cellsociety.Game;
 import cellsociety.model.Simulation;
+import cellsociety.view.View;
 
 /**
- * Responsible for telling Game or Simulation what to do given user input.
+ * Responsible for telling Game or Simulation what to do given user input. Always checks for
+ * exceptions.
  *
  * @author Jason Qiu (jq48)
  */
@@ -24,47 +26,63 @@ public class Controller {
    * @param configurationFileName the configuration file to load the new simulation from.
    */
   public static void handleLoadConfigurationFileButtonPress(String configurationFileName) {
-    Game.loadNewSimulation(configurationFileName);
+    try {
+      Game.loadNewSimulation(configurationFileName);
+    } catch (Exception e) {
+      View.showError(e.getMessage());
+    }
   }
 
   /**
    * Send a message to Game to remove the simulation this controller is responsible for.
    */
   public void removeSimulation() {
-    Game.removeSimulation(simulation);
+    try {
+      Game.removeSimulation(simulation);
+    } catch (Exception e) {
+      View.showError(e.getMessage());
+    }
   }
 
   public void handleSaveConfigurationFileButtonPress(String saveFileName) {
-    // send a message to Game to save the simulation with the given metadata
-    Game.saveSimulationToConfig(simulation, saveFileName);
+    try {
+      // send a message to Game to save the simulation with the given metadata
+      Game.saveSimulationToConfig(simulation, saveFileName);
+    } catch (Exception e) {
+      View.showError(e.getMessage());
+    }
   }
 
   public void handleStartSimulationButtonPress() {
-    if (simulation == null) {
-      return;
+    try {
+      simulation.unpause();
+    } catch (Exception e) {
+      View.showError(e.getMessage());
     }
-    simulation.unpause();
   }
 
   public void handlePauseSimulationButtonPress() {
-    if (simulation == null) {
-      return;
+    try {
+      simulation.pause();
+    } catch (Exception e) {
+      View.showError(e.getMessage());
     }
-    simulation.pause();
   }
 
   public void handleSpeedUpSimulationButtonPress() {
-    if (simulation == null) {
-      return;
+    try {
+      simulation.setSimulationSpeed(simulation.getSimulationSpeed() + SPEED_ADJUSTMENT);
+    } catch (Exception e) {
+      View.showError(e.getMessage());
     }
-    simulation.setSimulationSpeed(simulation.getSimulationSpeed() + SPEED_ADJUSTMENT);
   }
 
   public void handleSlowDownSimulationButtonPress() {
-    if (simulation == null) {
-      return;
+    try {
+      simulation.setSimulationSpeed(simulation.getSimulationSpeed() - SPEED_ADJUSTMENT);
+    } catch (Exception e) {
+      View.showError(e.getMessage());
     }
-    simulation.setSimulationSpeed(simulation.getSimulationSpeed() - SPEED_ADJUSTMENT);
   }
 
   public void handleResetGridButtonPress() {

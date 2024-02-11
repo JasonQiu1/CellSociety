@@ -52,7 +52,7 @@ public class SimulationWindow {
   }
 
   /**
-   * Updates the simulation view. Make sure to catch any possible exceptions.
+   * Updates the simulation view.
    */
   public void update() {
     simulationView.update();
