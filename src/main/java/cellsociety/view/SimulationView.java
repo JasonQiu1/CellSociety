@@ -13,6 +13,11 @@ abstract class SimulationView extends UserInterfacePanel {
   private final Simulation simulation;
 
   /**
+   * Update the view based on the current stored simulation's state.
+   */
+  public abstract void update();
+
+  /**
    * Sets the root to the given pane and also adds a css class for configurable styling.
    *
    * @param pane         the new root of the panel.
@@ -22,11 +27,6 @@ abstract class SimulationView extends UserInterfacePanel {
     super(pane, cssClassName);
     this.simulation = simulation;
   }
-
-  /**
-   * Update the view based on the current stored simulation's state.
-   */
-  public abstract void update();
 
   protected Simulation getSimulation() {
     return simulation;
