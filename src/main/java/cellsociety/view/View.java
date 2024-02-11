@@ -57,7 +57,7 @@ public class View {
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle(resources.getString("errorWindowTitle"));
     alert.setContentText(message);
-    alert.showAndWait();
+    alert.show();
   }
 
   /**
@@ -89,7 +89,7 @@ public class View {
       simulationWindows.add(new SimulationWindow(simulation));
     } catch (Exception e) {
       // creation of all ui components rely on the Simulation object, which may not be reliable
-      View.showError(e.getMessage());
+      showError(e.getMessage());
     }
   }
 }

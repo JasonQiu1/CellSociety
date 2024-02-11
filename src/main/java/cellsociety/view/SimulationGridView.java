@@ -3,8 +3,6 @@ package cellsociety.view;
 
 import cellsociety.model.Grid;
 import cellsociety.model.Simulation;
-import javafx.geometry.Pos;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -25,6 +23,8 @@ class SimulationGridView extends SimulationView {
    */
   public SimulationGridView(Simulation simulation, Pane pane) {
     super(simulation, pane, "grid-drawer");
+    double minDim = Math.min(pane.getPrefHeight(), pane.getPrefWidth());
+    pane.setPrefSize(minDim, minDim);
   }
 
   /**
@@ -44,19 +44,14 @@ class SimulationGridView extends SimulationView {
 
   // recreates the grid view with the same dimensions as the current grid
   private void reinitializeGridView() {
+    colorGenerator = new StateColorGenerator(getSimulation().getNumStates());
+
     if (gridView != null) {
-      getRoot().getChildren().remove(gridView.getGridPane());
+      getRoot().getChildren().remove(gridView.getRoot());
     }
 
-    gridView = new SquareGridView(getSimulation().getGrid().getNumRows(),
+    gridView = new SquareGridView(getRoot(), getSimulation().getGrid().getNumRows(),
         getSimulation().getGrid().getNumCols());
-    GridPane gridPane = gridView.getGridPane();
-    gridPane.setPrefSize(getRoot().getPrefWidth(), getRoot().getPrefHeight());
-    gridPane.setAlignment(Pos.CENTER);
-    gridPane.setGridLinesVisible(true);
-    getRoot().getChildren().add(gridPane);
-
-    colorGenerator = new StateColorGenerator(getSimulation().getNumStates());
   }
 
   /**
