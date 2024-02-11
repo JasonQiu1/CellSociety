@@ -28,13 +28,14 @@ public class Game extends Application {
   }
 
   private static void step(double elapsedTime) {
-    // Update simulation and UI based on elapsed time
-    for (Simulation simulation : simulations) {
-//      System.out.println("bbbb\n\n\n\nccc");
-      simulation.update(elapsedTime);
+    try {
+      for (Simulation simulation : simulations) {
+        simulation.update(elapsedTime);
+      }
+      view.update();
+    } catch (RuntimeException e) {
+      View.showError(e.getMessage());
     }
-//    view.setSimulation(simulation);
-    view.update();
   }
 
   public static boolean loadNewSimulation(String configFileName) {
