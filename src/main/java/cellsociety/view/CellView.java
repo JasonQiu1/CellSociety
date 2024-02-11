@@ -1,33 +1,39 @@
 package cellsociety.view;
 
-import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
+import javafx.geometry.Insets;
 import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Polygon;
 
 /**
  * Responsible for representing the view of a cell.
  *
  * @author Jason Qiu
  */
-class CellView extends Region {
+class CellView {
 
-  public static Paint DEFAULT_COLOR = Color.WHITE;
+  public static final double MARGIN = 1;
+  private final AutoScalePane resizingPane;
+  private final Polygon cellShape;
 
-  public CellView() {
-    super();
-    setColor(DEFAULT_COLOR);
-    this.getStyleClass().add("cell-view");
-    // the label is never used but for some reason
-    // GridPanes do not display if they only contain layouts
-    this.getChildren().add(new Label());
+  /**
+   * Wraps the shape of the cell with a resizing pane.
+   *
+   * @param cellShape the visual shape of the cell.
+   */
+  public CellView(Polygon cellShape) {
+    this.cellShape = cellShape;
+    resizingPane = new AutoScalePane(MARGIN);
+    resizingPane.setPadding(new Insets(MARGIN, MARGIN, MARGIN, MARGIN));
+    resizingPane.addChildren(cellShape);
+    resizingPane.getStyleClass().add("cell-view");
+  }
+
+  public Region getRoot() {
+    return resizingPane;
   }
 
   public void setColor(Paint color) {
-    this.setBackground(new Background(
-        new BackgroundFill(color, null, null)
-    ));
+    cellShape.setFill(color);
   }
 }

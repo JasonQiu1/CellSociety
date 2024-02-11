@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
  *
  * @author Jason Qiu
  */
-public class Util {
+class Util {
 
   // makeButton code from nanobrowser lab:
   // https://coursework.cs.duke.edu/compsci308_2024spring/lab_browser

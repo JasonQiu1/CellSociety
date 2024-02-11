@@ -23,7 +23,7 @@ public class FiniteGrid implements Grid {
   @Override
   public void update() {
 //    print(grid);
-    grid = rules.applyRules(grid);
+    rules.applyRules();
   }
 
   public void print(Cell[][] grid) {
