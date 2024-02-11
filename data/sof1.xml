@@ -11,7 +11,9 @@
     <Cell col="2" row="5">1</Cell>
   </InitialConfig>
   <Parameters>
-    <Probability>0.9</Probability>
+    <probabilityIgnite>0.9</probabilityIgnite>
+    <probabilityTree>0.9</probabilityTree>
+
   </Parameters>
   <SimulationType>SpreadingOfFire</SimulationType>
 </config>

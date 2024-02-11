@@ -1,0 +1,20 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Mixed Start in Schelling's Model</Description>
+  <Width>40</Width>
+  <Height>40</Height>
+  <InitialConfig>
+    <!-- Randomly distributed agents, please distribute these more randomly in your grid -->
+    <Cell col="5" row="5">1</Cell>
+    <Cell col="6" row="5">2</Cell>
+    <Cell col="7" row="5">1</Cell>
+    <Cell col="5" row="6">2</Cell>
+    <Cell col="6" row="6">1</Cell>
+    <Cell col="7" row="6">2</Cell>
+    <!-- Add more cells as needed to create a mixed start -->
+  </InitialConfig>
+  <Parameters>
+    <segregationFactor>0.6</segregationFactor>
+  </Parameters>
+  <SimulationType>Segregation</SimulationType>
+</config>

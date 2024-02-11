@@ -1,0 +1,21 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Vertical Flow Percolation</Description>
+  <Width>10</Width>
+  <Height>10</Height>
+  <InitialConfig>
+    <!-- Open column in the middle for fluid to flow -->
+    <Cell col="4" row="0">1</Cell>
+    <Cell col="4" row="1">1</Cell>
+    <Cell col="4" row="2">1</Cell>
+    <Cell col="4" row="3">1</Cell>
+    <Cell col="4" row="4">1</Cell>
+    <Cell col="4" row="5">1</Cell>
+    <Cell col="4" row="6">1</Cell>
+    <Cell col="4" row="7">1</Cell>
+    <Cell col="4" row="8">1</Cell>
+    <Cell col="4" row="9">1</Cell>
+  </InitialConfig>
+  <Parameters></Parameters>
+  <SimulationType>Percolation</SimulationType>
+</config>

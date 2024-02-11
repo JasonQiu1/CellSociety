@@ -1,6 +1,7 @@
 package cellsociety.config;
 
 import cellsociety.model.Cell;
+import cellsociety.model.FallingSandWater;
 import cellsociety.model.GameOfLife;
 import cellsociety.model.InitializeGrid;
 import cellsociety.model.Percolation;
@@ -145,16 +146,19 @@ public class ConfigLoader {
         ruleSet = new GameOfLife(grid);
         break;
       case "SpreadingOfFire":
-        ruleSet = new SpreadingOfFire(grid);
+        ruleSet = new SpreadingOfFire(grid, Double.valueOf(parameters.get("probabilityIgnite")) , Double.valueOf(parameters.get("probabilityTree")));
         break;
       case "Percolation":
         ruleSet = new Percolation(grid);
         break;
       case "Segregation":
-        ruleSet = new Segregation(grid);
+        ruleSet = new Segregation(grid, Double.valueOf(parameters.get("segregationFactor")));
         break;
       case "WaterWorld":
         ruleSet = new WaterWorld(grid);
+        break;
+      case "FallingSandWater":
+        ruleSet = new FallingSandWater(grid);
         break;
       default:
         System.err.println("Unsupported simulation type: " + simulationType);

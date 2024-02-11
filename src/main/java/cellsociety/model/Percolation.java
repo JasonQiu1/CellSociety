@@ -6,12 +6,18 @@ public class Percolation extends RuleSet {
     super(grid);
   }
 
+  public Percolation(Cell[][] grid, int neighborSize) {
+    super(grid);
+    this.neighborSize = neighborSize;
+  }
+
   // 0 is nothing
   // 1 is block
   // 2 is percolate
   @Override
   public void setUpdateFlag(Cell[][] neighbors, Cell c1) {
-    // check if an empty cell is in the Moore Neighborhood of a percolated cell and make that cell percolated on next iteration
+    // check if an empty cell is in the Moore Neighborhood
+    // of a percolated cell and make that cell percolated on next iteration
     if (c1.getCurrentState() == 1 || c1.getCurrentState() == 2) {
       c1.setNextState(c1.getCurrentState());
       if (c1.getCurrentState() == 2) {
@@ -21,7 +27,7 @@ public class Percolation extends RuleSet {
   }
 
   public void nextLogic(Cell currentCell, Cell neighborCell) {
-    if (neighborCell.getCurrentState() != 0) {
+    if (neighborCell.getCurrentState() == 0) {
       neighborCell.setNextState(2);
     }
   }

@@ -1,0 +1,15 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Blinker in Game of Life on a Small Grid</Description>
+  <Width>5</Width>
+  <Height>5</Height>
+  <InitialConfig>
+    <!-- Horizontal line of three cells in the center -->
+    <Cell col="1" row="2">1</Cell>
+    <Cell col="2" row="2">1</Cell>
+    <Cell col="3" row="2">1</Cell>
+  </InitialConfig>
+  <Parameters>
+  </Parameters>
+  <SimulationType>GameOfLife</SimulationType>
+</config>

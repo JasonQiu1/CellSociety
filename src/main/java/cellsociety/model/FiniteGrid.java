@@ -22,10 +22,8 @@ public class FiniteGrid implements Grid {
 
   @Override
   public void update() {
-    print(grid);
-    System.out.println("\n\n\n\naaaaa grid is updating");
-    grid = rules.applyRules(grid);
-
+//    print(grid);
+    rules.applyRules();
   }
 
   public void print(Cell[][] grid) {
