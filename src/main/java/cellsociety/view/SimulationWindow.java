@@ -15,7 +15,7 @@ import javafx.stage.Stage;
  *
  * @author Jason Qiu
  */
-public class SimulationWindow {
+class SimulationWindow {
 
   public static final String STYLESHEET = "default.css";
   public static final int WINDOW_WIDTH = 750;

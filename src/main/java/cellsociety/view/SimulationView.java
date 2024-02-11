@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
  *
  * @author Jason Qiu
  */
-public abstract class SimulationView extends UserInterfacePanel {
+abstract class SimulationView extends UserInterfacePanel {
 
   private final Simulation simulation;
 
