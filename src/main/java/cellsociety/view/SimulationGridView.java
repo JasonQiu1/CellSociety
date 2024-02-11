@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
  */
 class SimulationGridView extends SimulationView {
 
-  private GridView gridView;
+  private SquareGridView gridView;
   private StateColorGenerator colorGenerator;
 
   /**
@@ -48,7 +48,7 @@ class SimulationGridView extends SimulationView {
       getRoot().getChildren().remove(gridView.getGridPane());
     }
 
-    gridView = new GridView(getSimulation().getGrid().getNumRows(),
+    gridView = new SquareGridView(getSimulation().getGrid().getNumRows(),
         getSimulation().getGrid().getNumCols());
     GridPane gridPane = gridView.getGridPane();
     gridPane.setPrefSize(getRoot().getPrefWidth(), getRoot().getPrefHeight());

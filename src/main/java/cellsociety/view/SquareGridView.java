@@ -6,65 +6,28 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Paint;
 
 /**
- * Responsible for representing the view of a grid.
+ * Responsible for representing the view of a square grid.
  *
  * @author Jason Qiu
  */
-class GridView {
+class SquareGridView {
 
   GridPane gridPane;
-  CellView[][] cellViewGrid;
+  SquareCellView[][] cellViewGrid;
   int numRows;
   int numColumns;
 
   /**
-   * Creates a new fixed array of CellView instances parented to a GridPane instance.
+   * Creates a new fixed array of SquareCellView instances parented to a GridPane instance.
    *
    * @param numRows    the number of rows of the grid view.
    * @param numColumns the number of columns of the grid view.
    */
-  public GridView(int numRows, int numColumns) {
+  public SquareGridView(int numRows, int numColumns) {
     this.numRows = numRows;
     this.numColumns = numColumns;
 
     initializeGrid(numRows, numColumns);
-  }
-
-  /**
-   * Initializes the gridPane and cellViewGrid at the same time.
-   *
-   * @param numRows    the number of rows.
-   * @param numColumns the number of columns.
-   */
-  private void initializeGrid(int numRows, int numColumns) {
-    gridPane = new GridPane();
-    cellViewGrid = new CellView[numRows][numColumns];
-    for (int row = 0; row < numRows; row++) {
-      for (int col = 0; col < numRows; col++) {
-        cellViewGrid[row][col] = new CellView();
-        gridPane.getChildren().add(cellViewGrid[row][col]);
-        GridPane.setRowIndex(cellViewGrid[row][col], row);
-        GridPane.setColumnIndex(cellViewGrid[row][col], col);
-      }
-    }
-
-    // Column constraints:
-    for (int x = 0; x < numColumns; x++) {
-      ColumnConstraints cc = new ColumnConstraints();
-      cc.setPercentWidth(100.0 / numColumns);
-      cc.setFillWidth(true);
-      gridPane.getColumnConstraints().add(cc);
-    }
-
-    // row constraints:
-    for (int y = 0; y < numRows; y++) {
-      RowConstraints rc = new RowConstraints();
-      rc.setPercentHeight(100.0 / numRows);
-      rc.setFillHeight(true);
-      gridPane.getRowConstraints().add(rc);
-    }
-
-    gridPane.getStyleClass().add("grid-view");
   }
 
   public GridPane getGridPane() {
@@ -88,6 +51,43 @@ class GridView {
    */
   public void setCellViewColor(int row, int col, Paint color) {
     cellViewGrid[row][col].setColor(color);
+  }
+
+  /**
+   * Initializes the gridPane and cellViewGrid at the same time.
+   *
+   * @param numRows    the number of rows.
+   * @param numColumns the number of columns.
+   */
+  private void initializeGrid(int numRows, int numColumns) {
+    gridPane = new GridPane();
+    cellViewGrid = new SquareCellView[numRows][numColumns];
+    for (int row = 0; row < numRows; row++) {
+      for (int col = 0; col < numRows; col++) {
+        cellViewGrid[row][col] = new SquareCellView();
+        gridPane.getChildren().add(cellViewGrid[row][col]);
+        GridPane.setRowIndex(cellViewGrid[row][col], row);
+        GridPane.setColumnIndex(cellViewGrid[row][col], col);
+      }
+    }
+
+    // Column constraints:
+    for (int x = 0; x < numColumns; x++) {
+      ColumnConstraints cc = new ColumnConstraints();
+      cc.setPercentWidth(100.0 / numColumns);
+      cc.setFillWidth(true);
+      gridPane.getColumnConstraints().add(cc);
+    }
+
+    // row constraints:
+    for (int y = 0; y < numRows; y++) {
+      RowConstraints rc = new RowConstraints();
+      rc.setPercentHeight(100.0 / numRows);
+      rc.setFillHeight(true);
+      gridPane.getRowConstraints().add(rc);
+    }
+
+    gridPane.getStyleClass().add("grid-view");
   }
 }
 

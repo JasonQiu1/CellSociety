@@ -12,11 +12,11 @@ import javafx.scene.paint.Paint;
  *
  * @author Jason Qiu
  */
-class CellView extends Region {
+class SquareCellView extends Region {
 
   public static Paint DEFAULT_COLOR = Color.WHITE;
 
-  public CellView() {
+  public SquareCellView() {
     super();
     setColor(DEFAULT_COLOR);
     this.getStyleClass().add("cell-view");
