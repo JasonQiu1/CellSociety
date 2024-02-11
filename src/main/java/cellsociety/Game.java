@@ -39,12 +39,17 @@ public class Game extends Application {
   }
 
   public static boolean loadNewSimulation(String configFileName) {
-    // Load a new simulation from a configuration file
-    configLoader = new ConfigLoader(configFileName + ".xml");
-    Simulation simulation = configLoader.simulation;
-    view.addSimulation(simulation);
-    simulations.add(simulation);
-    return updateGridFromConfig(configFileName);
+    try {
+      // Load a new simulation from a configuration file
+      configLoader = new ConfigLoader(configFileName + ".xml");
+      Simulation simulation = configLoader.simulation;
+      view.addSimulation(simulation);
+      simulations.add(simulation);
+      return updateGridFromConfig(configFileName);
+    } catch (RuntimeException e) {
+      View.showError(e.getMessage());
+      return false;
+    }
   }
 
   private static boolean updateGridFromConfig(String configFileName) {
