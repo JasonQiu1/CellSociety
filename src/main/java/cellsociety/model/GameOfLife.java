@@ -2,15 +2,17 @@ package cellsociety.model;
 
 public class GameOfLife extends RuleSet {
 
-  public GameOfLife(Cell[][] grid) {
+  public GameOfLife() {
     // default constructor
-    super(grid);
+    super();
   }
 
-  public GameOfLife(Cell[][] grid, int neighborSize) {
+  public GameOfLife(int neighborSize, boolean vonNeuman, boolean toroidalNeighbor) {
     // default constructor
-    super(grid);
+    super();
     this.neighborSize = neighborSize;
+    this.vonNeuman = vonNeuman;
+    this.toroidalNeighbor = toroidalNeighbor;
   }
 
   // 0 dead

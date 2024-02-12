@@ -2,19 +2,19 @@ package cellsociety.model;
 
 public interface Rules {
 
-  public Cell[][] findNeighbors(int cordX, int cordY);
+  Cell[][] findNeighbors(int cordX, int cordY);
 
-  public void setUpdateFlag(Cell[][] neighbors, Cell c1);
+  void setUpdateFlag(Cell[][] neighbors, Cell c1);
 
-  public void applyRules();
+  void applyRules();
 
-  public void applyUpdate(Cell c1);
+  void applyUpdate(Cell c1);
 
-  public void update();
+  void update();
 
-  public int countLoop(Cell[][] neighbor, int state);
+  int countLoop(Cell[][] neighbor, int state);
 
-  public void neighborLoop(Cell[][] neighbor, Cell c1);
+  void neighborLoop(Cell[][] neighbor, Cell c1);
 
-  public void nextLogic(Cell currentCell, Cell neighborCell);
+  void nextLogic(Cell currentCell, Cell neighborCell);
 }

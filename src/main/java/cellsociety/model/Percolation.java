@@ -2,13 +2,15 @@ package cellsociety.model;
 
 public class Percolation extends RuleSet {
 
-  public Percolation(Cell[][] grid) {
-    super(grid);
+  public Percolation() {
+    super();
   }
 
-  public Percolation(Cell[][] grid, int neighborSize) {
-    super(grid);
+  public Percolation(int neighborSize, boolean vonNeuman, boolean toroidalNeighbor) {
+    super();
     this.neighborSize = neighborSize;
+    this.vonNeuman = vonNeuman;
+    this.toroidalNeighbor = toroidalNeighbor;
   }
 
   // 0 is nothing

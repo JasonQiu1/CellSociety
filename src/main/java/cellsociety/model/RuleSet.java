@@ -5,7 +5,7 @@ public abstract class RuleSet implements Rules {
   // determines size of neighbors
   protected int neighborSize = 1;
   protected boolean vonNeuman = false;
-  protected boolean toroidalNeighbor = true;
+  protected boolean toroidalNeighbor = false;
   protected Cell[][] grid;
 
 
@@ -15,6 +15,16 @@ public abstract class RuleSet implements Rules {
 
   public RuleSet() {
     grid = null;
+  }
+
+  public void setGrid(Cell[][] grid) {
+    if (this.grid == null) {
+      this.grid = grid;
+    }
+  }
+
+  public Cell[][] getGrid() {
+    return grid;
   }
 
   public void applyRules() {
@@ -62,10 +72,6 @@ public abstract class RuleSet implements Rules {
     }
   }
 
-  public Cell[][] getGrid() {
-    return grid;
-  }
-
   public Cell[][] findNeighbors(int cordX, int cordY) {
     // fills in NEIGHBOR_SIZE by NEIGHBOR_SIZE array of neighbors
 
@@ -82,8 +88,7 @@ public abstract class RuleSet implements Rules {
     }
     if (!vonNeuman) {
       return neighbors;
-    }
-    else {
+    } else {
       return vonNeumanNeighbors(neighbors);
     }
   }
@@ -94,14 +99,12 @@ public abstract class RuleSet implements Rules {
     int newY = y;
     if (x < 0) {
       newX = grid.length + x;
-    }
-    else if (x >= grid.length) {
+    } else if (x >= grid.length) {
       newX = grid.length - x;
     }
     if (y < 0) {
       newY = grid.length + y;
-    }
-    else if (y >= grid[0].length) {
+    } else if (y >= grid[0].length) {
       newY = grid[0].length - y;
     }
     if (x == cordX && y == cordY) {

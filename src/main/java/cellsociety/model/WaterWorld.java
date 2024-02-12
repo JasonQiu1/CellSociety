@@ -14,23 +14,39 @@ public class WaterWorld extends RuleSet {
   private final int energyFromFish;
   private final int startEnergy;
 
-  public WaterWorld(Cell[][] grid) {
+  public WaterWorld() {
     super();
     vonNeuman = true;
     reproductionMoves = 10;
     energyFromFish = 15;
     startEnergy = 5;
-    this.grid = (makeFishOrShark(grid));
   }
 
-  public WaterWorld(Cell[][] grid, int reproductionMoves, int energyFromFish, int startEnergy) {
-    super();
+  public WaterWorld(int reproductionMoves, int energyFromFish, int startEnergy) {
     vonNeuman = true;
     // makes cells into FishOrShark objects which extends Cell
     this.reproductionMoves = reproductionMoves;
     this.energyFromFish = energyFromFish;
     this.startEnergy = startEnergy;
-    this.grid = (makeFishOrShark(grid));
+  }
+
+  public WaterWorld(int reproductionMoves, int energyFromFish, int startEnergy,
+      int neighborSize, boolean vonNeuman, boolean toroidalNeighbor) {
+    super();
+    // makes cells into FishOrShark objects which extends Cell
+    this.reproductionMoves = reproductionMoves;
+    this.energyFromFish = energyFromFish;
+    this.startEnergy = startEnergy;
+    this.neighborSize = neighborSize;
+    this.vonNeuman = vonNeuman;
+    this.toroidalNeighbor = toroidalNeighbor;
+  }
+
+  @Override
+  public void setGrid(Cell[][] grid) {
+    if (this.grid == null) {
+      this.grid = makeFishOrShark(grid);
+    }
   }
 
   public Cell[][] makeFishOrShark(Cell[][] grids) {

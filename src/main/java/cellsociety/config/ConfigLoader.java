@@ -162,22 +162,22 @@ public class ConfigLoader {
     // Determine the type of simulation and instantiate the appropriate RuleSet
     switch (simulationType) {
       case "GameOfLife":
-        ruleSet = new GameOfLife(grid);
+        ruleSet = new GameOfLife();
         break;
       case "SpreadingOfFire":
-        ruleSet = new SpreadingOfFire(grid, Double.valueOf(parameters.get("probabilityIgnite")) , Double.valueOf(parameters.get("probabilityTree")));
+        ruleSet = new SpreadingOfFire(Double.valueOf(parameters.get("probabilityIgnite")) , Double.valueOf(parameters.get("probabilityTree")));
         break;
       case "Percolation":
-        ruleSet = new Percolation(grid);
+        ruleSet = new Percolation();
         break;
       case "Segregation":
-        ruleSet = new Segregation(grid, Double.valueOf(parameters.get("segregationFactor")));
+        ruleSet = new Segregation(Double.valueOf(parameters.get("segregationFactor")));
         break;
       case "WaterWorld":
-        ruleSet = new WaterWorld(grid);
+        ruleSet = new WaterWorld();
         break;
       case "FallingSandWater":
-        ruleSet = new FallingSandWater(grid);
+        ruleSet = new FallingSandWater();
         break;
       default:
         System.err.println("Unsupported simulation type: " + simulationType);

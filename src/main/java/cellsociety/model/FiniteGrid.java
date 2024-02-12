@@ -1,14 +1,8 @@
 package cellsociety.model;
 
-import java.util.HashSet;
-import java.util.Set;
+public class FiniteGrid extends GenericGrid {
 
-public class FiniteGrid implements Grid {
-
-  private Cell[][] grid;
-  private RuleSet rules;
-
-  public FiniteGrid(RuleSet rules) {
+  public FiniteGrid(RuleSet rules, Cell[][] grid) {
     // takes in ruleset to best used to update the grid
     // grid is initially taken from the Rulset as some changes need to be made to the initial grid
     // for some implementations

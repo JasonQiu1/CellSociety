@@ -13,24 +13,28 @@ public class Segregation extends RuleSet {
 
   private List<Cell> emptyCells;
 
-  public Segregation(Cell[][] grid) {
-    super(grid);
+  public Segregation() {
+    super();
     // finds all empty cells
     emptyCells = findEmptyCells();
     segregationFraction = 0.3;
   }
 
-  public Segregation(Cell[][] grid, double segregationFactor) {
-    super(grid);
+  public Segregation(double segregationFactor) {
+    super();
     emptyCells = findEmptyCells();
     this.segregationFraction = segregationFactor;
   }
 
-  public Segregation(Cell[][] grid, double segregationFactor, int neighborSize) {
-    super(grid);
+  public Segregation(double segregationFactor,
+      int neighborSize, boolean
+      vonNeuman, boolean toroidalNeighbor) {
+    super();
     emptyCells = findEmptyCells();
     this.segregationFraction = segregationFactor;
     this.neighborSize = neighborSize;
+    this.vonNeuman = vonNeuman;
+    this.toroidalNeighbor = toroidalNeighbor;
   }
 
   @Override
@@ -62,10 +66,10 @@ public class Segregation extends RuleSet {
   public List<Cell> findEmptyCells() {
     // creates ArrayList of empty cells (no group there)
     List<Cell> empty = new ArrayList<>();
-    for (int i = 0; i < getGrid().length; i++) {
-      for (int j = 0; j < getGrid()[0].length; j++) {
-        if (getGrid()[i][j].getCurrentState() == 0) {
-          empty.add(getGrid()[i][j]);
+    for (int i = 0; i < grid.length; i++) {
+      for (int j = 0; j < grid[0].length; j++) {
+        if (grid[i][j].getCurrentState() == 0) {
+          empty.add(grid[i][j]);
         }
       }
     }

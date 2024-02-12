@@ -19,7 +19,7 @@ public class Simulation {
   public Simulation(RuleSet ruleSet, Cell[][] initialGrid) {
 //  public Simulation() {
     this.ruleSet = ruleSet;
-    this.grid = new FiniteGrid(ruleSet);
+    this.grid = new FiniteGrid(ruleSet, initialGrid);
     this.isPaused = true;
     this.simulationSpeed = 1.0;
     this.lastUpdateTime = 0;
