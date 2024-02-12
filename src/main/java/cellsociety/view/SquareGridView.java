@@ -39,21 +39,7 @@ class SquareGridView extends GridView {
       }
     }
 
-    // Column constraints:
-    for (int x = 0; x < getNumColumns(); x++) {
-      ColumnConstraints cc = new ColumnConstraints();
-      cc.setPercentWidth(100.0 / getNumColumns());
-      cc.setFillWidth(true);
-      gridPane.getColumnConstraints().add(cc);
-    }
-
-    // row constraints:
-    for (int y = 0; y < getNumRows(); y++) {
-      RowConstraints rc = new RowConstraints();
-      rc.setPercentHeight(100.0 / getNumRows());
-      rc.setFillHeight(true);
-      gridPane.getRowConstraints().add(rc);
-    }
+    Util.setEqualCellSize(gridPane, getNumRows(), getNumColumns());
 
     getRoot().getChildren().add(gridPane);
   }
