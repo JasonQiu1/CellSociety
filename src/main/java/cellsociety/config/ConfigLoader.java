@@ -152,10 +152,10 @@ public class ConfigLoader {
 //        parameters.put(name, value);
 //      }
 //    }
-    return buildGameRuleSet(simulationType, this.grid);
+    return buildGameRuleSet(simulationType);
   }
 
-  private RuleSet buildGameRuleSet(String simulationType, Cell[][] grid){
+  private RuleSet buildGameRuleSet(String simulationType){
     RuleSet ruleSet = null;
 //    Map<String, String> parameters = simulation.getConfigInfo();
 

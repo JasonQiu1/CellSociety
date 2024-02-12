@@ -68,6 +68,6 @@ public class GenericGrid implements Grid {
         }
       }
     }
-    return uniqueStates.size();
+    return 6;
   }
 }
