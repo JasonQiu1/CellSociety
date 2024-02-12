@@ -2,6 +2,7 @@ package cellsociety.view;
 
 import cellsociety.controller.Controller;
 import cellsociety.model.Simulation;
+import java.util.Map;
 import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -77,11 +78,14 @@ class Util {
   public static Pane makeSimulationInfoPanel(Simulation simulation) {
     Label simulationInfoText = new Label();
     simulationInfoText.setWrapText(true);
-//    simulationInfoText.setText(
-//        "Configuration info:\n" +
-//            "Author: " + simulation.getAuthor() + '\n' +
-//            "Description: " + simulation.getDescription());
-
+    StringBuilder simulationInfo = new StringBuilder("Configuration info:");
+    for (Map.Entry<String, String> entry : simulation.getConfigInfo().entrySet()) {
+      simulationInfo.append("\n");
+      simulationInfo.append(entry.getKey());
+      simulationInfo.append(": ");
+      simulationInfo.append(entry.getValue());
+    }
+    simulationInfoText.setText(simulationInfo.toString());
     ScrollPane simulationInfoPane = new ScrollPane(simulationInfoText);
     simulationInfoPane.getStyleClass().add("simulation-info-pane");
     simulationInfoPane.setFitToWidth(true);
