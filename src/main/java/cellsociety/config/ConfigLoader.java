@@ -39,10 +39,11 @@ public class ConfigLoader {
     try {
       this.fileName = fileName;
       Document doc = readXmlFile(FILE_PATH + fileName);
+      parseSimulationDetails(doc);
       this.grid = buildGrid(doc);
       this.ruleSet = buildRuleSet(doc);
       simulation = new Simulation(ruleSet, grid);
-      parseSimulationDetails(doc);
+      simulation.setConfigInfo(parameters);
     } catch (Exception e) {
       throw new RuntimeException("something went wrong with loading the config file\n" + e.getMessage());
     }
@@ -87,42 +88,76 @@ public class ConfigLoader {
     }
   }
 
+//  private void parseSimulationDetails(Document doc) {
+//    Element root = doc.getDocumentElement();
+//    Map<String, String> configInfo = new HashMap<>();
+//
+//    String author = getTextValue(root, "Author");
+//    configInfo.put("Author", author);
+//
+//    String description = getTextValue(root, "Description");
+//    configInfo.put("Description", description);
+//
+//    String Colors = getTextValue(root, "Colors");
+//    configInfo.put("Colors", Colors);
+//
+//    simulation.setConfigInfo(configInfo);
+//  }
+
   private void parseSimulationDetails(Document doc) {
     Element root = doc.getDocumentElement();
     Map<String, String> configInfo = new HashMap<>();
 
-    String author = getTextValue(root, "Author");
-    configInfo.put("Author", author);
+    NodeList nodeList = root.getChildNodes();
+    for (int i = 0; i < nodeList.getLength(); i++) {
+      Node node = nodeList.item(i);
+      if (node.getNodeType() == Node.ELEMENT_NODE) {
+        Element element = (Element) node;
+        String tagName = element.getTagName();
+        if (!tagName.equals("InitialConfig")) {
+          if (tagName.equals("Parameters")) {
+            NodeList parameterNodes = element.getElementsByTagName("*");
+            for (int j = 0; j < parameterNodes.getLength(); j++) {
+              Element parameterElement = (Element) parameterNodes.item(j);
+              String parameterName = parameterElement.getTagName();
+              String parameterValue = parameterElement.getTextContent();
+              configInfo.put(parameterName, parameterValue);
+            }
+          } else {
+            String textValue = getTextValue(root, tagName);
+            configInfo.put(tagName, textValue);
+          }
+        }
+      }
+    }
+    this.parameters = new HashMap<>(configInfo);
 
-    String description = getTextValue(root, "Description");
-    configInfo.put("Description", description);
-
-    simulation.setConfigInfo(configInfo);
   }
+
 
 
   private RuleSet buildRuleSet(Document doc) {
     Element root = doc.getDocumentElement();
     String simulationType = getTextValue(root, "SimulationType");
-    System.out.println(simulationType);
+//    System.out.println(simulationType);
 
     // Initialize a map to hold parameter names and values
-    parameters = new HashMap<>();
-    NodeList parameterList = root.getElementsByTagName("Parameters").item(0).getChildNodes();
-    for (int i = 0; i < parameterList.getLength(); i++) {
-      if (parameterList.item(i).getNodeType() == Node.ELEMENT_NODE) {
-        Element parameter = (Element) parameterList.item(i);
-        String name = parameter.getTagName();
-        String value = parameter.getTextContent().trim();
-        parameters.put(name, value);
-      }
-    }
-    return buildGameRuleSet(simulationType, this.grid, parameters);
+//    parameters = new HashMap<>();
+//    NodeList parameterList = root.getElementsByTagName("Parameters").item(0).getChildNodes();
+//    for (int i = 0; i < parameterList.getLength(); i++) {
+//      if (parameterList.item(i).getNodeType() == Node.ELEMENT_NODE) {
+//        Element parameter = (Element) parameterList.item(i);
+//        String name = parameter.getTagName();
+//        String value = parameter.getTextContent().trim();
+//        parameters.put(name, value);
+//      }
+//    }
+    return buildGameRuleSet(simulationType, this.grid);
   }
 
-  private RuleSet buildGameRuleSet(String simulationType, Cell[][] grid,
-      Map<String, String> parameters) {
+  private RuleSet buildGameRuleSet(String simulationType, Cell[][] grid){
     RuleSet ruleSet = null;
+//    Map<String, String> parameters = simulation.getConfigInfo();
 
     // Determine the type of simulation and instantiate the appropriate RuleSet
     switch (simulationType) {

@@ -77,10 +77,10 @@ class Util {
   public static Pane makeSimulationInfoPanel(Simulation simulation) {
     Label simulationInfoText = new Label();
     simulationInfoText.setWrapText(true);
-    simulationInfoText.setText(
-        "Configuration info:\n" +
-            "Author: " + simulation.getAuthor() + '\n' +
-            "Description: " + simulation.getDescription());
+//    simulationInfoText.setText(
+//        "Configuration info:\n" +
+//            "Author: " + simulation.getAuthor() + '\n' +
+//            "Description: " + simulation.getDescription());
 
     ScrollPane simulationInfoPane = new ScrollPane(simulationInfoText);
     simulationInfoPane.getStyleClass().add("simulation-info-pane");

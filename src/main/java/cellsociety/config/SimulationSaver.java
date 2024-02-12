@@ -5,6 +5,7 @@ import cellsociety.model.Simulation;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -21,7 +22,7 @@ public class SimulationSaver {
 
 
   public static void saveSimulationState(Simulation simulation, String filePath) {
-    System.out.println("\n\n\n starting to save");
+//    System.out.println("\n\n\n starting to save");
     try {
       DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
       DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -42,11 +43,11 @@ public class SimulationSaver {
 //      grid[1][8] = 69;
 //      addGridStateTest(doc, rootElement, grid);
 
-      HashMap<String, String> params = new HashMap<>();
-      params.put("probability", "0.9");
+//      HashMap<String, String> params = new HashMap<>();
+//      params.put("probability", "0.9");
 
       // Add other parameters if needed
-      addSimulationParameters(doc, rootElement, params);
+      addSimulationParameters(doc, rootElement, simulation.getConfigInfo());
 
       addSimulationType(doc, rootElement, simulation.getSimulationType());
 
@@ -58,7 +59,7 @@ public class SimulationSaver {
       StreamResult result = new StreamResult(new File(FILE_SAVE_PATH + filePath));
 
       transformer.transform(source, result);
-      System.out.println("\n\n\n the save file should have been saved");
+//      System.out.println("\n\n\n the save file should have been saved");
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -68,8 +69,11 @@ public class SimulationSaver {
   private static void addSimulationDetails(Document doc,
       Element rootElement, Simulation simulation) {
     Map<String, String> configInfo = simulation.getConfigInfo();
-
+//    System.out.println(configInfo);
     for (Map.Entry<String, String> entry : configInfo.entrySet()) {
+      if (Objects.equals(entry.getKey(), "Width") || Objects.equals(entry.getKey(), "Height")){
+        continue;
+      }
       Element detailElement = doc.createElement(entry.getKey());
       detailElement.setTextContent(entry.getValue());
       rootElement.appendChild(detailElement);
@@ -83,9 +87,8 @@ public class SimulationSaver {
 
     Element heightElement = doc.createElement("Height");
     heightElement.setTextContent(String.valueOf(grid.getNumRows()));
-// The length of the grid array gives the height
     rootElement.appendChild(heightElement);
-    // Assuming you have a way to iterate over the grid and get cell states
+
     Element gridElement = doc.createElement("InitialConfig");
     for (int row = 0; row < grid.getNumRows(); row++) {
       for (int col = 0; col < grid.getNumCols(); col++) {
@@ -93,7 +96,6 @@ public class SimulationSaver {
         cellElement.setAttribute("col", String.valueOf(col));
         cellElement.setAttribute("row", String.valueOf(row));
         cellElement.setTextContent(String.valueOf(grid.getCellState(row, col)));
-// Assuming getCellState method exists
         gridElement.appendChild(cellElement);
       }
     }
