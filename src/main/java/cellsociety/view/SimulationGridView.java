@@ -43,9 +43,7 @@ class SimulationGridView extends SimulationView {
 
   // recreates the grid view with the same dimensions as the current grid
   private void reinitializeGridView() {
-    if (gridView != null) {
-      getRoot().getChildren().remove(gridView.getRoot());
-    }
+    getRoot().getChildren().clear();
 
     gridView = new SquareGridView(getRoot(), getSimulation().getGrid().getNumRows(),
         getSimulation().getGrid().getNumCols());

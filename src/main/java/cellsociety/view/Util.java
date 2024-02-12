@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javax.imageio.ImageIO;
 
@@ -102,19 +103,22 @@ class Util {
    * @param numColumns the number of columns.
    */
   public static void setEqualCellSize(GridPane gridPane, int numRows, int numColumns) {
-    // Column constraints:
+    gridPane.getColumnConstraints().clear();
+    gridPane.getRowConstraints().clear();
+
+    ColumnConstraints cc = new ColumnConstraints();
+    cc.setPercentWidth(100.0 / numColumns);
+    cc.setFillWidth(true);
+    cc.setHgrow(Priority.ALWAYS);
     for (int x = 0; x < numColumns; x++) {
-      ColumnConstraints cc = new ColumnConstraints();
-      cc.setPercentWidth(100.0 / numColumns);
-      cc.setFillWidth(true);
       gridPane.getColumnConstraints().add(cc);
     }
 
-    // row constraints:
+    RowConstraints rc = new RowConstraints();
+    rc.setPercentHeight(100.0 / numRows);
+    rc.setFillHeight(true);
+    rc.setVgrow(Priority.ALWAYS);
     for (int y = 0; y < numRows; y++) {
-      RowConstraints rc = new RowConstraints();
-      rc.setPercentHeight(100.0 / numRows);
-      rc.setFillHeight(true);
       gridPane.getRowConstraints().add(rc);
     }
   }

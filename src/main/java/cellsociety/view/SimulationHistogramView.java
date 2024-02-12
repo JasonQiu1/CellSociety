@@ -29,12 +29,16 @@ class SimulationHistogramView extends SimulationView {
   public void update() {
     Map<Integer, Pair<Integer, Paint>> numOfEachState = new HashMap<>();
     Grid grid = getSimulation().getGrid();
-    ;
+
+    for (int i = 0; i < getSimulation().getNumStates(); i++) {
+      numOfEachState.put(i, new Pair<>(0, getColorGenerator().getColor(i)));
+    }
+
     for (int row = 0; row < grid.getNumRows(); row++) {
       for (int col = 0; col < grid.getNumCols(); col++) {
         numOfEachState.compute(grid.getCellState(row, col),
             (k, v) -> (v == null) ? new Pair<>(0, getColorGenerator().getColor(k))
-                : new Pair<>(v.getKey() + 1, getColorGenerator().getColor(k)));
+                : new Pair<>(v.getKey() + 1, v.getValue()));
       }
     }
     histogram.setXSeries(numOfEachState);
