@@ -1,77 +1,39 @@
 package cellsociety.model;
 
-public abstract class RuleSet implements Rules {
+public class HexGrid extends GenericGrid {
+int neighborSize = 1;
+boolean toroidalNeighbor = true;
+boolean vonNeuman = false;
 
-  // determines size of neighbors
-  protected int neighborSize = 1;
-  protected boolean vonNeuman = false;
-  protected boolean toroidalNeighbor = false;
-  protected Cell[][] grid;
-
-
-  public RuleSet(Cell[][] grid) {
-    this.grid = grid;
+  public HexGrid(RuleSet rules) {
+    super(rules);
+    this.grid = makeHexGrid(rules.getGrid());
+    rules.setGrid(this.grid);
   }
 
-  public RuleSet() {
-    grid = null;
-  }
-
-  public void setGrid(Cell[][] grid) {
-    if (this.grid==null) {
-      this.grid = grid;
-    }
-    else {
-      return;
-    }
-  }
-
-  public Cell[][] getGrid () {
-    return grid;
-  }
-  public void applyRules() {
-    // default applyRules. used by almost all children
-    for (int i = 0; i < grid.length; i++) {
-      for (int j = 0; j < grid[0].length; j++) {
-        Cell[][] neighbors = findNeighbors(i, j);
-        // finds neighbors and sends to SetUpdateFlag.
-        // setUpdateFlag is written in the children classes
-        setUpdateFlag(neighbors, grid[i][j]);
-      }
-    }
-    update();
-  }
-
-  public abstract void setUpdateFlag(Cell[][] neighbors, Cell c1);
-
-  public void applyUpdate(Cell c1) {
-    // used by the majority of children
-    c1.setCurrentState(c1.getNextState());
-  }
-
-  public int countLoop(Cell[][] neighbors, int state) {
-    int counter = 0;
-    for (int i = 0; i < neighbors.length; i++) {
-      for (int j = 0; j < neighbors[0].length; j++) {
-        if (neighbors[i][j] != null) {
-          if (neighbors[i][j].getCurrentState() == state) {
-            counter++;
+  public Cell[][] makeHexGrid (Cell[][] grid) {
+    Cell[][] hexGrid = new Cell[grid.length][grid[0].length*2];
+    for (int i = 0; i<hexGrid.length; i++) {
+      for (int j = 0; j<hexGrid[0].length; j++) {
+        if (i % 2 == 0) {
+          if (j%2 == 0) {
+            hexGrid[i][j] = grid[i][j/2];
+          }
+          else {
+            hexGrid[i][j] = null;
+          }
+        }
+        else {
+          if (j%2 == 0) {
+            hexGrid[i][j] = null;
+          }
+          else {
+            hexGrid[i][j] = grid[i][(j/2)];
           }
         }
       }
     }
-    return counter;
-  }
-
-  public void update() {
-    // used by all children
-    for (int i = 0; i < grid.length; i++) {
-      for (int j = 0; j < grid[0].length; j++) {
-        if (grid[i][j].getCurrentState() != grid[i][j].getNextState()) {
-          applyUpdate(grid[i][j]);
-        }
-      }
-    }
+    return hexGrid;
   }
 
   public Cell[][] findNeighbors(int cordX, int cordY) {
@@ -138,18 +100,5 @@ public abstract class RuleSet implements Rules {
     adjNeighbors[2][0] = neighbors[(neighbors.length / 2)][(neighbors.length / 2) - 1];
     adjNeighbors[3][0] = neighbors[(neighbors.length / 2)][(neighbors.length / 2) + 1];
     return adjNeighbors;
-  }
-
-  public void neighborLoop(Cell[][] neighbor, Cell c1) {
-    for (int i = 0; i < neighbor.length; i++) {
-      for (int j = 0; j < neighbor[0].length; j++) {
-        if (neighbor[i][j] != null) {
-          nextLogic(c1, neighbor[i][j]);
-        }
-      }
-    }
-  }
-
-  public void nextLogic(Cell currentCell, Cell neighborCell) {
   }
 }

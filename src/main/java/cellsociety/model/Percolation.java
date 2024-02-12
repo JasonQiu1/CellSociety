@@ -6,9 +6,11 @@ public class Percolation extends RuleSet {
     super(grid);
   }
 
-  public Percolation(Cell[][] grid, int neighborSize) {
+  public Percolation(Cell[][] grid, int neighborSize, boolean vonNeuman, boolean toroidalNeighbor) {
     super(grid);
     this.neighborSize = neighborSize;
+    this.vonNeuman = vonNeuman;
+    this.toroidalNeighbor = toroidalNeighbor;
   }
 
   // 0 is nothing

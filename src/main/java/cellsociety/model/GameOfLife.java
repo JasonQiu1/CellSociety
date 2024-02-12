@@ -7,10 +7,12 @@ public class GameOfLife extends RuleSet {
     super(grid);
   }
 
-  public GameOfLife(Cell[][] grid, int neighborSize) {
+  public GameOfLife(Cell[][] grid, int neighborSize, boolean vonNeuman, boolean toroidalNeighbor) {
     // default constructor
     super(grid);
     this.neighborSize = neighborSize;
+    this.vonNeuman = vonNeuman;
+    this.toroidalNeighbor = toroidalNeighbor;
   }
 
   // 0 dead
