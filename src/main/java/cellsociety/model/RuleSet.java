@@ -88,8 +88,7 @@ public abstract class RuleSet implements Rules {
     }
     if (!vonNeuman) {
       return neighbors;
-    }
-    else {
+    } else {
       return vonNeumanNeighbors(neighbors);
     }
   }

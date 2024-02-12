@@ -13,23 +13,23 @@ public class Segregation extends RuleSet {
 
   private List<Cell> emptyCells;
 
-  public Segregation(Cell[][] grid) {
-    super(grid);
+  public Segregation() {
+    super();
     // finds all empty cells
     emptyCells = findEmptyCells();
     segregationFraction = 0.3;
   }
 
-  public Segregation(Cell[][] grid, double segregationFactor) {
-    super(grid);
+  public Segregation(double segregationFactor) {
+    super();
     emptyCells = findEmptyCells();
     this.segregationFraction = segregationFactor;
   }
 
-  public Segregation(Cell[][] grid, double segregationFactor,
+  public Segregation(double segregationFactor,
       int neighborSize, boolean
       vonNeuman, boolean toroidalNeighbor) {
-    super(grid);
+    super();
     emptyCells = findEmptyCells();
     this.segregationFraction = segregationFactor;
     this.neighborSize = neighborSize;

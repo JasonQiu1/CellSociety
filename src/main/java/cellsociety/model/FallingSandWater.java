@@ -5,8 +5,8 @@ public class FallingSandWater extends RuleSet {
   // 1 water
   // 2 sand
 
-  public FallingSandWater(Cell[][] grid) {
-    super(grid);
+  public FallingSandWater() {
+    super();
     toroidalNeighbor = false;
     neighborSize = 1;
     vonNeuman = false;
@@ -26,20 +26,19 @@ public class FallingSandWater extends RuleSet {
         c1.setNextState(2);
       }
     }
-    if (c1.getCurrentState()==1) {
-      if (neighborUnder!= null && neighborUnder.getNextState()==0) {
+    if (c1.getCurrentState() == 1) {
+      if (neighborUnder != null && neighborUnder.getNextState() == 0) {
         c1.setNextState(0);
         neighborUnder.setNextState(1);
       }
-      else if (neighborUnderRight!= null && neighborUnderRight.getNextState()==0) {
+      else if (neighborUnderRight != null && neighborUnderRight.getNextState() == 0) {
         c1.setNextState(0);
         neighborUnderRight.setNextState(1);
       }
       else if (neighborUnderLeft != null && neighborUnderLeft.getNextState() == 0) {
         c1.setNextState(0);
         neighborUnderLeft.setNextState(1);
-      }
-      else {
+      } else {
         c1.setNextState(1);
       }
     }
