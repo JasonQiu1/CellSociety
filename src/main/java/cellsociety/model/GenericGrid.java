@@ -69,4 +69,19 @@ public class GenericGrid implements Grid {
     }
     return 6;
   }
+
+  @Override
+  public void setVonNeuman(boolean vonNeuman) {
+    rules.setVonNeuman(vonNeuman);
+  }
+
+  @Override
+  public void setNeighborSize(int neighborSize) {
+    rules.setNeighborSize(neighborSize);
+  }
+
+  @Override
+  public void setToroidalNeighbor(boolean toroidalNeighbor) {
+    rules.setToroidalNeighbor(toroidalNeighbor);
+  }
 }

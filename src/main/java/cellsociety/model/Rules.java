@@ -17,4 +17,5 @@ public interface Rules {
   void neighborLoop(Cell[][] neighbor, Cell c1);
 
   void nextLogic(Cell currentCell, Cell neighborCell);
+
 }

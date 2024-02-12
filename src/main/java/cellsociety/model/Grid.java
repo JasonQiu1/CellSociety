@@ -3,15 +3,21 @@ package cellsociety.model;
 public interface Grid {
 
   // simple grid interface
-  public void update();
+  void update();
 
-  public int getCellState(int row, int column);
+  int getCellState(int row, int column);
 
-  public int getNumRows();
+  int getNumRows();
 
-  public int getNumCols();
+  int getNumCols();
 
-  public void setGrid(Cell[][] cells);
+  void setGrid(Cell[][] cells);
 
-  public int getNumStates();
+  int getNumStates();
+
+  void setVonNeuman(boolean vonNeuman);
+
+  void setNeighborSize(int neighborSize);
+
+  void setToroidalNeighbor (boolean toroidalNeighbor);
 }

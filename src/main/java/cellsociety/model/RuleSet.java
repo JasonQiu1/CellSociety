@@ -147,4 +147,17 @@ public abstract class RuleSet implements Rules {
 
   public void nextLogic(Cell currentCell, Cell neighborCell) {
   }
+
+  public void setVonNeuman(boolean vonNeuman) {
+    this.vonNeuman = vonNeuman;
+  }
+
+  public void setNeighborSize(int neighborSize) {
+    this.neighborSize = neighborSize;
+  }
+
+  public void setToroidalNeighbor (boolean toroidalNeighbor) {
+    this.toroidalNeighbor = toroidalNeighbor;
+  }
+
 }
