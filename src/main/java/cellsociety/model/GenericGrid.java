@@ -12,9 +12,9 @@ public class GenericGrid implements Grid {
     // takes in ruleset to best used to update the grid
     // grid is initially taken from the Rulset as some changes need to be made to the initial grid
     // for some implementations
-    this.grid = grid;
     this.rules = rules;
     rules.setGrid(grid);
+    this.grid = rules.getGrid();
 
   }
 

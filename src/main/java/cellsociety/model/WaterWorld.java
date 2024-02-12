@@ -28,7 +28,6 @@ public class WaterWorld extends RuleSet {
     this.reproductionMoves = reproductionMoves;
     this.energyFromFish = energyFromFish;
     this.startEnergy = startEnergy;
-    this.grid = (makeFishOrShark(grid));
   }
 
   public WaterWorld(int reproductionMoves, int energyFromFish, int startEnergy,
@@ -41,7 +40,6 @@ public class WaterWorld extends RuleSet {
     this.neighborSize = neighborSize;
     this.vonNeuman = vonNeuman;
     this.toroidalNeighbor = toroidalNeighbor;
-    this.grid = (makeFishOrShark(grid));
   }
 
   @Override
