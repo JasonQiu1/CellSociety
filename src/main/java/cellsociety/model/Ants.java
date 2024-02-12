@@ -10,7 +10,7 @@ public class Ants {
   // 3 left
 
   public Ants() {
-    hasFoodItem = Math.random()<0.5;
+    hasFoodItem = Math.random() < 0.5;
     directionFacing = 1;
   }
 

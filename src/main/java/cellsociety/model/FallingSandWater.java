@@ -18,7 +18,7 @@ public class FallingSandWater extends RuleSet {
     Cell neighborUnderRight = neighbors[(neighbors.length / 2) + 1][(neighbors.length / 2) + 1];
     Cell neighborUnderLeft = neighbors[(neighbors.length / 2) + 1][(neighbors.length / 2) - 1];
     if (c1.getCurrentState() == 2) {
-      if (neighborUnder!= null && neighborUnder.getNextState() == 0) {
+      if (neighborUnder != null && neighborUnder.getNextState() == 0) {
         c1.setNextState(0);
         neighborUnder.setNextState(2);
       }
@@ -34,8 +34,7 @@ public class FallingSandWater extends RuleSet {
       else if (neighborUnderRight != null && neighborUnderRight.getNextState() == 0) {
         c1.setNextState(0);
         neighborUnderRight.setNextState(1);
-      }
-      else if (neighborUnderLeft != null && neighborUnderLeft.getNextState() == 0) {
+      } else if (neighborUnderLeft != null && neighborUnderLeft.getNextState() == 0) {
         c1.setNextState(0);
         neighborUnderLeft.setNextState(1);
       } else {

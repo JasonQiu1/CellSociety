@@ -1,6 +1,5 @@
 package cellsociety.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AntCell extends Cell {
@@ -68,7 +67,7 @@ public class AntCell extends Cell {
   }
 
   public void employEvaporation() {
-    foodPheromones = (int)(foodPheromones * (1 - EVAPORATION_RATE));
-    nestPheromones = (int)(nestPheromones * (1 - EVAPORATION_RATE));
+    foodPheromones = (int) (foodPheromones * (1 - EVAPORATION_RATE));
+    nestPheromones = (int) (nestPheromones * (1 - EVAPORATION_RATE));
   }
 }
