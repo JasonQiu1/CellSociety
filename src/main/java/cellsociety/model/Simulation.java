@@ -2,8 +2,8 @@ package cellsociety.model;
 
 public class Simulation {
 
-  private cellsociety.model.RuleSet ruleSet;
-  private cellsociety.model.Grid grid;
+  private RuleSet ruleSet;
+  private Grid grid;
   private boolean isPaused;
   private double simulationSpeed;
   private double lastUpdateTime;
@@ -18,6 +18,14 @@ public class Simulation {
     this.isPaused = true;
     this.simulationSpeed = 1.0;
     this.lastUpdateTime = 0;
+  }
+
+  public String getSimulationType(){
+    if (ruleSet != null) {
+      return ruleSet.getClass().getSimpleName();
+    } else {
+      return "Unknown";
+    }
   }
 
   public void pause() {
@@ -59,7 +67,6 @@ public class Simulation {
 
   public Grid getGrid() {
     return grid;
-//    return grid;
   }
 
   // Additional getters for author and description if needed

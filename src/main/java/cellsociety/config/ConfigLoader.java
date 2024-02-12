@@ -35,8 +35,10 @@ public class ConfigLoader {
 
 
   public ConfigLoader(String fileName) {
+//      throws ParserConfigurationException, IOException, SAXException {
+    try{
     this.fileName = fileName;
-    try {
+//    try {
       Document doc = readXmlFile(FILE_PATH + fileName);
 //      System.out.println(doc);
       this.grid = buildGrid(doc);
@@ -51,9 +53,11 @@ public class ConfigLoader {
 //            trackParameters(doc);
 //            this.simulation = buildSimulation();
     } catch (Exception e) {
-      e.printStackTrace();
+//      e.printStackTrace();
       // Handle exceptions or errors accordingly
+      throw new RuntimeException("something went wrong with loading the config file\n" + e.getMessage());
     }
+
   }
 
   private Document readXmlFile(String fileName)
@@ -95,7 +99,9 @@ public class ConfigLoader {
       return nodeList.item(0).getTextContent();
     } else {
       // FIXME: empty string or exception? In some cases it may be an error to not find any text
-      return "";
+//      return "";
+      throw new RuntimeException(tagName +
+          " was not provided or null in the xml config file selected");
     }
   }
 

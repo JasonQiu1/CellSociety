@@ -28,22 +28,28 @@ public class Game extends Application {
   }
 
   private static void step(double elapsedTime) {
-    // Update simulation and UI based on elapsed time
-    for (Simulation simulation : simulations) {
-//      System.out.println("bbbb\n\n\n\nccc");
-      simulation.update(elapsedTime);
+    try {
+      for (Simulation simulation : simulations) {
+        simulation.update(elapsedTime);
+      }
+      view.update();
+    } catch (RuntimeException e) {
+      View.showError(e.getMessage());
     }
-//    view.setSimulation(simulation);
-    view.update();
   }
 
   public static boolean loadNewSimulation(String configFileName) {
-    // Load a new simulation from a configuration file
-    configLoader = new ConfigLoader(configFileName);
-    Simulation simulation = configLoader.simulation;
-    view.addSimulation(simulation);
-    simulations.add(simulation);
-    return updateGridFromConfig(configFileName);
+    try {
+      // Load a new simulation from a configuration file
+      configLoader = new ConfigLoader(configFileName + ".xml");
+      Simulation simulation = configLoader.simulation;
+      view.addSimulation(simulation);
+      simulations.add(simulation);
+      return updateGridFromConfig(configFileName);
+    } catch (RuntimeException e) {
+      View.showError(e.getMessage());
+      return false;
+    }
   }
 
   private static boolean updateGridFromConfig(String configFileName) {
