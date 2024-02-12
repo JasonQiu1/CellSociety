@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<config>
+    <Description>Dense Mix for Clear Segregation</Description>
+    <Colors>Red and blue but not green please</Colors>
+    <Author>Prince</Author>
+    <Height>10</Height>
+    <Width>10</Width>
+    <segregationFactor>0.7</segregationFactor>
+    <SimulationType>Segregation</SimulationType>
+    <Width>10</Width>
+    <Height>10</Height>
+    <InitialConfig>
+        <Cell col="0" row="0">0</Cell>
+        <Cell col="1" row="0">0</Cell>
+        <Cell col="2" row="0">2</Cell>
+        <Cell col="3" row="0">2</Cell>
+        <Cell col="4" row="0">2</Cell>
+        <Cell col="5" row="0">0</Cell>
+        <Cell col="6" row="0">1</Cell>
+        <Cell col="7" row="0">0</Cell>
+        <Cell col="8" row="0">1</Cell>
+        <Cell col="9" row="0">0</Cell>
+        <Cell col="0" row="1">2</Cell>
+        <Cell col="1" row="1">2</Cell>
+        <Cell col="2" row="1">0</Cell>
+        <Cell col="3" row="1">2</Cell>
+        <Cell col="4" row="1">2</Cell>
+        <Cell col="5" row="1">0</Cell>
+        <Cell col="6" row="1">0</Cell>
+        <Cell col="7" row="1">1</Cell>
+        <Cell col="8" row="1">0</Cell>
+        <Cell col="9" row="1">1</Cell>
+        <Cell col="0" row="2">0</Cell>
+        <Cell col="1" row="2">0</Cell>
+        <Cell col="2" row="2">0</Cell>
+        <Cell col="3" row="2">0</Cell>
+        <Cell col="4" row="2">0</Cell>
+        <Cell col="5" row="2">0</Cell>
+        <Cell col="6" row="2">1</Cell>
+        <Cell col="7" row="2">0</Cell>
+        <Cell col="8" row="2">0</Cell>
+        <Cell col="9" row="2">0</Cell>
+        <Cell col="0" row="3">2</Cell>
+        <Cell col="1" row="3">0</Cell>
+        <Cell col="2" row="3">0</Cell>
+        <Cell col="3" row="3">2</Cell>
+        <Cell col="4" row="3">2</Cell>
+        <Cell col="5" row="3">0</Cell>
+        <Cell col="6" row="3">2</Cell>
+        <Cell col="7" row="3">0</Cell>
+        <Cell col="8" row="3">0</Cell>
+        <Cell col="9" row="3">2</Cell>
+        <Cell col="0" row="4">2</Cell>
+        <Cell col="1" row="4">0</Cell>
+        <Cell col="2" row="4">0</Cell>
+        <Cell col="3" row="4">0</Cell>
+        <Cell col="4" row="4">0</Cell>
+        <Cell col="5" row="4">2</Cell>
+        <Cell col="6" row="4">2</Cell>
+        <Cell col="7" row="4">2</Cell>
+        <Cell col="8" row="4">0</Cell>
+        <Cell col="9" row="4">0</Cell>
+        <Cell col="0" row="5">2</Cell>
+        <Cell col="1" row="5">2</Cell>
+        <Cell col="2" row="5">0</Cell>
+        <Cell col="3" row="5">1</Cell>
+        <Cell col="4" row="5">0</Cell>
+        <Cell col="5" row="5">0</Cell>
+        <Cell col="6" row="5">0</Cell>
+        <Cell col="7" row="5">0</Cell>
+        <Cell col="8" row="5">2</Cell>
+        <Cell col="9" row="5">2</Cell>
+        <Cell col="0" row="6">0</Cell>
+        <Cell col="1" row="6">0</Cell>
+        <Cell col="2" row="6">0</Cell>
+        <Cell col="3" row="6">1</Cell>
+        <Cell col="4" row="6">1</Cell>
+        <Cell col="5" row="6">1</Cell>
+        <Cell col="6" row="6">1</Cell>
+        <Cell col="7" row="6">0</Cell>
+        <Cell col="8" row="6">2</Cell>
+        <Cell col="9" row="6">2</Cell>
+        <Cell col="0" row="7">0</Cell>
+        <Cell col="1" row="7">0</Cell>
+        <Cell col="2" row="7">1</Cell>
+        <Cell col="3" row="7">1</Cell>
+        <Cell col="4" row="7">1</Cell>
+        <Cell col="5" row="7">1</Cell>
+        <Cell col="6" row="7">0</Cell>
+        <Cell col="7" row="7">0</Cell>
+        <Cell col="8" row="7">2</Cell>
+        <Cell col="9" row="7">0</Cell>
+        <Cell col="0" row="8">0</Cell>
+        <Cell col="1" row="8">0</Cell>
+        <Cell col="2" row="8">0</Cell>
+        <Cell col="3" row="8">1</Cell>
+        <Cell col="4" row="8">1</Cell>
+        <Cell col="5" row="8">1</Cell>
+        <Cell col="6" row="8">0</Cell>
+        <Cell col="7" row="8">1</Cell>
+        <Cell col="8" row="8">0</Cell>
+        <Cell col="9" row="8">1</Cell>
+        <Cell col="0" row="9">0</Cell>
+        <Cell col="1" row="9">0</Cell>
+        <Cell col="2" row="9">0</Cell>
+        <Cell col="3" row="9">0</Cell>
+        <Cell col="4" row="9">1</Cell>
+        <Cell col="5" row="9">0</Cell>
+        <Cell col="6" row="9">1</Cell>
+        <Cell col="7" row="9">1</Cell>
+        <Cell col="8" row="9">1</Cell>
+        <Cell col="9" row="9">1</Cell>
+    </InitialConfig>
+    <Parameters>
+        <probability>0.9</probability>
+    </Parameters>
+    <SimulationType>Segregation</SimulationType>
+</config>

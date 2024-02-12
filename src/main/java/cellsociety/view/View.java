@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -56,7 +57,11 @@ public class View {
   public static void showError(String message) {
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle(resources.getString("errorWindowTitle"));
-    alert.setContentText(message);
+
+    Label messageText = new Label(message);
+    messageText.setWrapText(true);
+    alert.getDialogPane().setContent(messageText);
+
     alert.show();
   }
 

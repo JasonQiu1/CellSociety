@@ -36,6 +36,10 @@ class SimulationControlPanel extends UserInterfacePanel {
         event -> controller.handleSlowDownSimulationButtonPress());
     Button reset = Util.makeButton("reset" + PROPERTY_SUFFIX,
         event -> controller.handleResetGridButtonPress());
+    Button switchToGridView = Util.makeButton("switchToGridView" + PROPERTY_SUFFIX,
+        event -> controller.switchToSimulationGridView());
+    Button switchToHistogramView = Util.makeButton("switchToHistogramView" + PROPERTY_SUFFIX,
+        event -> controller.switchToSimulationHistogramView());
 
     TextField configPathInput = new TextField();
     configPathInput.setPrefColumnCount(INPUT_FIELD_WIDTH);
@@ -43,8 +47,9 @@ class SimulationControlPanel extends UserInterfacePanel {
         event -> controller.handleSaveConfigurationFileButtonPress(configPathInput.getText()));
 
     GridPane layout = new GridPane();
-    layout.addRow(0, start, pause);
-    layout.addRow(1, speedUp, slowDown);
+    layout.add(Util.makeSimulationInfoPanel(controller.getSimulation()), 0, 0, 4, 4);
+    layout.addRow(0, start, pause, speedUp, slowDown);
+    layout.addRow(1, switchToGridView, switchToHistogramView);
     layout.addRow(2, reset);
     layout.addRow(3, configPathInput, save);
     getRoot().getChildren().add(layout);

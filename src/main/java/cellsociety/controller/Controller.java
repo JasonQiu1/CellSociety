@@ -2,6 +2,8 @@ package cellsociety.controller;
 
 import cellsociety.Game;
 import cellsociety.model.Simulation;
+import cellsociety.view.SimulationViewType;
+import cellsociety.view.SimulationWindow;
 import cellsociety.view.View;
 
 /**
@@ -15,9 +17,15 @@ public class Controller {
   // how much to adjust updates per second
   public static final int SPEED_ADJUSTMENT = 1;
   private final Simulation simulation;
+  private final SimulationWindow simulationWindow;
 
-  public Controller(Simulation simulation) {
+  public Controller(Simulation simulation, SimulationWindow simulationView) {
     this.simulation = simulation;
+    this.simulationWindow = simulationView;
+  }
+
+  public Simulation getSimulation() {
+    return simulation;
   }
 
   /**
@@ -88,5 +96,13 @@ public class Controller {
   public void handleResetGridButtonPress() {
     // send a message to Game to load the initial grid into the same simulation
     // without resetting its parameters
+  }
+
+  public void switchToSimulationGridView() {
+    simulationWindow.switchSimulationView(SimulationViewType.GRID);
+  }
+
+  public void switchToSimulationHistogramView() {
+    simulationWindow.switchSimulationView(SimulationViewType.HISTOGRAM);
   }
 }

@@ -12,6 +12,8 @@ abstract class SimulationView extends UserInterfacePanel {
 
   private final Simulation simulation;
 
+  private final StateColorGenerator colorGenerator;
+
   /**
    * Sets the root to the given pane and also adds a css class for configurable styling.
    *
@@ -21,6 +23,7 @@ abstract class SimulationView extends UserInterfacePanel {
   protected SimulationView(Simulation simulation, Pane pane, String cssClassName) {
     super(pane, cssClassName);
     this.simulation = simulation;
+    colorGenerator = new StateColorGenerator(getSimulation().getNumStates());
   }
 
   /**
@@ -30,5 +33,9 @@ abstract class SimulationView extends UserInterfacePanel {
 
   protected Simulation getSimulation() {
     return simulation;
+  }
+
+  protected StateColorGenerator getColorGenerator() {
+    return colorGenerator;
   }
 }

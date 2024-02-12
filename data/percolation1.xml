@@ -7,7 +7,7 @@
     <!-- Open column in the middle for fluid to flow -->
     <Cell col="4" row="0">1</Cell>
     <Cell col="4" row="1">1</Cell>
-    <Cell col="4" row="2">1</Cell>
+    <Cell col="4" row="2">2</Cell>
     <Cell col="4" row="3">1</Cell>
     <Cell col="4" row="4">1</Cell>
     <Cell col="4" row="5">1</Cell>

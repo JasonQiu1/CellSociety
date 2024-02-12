@@ -1,0 +1,14 @@
+<config>
+  <Author>Prince</Author>
+  <Description>Basic Ecosystem</Description>
+  <Width>20</Width>
+  <Height>20</Height>
+  <InitialConfig>
+    <Cell col="0" row="0">1</Cell>
+    <Cell col="1" row="6">2</Cell>
+    <Cell col="10" row="10">2</Cell>
+    <Cell col="15" row="15">2</Cell>
+  </InitialConfig>
+  <Parameters></Parameters>
+  <SimulationType>FallingSandWatersssssss</SimulationType>
+</config>

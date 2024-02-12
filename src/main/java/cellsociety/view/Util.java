@@ -1,15 +1,22 @@
 package cellsociety.view;
 
 import cellsociety.controller.Controller;
+import cellsociety.model.Simulation;
+import java.util.Map;
 import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javax.imageio.ImageIO;
 
 /**
@@ -62,5 +69,57 @@ class Util {
 
     root.getChildren().add(layout);
     return root;
+  }
+
+  /**
+   * Creates a scrollable information panel that displays the config info for a simulation.
+   *
+   * @param simulation the simulation to display info for.
+   * @return the root of the info panel.
+   */
+  public static Pane makeSimulationInfoPanel(Simulation simulation) {
+    Label simulationInfoText = new Label();
+    simulationInfoText.setWrapText(true);
+    StringBuilder simulationInfo = new StringBuilder("Configuration info:");
+    for (Map.Entry<String, String> entry : simulation.getConfigInfo().entrySet()) {
+      simulationInfo.append("\n");
+      simulationInfo.append(entry.getKey());
+      simulationInfo.append(": ");
+      simulationInfo.append(entry.getValue());
+    }
+    simulationInfoText.setText(simulationInfo.toString());
+    ScrollPane simulationInfoPane = new ScrollPane(simulationInfoText);
+    simulationInfoPane.getStyleClass().add("simulation-info-pane");
+    simulationInfoPane.setFitToWidth(true);
+    simulationInfoPane.setFitToHeight(true);
+
+    return new Pane(simulationInfoPane);
+  }
+
+  /**
+   * Sets the col/row constraints of a gridpane so that all cells are equally spaced.
+   * @param gridPane the GridPane to space out.
+   * @param numRows the number of rows.
+   * @param numColumns the number of columns.
+   */
+  public static void setEqualCellSize(GridPane gridPane, int numRows, int numColumns) {
+    gridPane.getColumnConstraints().clear();
+    gridPane.getRowConstraints().clear();
+
+    ColumnConstraints cc = new ColumnConstraints();
+    cc.setPercentWidth(100.0 / numColumns);
+    cc.setFillWidth(true);
+    cc.setHgrow(Priority.ALWAYS);
+    for (int x = 0; x < numColumns; x++) {
+      gridPane.getColumnConstraints().add(cc);
+    }
+
+    RowConstraints rc = new RowConstraints();
+    rc.setPercentHeight(100.0 / numRows);
+    rc.setFillHeight(true);
+    rc.setVgrow(Priority.ALWAYS);
+    for (int y = 0; y < numRows; y++) {
+      gridPane.getRowConstraints().add(rc);
+    }
   }
 }
