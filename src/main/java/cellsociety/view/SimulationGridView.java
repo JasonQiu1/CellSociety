@@ -14,7 +14,6 @@ import javafx.scene.layout.Pane;
 class SimulationGridView extends SimulationView {
 
   private SquareGridView gridView;
-  private StateColorGenerator colorGenerator;
 
   /**
    * Holds on to the parent to draw to.
@@ -44,8 +43,6 @@ class SimulationGridView extends SimulationView {
 
   // recreates the grid view with the same dimensions as the current grid
   private void reinitializeGridView() {
-    colorGenerator = new StateColorGenerator(getSimulation().getNumStates());
-
     if (gridView != null) {
       getRoot().getChildren().remove(gridView.getRoot());
     }
@@ -62,7 +59,7 @@ class SimulationGridView extends SimulationView {
     for (int row = 0; row < currentGrid.getNumRows(); row++) {
       for (int col = 0; col < currentGrid.getNumCols(); col++) {
         gridView.setCellViewColor(row, col,
-            colorGenerator.getColor(currentGrid.getCellState(row, col)));
+            getColorGenerator().getColor(currentGrid.getCellState(row, col)));
       }
     }
   }
