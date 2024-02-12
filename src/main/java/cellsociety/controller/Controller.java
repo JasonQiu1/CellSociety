@@ -20,6 +20,10 @@ public class Controller {
     this.simulation = simulation;
   }
 
+  public Simulation getSimulation() {
+    return simulation;
+  }
+
   /**
    * Send a message to Game to load up a new simulation based on the given file name.
    *

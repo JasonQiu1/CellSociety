@@ -1,15 +1,19 @@
 package cellsociety.view;
 
 import cellsociety.controller.Controller;
+import cellsociety.model.Simulation;
 import java.util.Objects;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javax.imageio.ImageIO;
 
 /**
@@ -62,5 +66,27 @@ class Util {
 
     root.getChildren().add(layout);
     return root;
+  }
+
+  /**
+   * Creates a scrollable information panel that displays the config info for a simulation.
+   *
+   * @param simulation the simulation to display info for.
+   * @return the root of the info panel.
+   */
+  public static Pane makeSimulationInfoPanel(Simulation simulation) {
+    Label simulationInfoText = new Label();
+    simulationInfoText.setWrapText(true);
+    simulationInfoText.setText(
+        "Configuration info:\n" +
+            "Author: " + simulation.getAuthor() + '\n' +
+            "Description: " + simulation.getDescription());
+
+    ScrollPane simulationInfoPane = new ScrollPane(simulationInfoText);
+    simulationInfoPane.getStyleClass().add("simulation-info-pane");
+    simulationInfoPane.setFitToWidth(true);
+    simulationInfoPane.setFitToHeight(true);
+
+    return new Pane(simulationInfoPane);
   }
 }

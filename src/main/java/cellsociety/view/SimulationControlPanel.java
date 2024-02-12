@@ -43,6 +43,7 @@ class SimulationControlPanel extends UserInterfacePanel {
         event -> controller.handleSaveConfigurationFileButtonPress(configPathInput.getText()));
 
     GridPane layout = new GridPane();
+    layout.add(Util.makeSimulationInfoPanel(controller.getSimulation()), 0, 0, 4, 4);
     layout.addRow(0, start, pause);
     layout.addRow(1, speedUp, slowDown);
     layout.addRow(2, reset);
