@@ -18,7 +18,8 @@ public class SpreadingOfFire extends RuleSet {
   }
 
   public SpreadingOfFire(Cell[][] grid, double
-      probabilityIgnite, double probabilityTree, int neighborSize, boolean vonNeuman, boolean toroidalNeighbor) {
+      probabilityIgnite, double probabilityTree,
+      int neighborSize, boolean vonNeuman, boolean toroidalNeighbor) {
     super(grid);
     this.probabilityIgnite = probabilityIgnite;
     this.probabilityTree = probabilityTree;

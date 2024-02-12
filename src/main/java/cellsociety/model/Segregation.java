@@ -26,7 +26,9 @@ public class Segregation extends RuleSet {
     this.segregationFraction = segregationFactor;
   }
 
-  public Segregation(Cell[][] grid, double segregationFactor, int neighborSize, boolean vonNeuman, boolean toroidalNeighbor) {
+  public Segregation(Cell[][] grid, double segregationFactor,
+      int neighborSize, boolean
+      vonNeuman, boolean toroidalNeighbor) {
     super(grid);
     emptyCells = findEmptyCells();
     this.segregationFraction = segregationFactor;

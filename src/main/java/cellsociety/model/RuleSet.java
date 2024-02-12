@@ -18,17 +18,15 @@ public abstract class RuleSet implements Rules {
   }
 
   public void setGrid(Cell[][] grid) {
-    if (this.grid==null) {
+    if (this.grid == null) {
       this.grid = grid;
-    }
-    else {
-      return;
     }
   }
 
-  public Cell[][] getGrid () {
+  public Cell[][] getGrid() {
     return grid;
   }
+
   public void applyRules() {
     // default applyRules. used by almost all children
     for (int i = 0; i < grid.length; i++) {
@@ -102,14 +100,12 @@ public abstract class RuleSet implements Rules {
     int newY = y;
     if (x < 0) {
       newX = grid.length + x;
-    }
-    else if (x >= grid.length) {
+    } else if (x >= grid.length) {
       newX = grid.length - x;
     }
     if (y < 0) {
       newY = grid.length + y;
-    }
-    else if (y >= grid[0].length) {
+    } else if (y >= grid[0].length) {
       newY = grid[0].length - y;
     }
     if (x == cordX && y == cordY) {

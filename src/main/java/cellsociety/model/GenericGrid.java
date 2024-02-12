@@ -33,6 +33,7 @@ public class GenericGrid implements Grid {
       System.out.println(" ");
     }
   }
+
   public int getCellState(int row, int column) {
     return grid[row][column].getCurrentState();
   }

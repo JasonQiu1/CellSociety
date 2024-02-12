@@ -32,6 +32,7 @@ public class WaterWorld extends RuleSet {
     this.startEnergy = startEnergy;
     this.grid = (makeFishOrShark(grid));
   }
+
   public WaterWorld(Cell[][] grid, int reproductionMoves, int energyFromFish, int startEnergy,
       int neighborSize, boolean vonNeuman, boolean toroidalNeighbor) {
     super();
@@ -49,9 +50,6 @@ public class WaterWorld extends RuleSet {
   public void setGrid(Cell[][] grid) {
     if (this.grid == null) {
       this.grid = makeFishOrShark(grid);
-    }
-    else {
-      return;
     }
   }
 
