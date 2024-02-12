@@ -1,7 +1,6 @@
 package cellsociety.view;
 
 import cellsociety.model.Simulation;
-import java.awt.Color;
 import javafx.scene.layout.Pane;
 
 /**
