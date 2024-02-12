@@ -16,13 +16,11 @@ public class Segregation extends RuleSet {
   public Segregation() {
     super();
     // finds all empty cells
-    emptyCells = findEmptyCells();
     segregationFraction = 0.3;
   }
 
   public Segregation(double segregationFactor) {
     super();
-    emptyCells = findEmptyCells();
     this.segregationFraction = segregationFactor;
   }
 
@@ -30,7 +28,6 @@ public class Segregation extends RuleSet {
       int neighborSize, boolean
       vonNeuman, boolean toroidalNeighbor) {
     super();
-    emptyCells = findEmptyCells();
     this.segregationFraction = segregationFactor;
     this.neighborSize = neighborSize;
     this.vonNeuman = vonNeuman;
@@ -75,4 +72,13 @@ public class Segregation extends RuleSet {
     }
     return empty;
   }
+
+  @Override
+  public void setGrid(Cell[][] grid) {
+    if (this.grid == null) {
+      this.grid = grid;
+      emptyCells = findEmptyCells();
+    }
+  }
+
 }

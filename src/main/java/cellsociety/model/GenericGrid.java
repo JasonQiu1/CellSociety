@@ -15,7 +15,6 @@ public class GenericGrid implements Grid {
     this.rules = rules;
     rules.setGrid(grid);
     this.grid = rules.getGrid();
-
   }
 
   public void setGrid(Cell[][] grid) {
