@@ -1,5 +1,8 @@
 package cellsociety.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Simulation {
 
   private RuleSet ruleSet;
@@ -9,6 +12,8 @@ public class Simulation {
   private double lastUpdateTime;
   private String author;
   private String description;
+  private Map<String, String> configInfo = new HashMap<>();
+
 
 
   public Simulation(RuleSet ruleSet, Cell[][] initialGrid) {
@@ -70,28 +75,35 @@ public class Simulation {
   }
 
   // Additional getters for author and description if needed
-  public String getAuthor() {
-    return author;
+//  public String getAuthor() {
+//    return author;
+//  }
+//
+//  public void setAuthor(String author) {
+//    if (author != null && !author.trim().isEmpty()) {
+//      this.author = author;
+//    } else {
+//      throw new IllegalArgumentException("Author cannot be null or empty.");
+//    }
+//  }
+//
+//  public String getDescription() {
+//    return description;
+//  }
+//
+//  public void setDescription(String description) {
+//    if (description != null && !description.trim().isEmpty()) {
+//      this.description = description;
+//    } else {
+//      throw new IllegalArgumentException("Description cannot be null or empty.");
+//    }
+//  }
+  public Map<String, String> getConfigInfo() {
+    return new HashMap<>(configInfo); // Return a copy to preserve encapsulation
   }
 
-  public void setAuthor(String author) {
-    if (author != null && !author.trim().isEmpty()) {
-      this.author = author;
-    } else {
-      throw new IllegalArgumentException("Author cannot be null or empty.");
-    }
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    if (description != null && !description.trim().isEmpty()) {
-      this.description = description;
-    } else {
-      throw new IllegalArgumentException("Description cannot be null or empty.");
-    }
+  public void setConfigInfo(Map<String, String> configInfo) {
+    this.configInfo = new HashMap<>(configInfo); // Store a copy to preserve encapsulation
   }
 
 }

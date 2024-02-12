@@ -1,4 +1,5 @@
 <config>
+  <Author>Prince</Author>
   <Description>Basic Ecosystem</Description>
   <Width>20</Width>
   <Height>20</Height>
@@ -9,5 +10,5 @@
     <Cell col="15" row="15">2</Cell>
   </InitialConfig>
   <Parameters></Parameters>
-  <SimulationType>FallingSandWater</SimulationType>
+  <SimulationType>FallingSandWatersssssss</SimulationType>
 </config>

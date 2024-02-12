@@ -36,25 +36,14 @@ public class ConfigLoader {
 
   public ConfigLoader(String fileName) {
 //      throws ParserConfigurationException, IOException, SAXException {
-    try{
-    this.fileName = fileName;
-//    try {
+    try {
+      this.fileName = fileName;
       Document doc = readXmlFile(FILE_PATH + fileName);
-//      System.out.println(doc);
       this.grid = buildGrid(doc);
       this.ruleSet = buildRuleSet(doc);
-
-//      System.out.println(grid);
-
-//      buildRuleSet(doc);
       simulation = new Simulation(ruleSet, grid);
       parseSimulationDetails(doc);
-//            // rule object can be initialized here with buildRuleset method
-//            trackParameters(doc);
-//            this.simulation = buildSimulation();
     } catch (Exception e) {
-//      e.printStackTrace();
-      // Handle exceptions or errors accordingly
       throw new RuntimeException("something went wrong with loading the config file\n" + e.getMessage());
     }
 
@@ -83,13 +72,8 @@ public class ConfigLoader {
         int col = Integer.parseInt(cell.getAttribute("col"));
         int val = Integer.parseInt(cell.getTextContent().trim());
         gridInitializer.setCellState(row, col, val);
-//        System.out.println("row");
-//        System.out.println(row);
-//        System.out.println(col);
-//        System.out.println(val);
       }
     }
-//    return grid;
     return gridInitializer.getGrid();
   }
 
@@ -98,8 +82,6 @@ public class ConfigLoader {
     if (nodeList.getLength() > 0) {
       return nodeList.item(0).getTextContent();
     } else {
-      // FIXME: empty string or exception? In some cases it may be an error to not find any text
-//      return "";
       throw new RuntimeException(tagName +
           " was not provided or null in the xml config file selected");
     }
@@ -107,17 +89,18 @@ public class ConfigLoader {
 
   private void parseSimulationDetails(Document doc) {
     Element root = doc.getDocumentElement();
-    String author = getTextValue(root, "Author");
-    String description = getTextValue(root, "Description");
-//    System.out.println(author);
-//    System.out.println(description);
+    Map<String, String> configInfo = new HashMap<>();
 
-    // Assuming Simulation has setters for author and description
-    simulation.setAuthor(author);
-    simulation.setDescription(description);
+    String author = getTextValue(root, "Author");
+    configInfo.put("Author", author);
+
+    String description = getTextValue(root, "Description");
+    configInfo.put("Description", description);
+
+    simulation.setConfigInfo(configInfo);
   }
 
-  //  private RuleSet buildRuleSet(Document doc) {
+
   private RuleSet buildRuleSet(Document doc) {
     Element root = doc.getDocumentElement();
     String simulationType = getTextValue(root, "SimulationType");
@@ -134,11 +117,6 @@ public class ConfigLoader {
         parameters.put(name, value);
       }
     }
-    System.out.println(parameters);
-
-//    ruleSet = new GameOfLife(this.grid);
-//    FiniteGrid f1 = new FiniteGrid(ruleSet);
-//    f1.update();
     return buildGameRuleSet(simulationType, this.grid, parameters);
   }
 
@@ -172,7 +150,7 @@ public class ConfigLoader {
     }
 
     if (ruleSet == null) {
-      throw new IllegalArgumentException(
+      throw new RuntimeException(
           "No valid RuleSet could be created for the given simulation type: " + simulationType);
     }
 

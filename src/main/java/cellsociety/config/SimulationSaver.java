@@ -67,13 +67,13 @@ public class SimulationSaver {
 
   private static void addSimulationDetails(Document doc,
       Element rootElement, Simulation simulation) {
-    Element authorElement = doc.createElement("Author");
-    authorElement.setTextContent(simulation.getAuthor());
-    rootElement.appendChild(authorElement);
+    Map<String, String> configInfo = simulation.getConfigInfo();
 
-    Element descriptionElement = doc.createElement("Description");
-    descriptionElement.setTextContent(simulation.getDescription());
-    rootElement.appendChild(descriptionElement);
+    for (Map.Entry<String, String> entry : configInfo.entrySet()) {
+      Element detailElement = doc.createElement(entry.getKey());
+      detailElement.setTextContent(entry.getValue());
+      rootElement.appendChild(detailElement);
+    }
   }
 
   private static void addGridState(Document doc, Element rootElement, Grid grid) {
