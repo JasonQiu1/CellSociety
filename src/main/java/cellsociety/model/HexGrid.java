@@ -26,7 +26,7 @@ public class HexGrid extends GenericGrid {
         hexGrid[i][j] = null;
       }
     } else {
-      if (j%2 == 0) {
+      if (j % 2 == 0) {
         hexGrid[i][j] = null;
       } else {
         hexGrid[i][j] = grid[i][(j / 2)];
