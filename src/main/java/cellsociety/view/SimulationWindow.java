@@ -68,6 +68,7 @@ public class SimulationWindow {
       case GRID -> simulationView = new SimulationGridView(simulation, simulationViewPane);
       case HISTOGRAM ->
           simulationView = new SimulationHistogramView(simulation, simulationViewPane);
+      default -> throw new RuntimeException("InvalidSimulationType");
     }
   }
 }

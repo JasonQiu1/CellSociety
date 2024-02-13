@@ -58,7 +58,12 @@ public class View {
     Alert alert = new Alert(AlertType.ERROR);
     alert.setTitle(resources.getString("errorWindowTitle"));
 
-    Label messageText = new Label(message);
+    Label messageText;
+    try {
+      messageText = new Label(resources.getString("error" + message));
+    } catch (Exception e) {
+      messageText = new Label(message);
+    }
     messageText.setWrapText(true);
     alert.getDialogPane().setContent(messageText);
 
@@ -86,7 +91,7 @@ public class View {
    */
   public void addSimulation(Simulation simulation) {
     if (simulation == null) {
-      showError(resources.getString("errorViewNullSimulation"));
+      showError("ViewNullSimulation");
       return;
     }
 
