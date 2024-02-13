@@ -34,12 +34,17 @@ class SimulationControlPanel extends UserInterfacePanel {
         event -> controller.handleSpeedUpSimulationButtonPress());
     Button slowDown = Util.makeButton("slowDown" + PROPERTY_SUFFIX,
         event -> controller.handleSlowDownSimulationButtonPress());
-    Button reset = Util.makeButton("reset" + PROPERTY_SUFFIX,
-        event -> controller.handleResetGridButtonPress());
     Button switchToGridView = Util.makeButton("switchToGridView" + PROPERTY_SUFFIX,
         event -> controller.switchToSimulationGridView());
-    Button switchToHistogramView = Util.makeButton("switchToHistogramView" + PROPERTY_SUFFIX,
+    Button switchToHistogramView = Util.makeButton(
+        "switchToHistogramView" + PROPERTY_SUFFIX,
         event -> controller.switchToSimulationHistogramView());
+    Button enableToroidalEdgePolicy = Util.makeButton(
+        "enableToroidalEdgePolicy" + PROPERTY_SUFFIX,
+        event -> controller.enableToroidalEdgePolicy());
+    Button disableToroidalEdgePolicy = Util.makeButton(
+        "disableToroidalEdgePolicy" + PROPERTY_SUFFIX,
+        event -> controller.disableToroidalEdgePolicy());
 
     TextField configPathInput = new TextField();
     configPathInput.setPrefColumnCount(INPUT_FIELD_WIDTH);
@@ -50,7 +55,7 @@ class SimulationControlPanel extends UserInterfacePanel {
     layout.add(Util.makeSimulationInfoPanel(controller.getSimulation()), 0, 0, 4, 4);
     layout.addRow(0, start, pause, speedUp, slowDown);
     layout.addRow(1, switchToGridView, switchToHistogramView);
-    layout.addRow(2, reset);
+    layout.addRow(2, enableToroidalEdgePolicy, disableToroidalEdgePolicy);
     layout.addRow(3, configPathInput, save);
     getRoot().getChildren().add(layout);
   }

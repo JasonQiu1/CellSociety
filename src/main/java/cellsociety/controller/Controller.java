@@ -93,16 +93,27 @@ public class Controller {
     }
   }
 
-  public void handleResetGridButtonPress() {
-    // send a message to Game to load the initial grid into the same simulation
-    // without resetting its parameters
-  }
-
   public void switchToSimulationGridView() {
     simulationWindow.switchSimulationView(SimulationViewType.GRID);
   }
 
   public void switchToSimulationHistogramView() {
     simulationWindow.switchSimulationView(SimulationViewType.HISTOGRAM);
+  }
+
+  public void enableToroidalEdgePolicy() {
+    try {
+      simulation.getGrid().setToroidalNeighbor(true);
+    } catch (Exception e) {
+      View.showError(e.getMessage());
+    }
+  }
+
+  public void disableToroidalEdgePolicy() {
+    try {
+      simulation.getGrid().setToroidalNeighbor(false);
+    } catch (Exception e) {
+      View.showError(e.getMessage());
+    }
   }
 }

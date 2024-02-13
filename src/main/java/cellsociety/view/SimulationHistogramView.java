@@ -34,9 +34,7 @@ class SimulationHistogramView extends SimulationView {
   @Override
   public void update() {
 
-
     Grid grid = getSimulation().getGrid();
-
 
     int[] numOfEachState = new int[getSimulation().getNumStates()];
     for (int row = 0; row < grid.getNumRows(); row++) {

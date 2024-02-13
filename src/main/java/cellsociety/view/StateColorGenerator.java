@@ -1,7 +1,6 @@
 package cellsociety.view;
 
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 /**
  * Responsible for determining the color of a state given the number of possible states.
