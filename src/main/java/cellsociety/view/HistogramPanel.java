@@ -51,17 +51,5 @@ class HistogramPanel extends UserInterfacePanel {
     }
 
     getRoot().getChildren().add(histogram);
-    //setBarColors();
-  }
-
-  private void setBarColors() {
-    for (int state = 0; state < stateColors.size(); state++) {
-      for (Node n : histogram.lookupAll(
-          ".data" + Integer.toString(state) + ".chart-bar")) {
-        Color stateColor = stateColors.get(Integer.toString(state));
-        n.setStyle("-fx-bar-fill: rgb(" + stateColor.getRed() + "," + stateColor.getGreen() + ","
-            + stateColor.getBlue() + ");");
-      }
-    }
   }
 }
