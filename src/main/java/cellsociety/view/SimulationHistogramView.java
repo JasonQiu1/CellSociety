@@ -5,8 +5,7 @@ import cellsociety.model.Simulation;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
-import javafx.util.Pair;
+import javafx.scene.paint.Color;
 
 /**
  * Responsible for displaying simulation state as a histogram of current cell states on the grid.
@@ -19,7 +18,14 @@ class SimulationHistogramView extends SimulationView {
 
   public SimulationHistogramView(Simulation simulation, Pane pane) {
     super(simulation, pane, "simulation-histogram-view");
-    histogram = new HistogramPanel(getRoot());
+    // TODO: temporary statenames until I can get the actual names from Simulation.getConfigInfo()
+    Map<Integer, String> stateNames = new HashMap<>();
+    Map<String, Color> stateColors = new HashMap<>();
+    for (int i = 0; i < simulation.getNumStates(); i++) {
+      stateNames.put(i, Integer.toString(i));
+      stateColors.put(Integer.toString(i), getColorGenerator().getColor(i));
+    }
+    histogram = new HistogramPanel(getRoot(), stateNames, stateColors);
   }
 
   /**
@@ -27,20 +33,24 @@ class SimulationHistogramView extends SimulationView {
    */
   @Override
   public void update() {
-    Map<Integer, Pair<Integer, Paint>> numOfEachState = new HashMap<>();
+
+
     Grid grid = getSimulation().getGrid();
 
-    for (int i = 0; i < getSimulation().getNumStates(); i++) {
-      numOfEachState.put(i, new Pair<>(0, getColorGenerator().getColor(i)));
-    }
 
+    int[] numOfEachState = new int[getSimulation().getNumStates()];
     for (int row = 0; row < grid.getNumRows(); row++) {
       for (int col = 0; col < grid.getNumCols(); col++) {
-        numOfEachState.compute(grid.getCellState(row, col),
-            (k, v) -> (v == null) ? new Pair<>(0, getColorGenerator().getColor(k))
-                : new Pair<>(v.getKey() + 1, v.getValue()));
+        numOfEachState[grid.getCellState(row, col)] += 1;
       }
     }
-    histogram.setXSeries(numOfEachState);
+
+    // TODO: use state names instead of state number when added to Simulation.getConfig()
+    Map<String, Number> data = new HashMap<>();
+    for (int i = 0; i < getSimulation().getNumStates(); i++) {
+      data.put(Integer.toString(i), numOfEachState[i]);
+    }
+
+    histogram.setData(data);
   }
 }

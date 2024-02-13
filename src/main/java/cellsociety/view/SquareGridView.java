@@ -1,10 +1,8 @@
 package cellsociety.view;
 
 import javafx.geometry.Pos;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.shape.Polygon;
 
 /**

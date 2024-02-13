@@ -98,8 +98,9 @@ class Util {
 
   /**
    * Sets the col/row constraints of a gridpane so that all cells are equally spaced.
-   * @param gridPane the GridPane to space out.
-   * @param numRows the number of rows.
+   *
+   * @param gridPane   the GridPane to space out.
+   * @param numRows    the number of rows.
    * @param numColumns the number of columns.
    */
   public static void setEqualCellSize(GridPane gridPane, int numRows, int numColumns) {

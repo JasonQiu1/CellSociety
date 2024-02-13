@@ -1,21 +1,17 @@
 package cellsociety.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import javafx.geometry.Pos;
+import javafx.collections.FXCollections;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Text;
-import javafx.util.Pair;
+import javafx.scene.paint.Color;
 
 /**
  * Responsible for displaying a histogram of data.
@@ -24,47 +20,52 @@ import javafx.util.Pair;
  */
 class HistogramPanel extends UserInterfacePanel {
 
-  public static final int BAR_SPACING = 1;
-  public static final int BAR_AXIS_SPACING = 1;
-  GridPane histogram;
+  BarChart<String, Number> histogram;
+  Map<String, Color> stateColors;
 
-  public HistogramPanel(Pane root) {
+  public HistogramPanel(Pane root, Map<Integer, String> stateNames,
+      Map<String, Color> stateColors) {
     super(root, "histogram-panel");
-    histogram = new GridPane();
-    histogram.setPrefSize(root.getPrefWidth(), root.getPrefHeight());
-    histogram.setAlignment(Pos.CENTER);
+    this.stateColors = stateColors;
+
+    CategoryAxis xAxis = new CategoryAxis();
+    xAxis.setLabel("cell state");
+
+    NumberAxis yAxis = new NumberAxis();
+    yAxis.setLabel("population");
+
+    histogram = new BarChart<>(xAxis, yAxis);
     getRoot().getChildren().add(histogram);
   }
 
-  public void setXSeries(Map<Integer, Pair<Integer, Paint>> numOfEachState) {
-    histogram.getChildren().clear();
+  public void setData(Map<String, Number> numOfEachState) {
+    getRoot().getChildren().clear();
+    CategoryAxis xAxis = new CategoryAxis();
+    xAxis.setLabel("cell state");
 
-    int xAxisLabelRow = 0;
-    for (Pair<Integer, Paint> data : numOfEachState.values()) {
-      if (data.getKey() > xAxisLabelRow) {
-        xAxisLabelRow = data.getKey();
+    NumberAxis yAxis = new NumberAxis();
+    yAxis.setLabel("population");
+
+    histogram = new BarChart<>(xAxis, yAxis);
+
+    for (Map.Entry<String, Number> datum : numOfEachState.entrySet()) {
+      XYChart.Series<String, Number> series = new XYChart.Series<>();
+      series.getData().add(new XYChart.Data<>(datum.getKey(), datum.getValue()));
+      histogram.getData().add(series);
+    }
+
+    getRoot().getChildren().add(histogram);
+    //setBarColors();
+  }
+
+  private void setBarColors() {
+    for (int state = 0; state < stateColors.size(); state++) {
+      for (Node n : histogram.lookupAll(
+          ".data" + Integer.toString(state) + ".chart-bar")) {
+        Color stateColor = stateColors.get(Integer.toString(state));
+        n.setStyle("-fx-bar-fill: rgb(" + stateColor.getRed() + "," + stateColor.getGreen() + ","
+            + stateColor.getBlue() + ");");
       }
     }
-    xAxisLabelRow = 1;
-
-    int currCol = 0;
-    for (Entry<Integer, Pair<Integer, Paint>> entry : numOfEachState.entrySet()) {
-      int barSize = entry.getValue().getKey();
-      Paint barColor = entry.getValue().getValue();
-      histogram.add(createBar(barSize, barColor), currCol, 0, 1, 1);
-      histogram.add(new Text(Integer.toString(entry.getKey())), currCol, xAxisLabelRow, 1,
-          1);
-
-      currCol += BAR_SPACING;
-    }
-
-    Util.setEqualCellSize(histogram, 3, histogram.getColumnCount());
-  }
-  private Node createBar(int barSize, Paint color) {
-    Label sizeLabel = new Label(Integer.toString(barSize));
-    sizeLabel.setBackground(new Background(new BackgroundFill(color, null, null)));
-    AutoScalePane root = new AutoScalePane(0);
-    root.addChildren(sizeLabel);
-    return root;
   }
 }

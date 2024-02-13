@@ -10,7 +10,7 @@ import javafx.scene.paint.Paint;
  */
 class StateColorGenerator {
 
-  private final Paint[] colors;
+  private final Color[] colors;
 
   /**
    * Initializes a map of state to distinct color.
@@ -18,7 +18,7 @@ class StateColorGenerator {
    * @param numStates the number of possible states.
    */
   public StateColorGenerator(int numStates) {
-    colors = new Paint[numStates];
+    colors = new Color[numStates];
     double hueStep = 360.0 / (numStates + 1);
     for (int i = 0; i < numStates; i++) {
       colors[i] = Color.hsb(hueStep * i, 1, 1);
@@ -31,7 +31,11 @@ class StateColorGenerator {
    * @param state the state number.
    * @return the color that corresponds to that state.
    */
-  public Paint getColor(int state) {
+  public Color getColor(int state) {
     return colors[state];
+  }
+
+  public Color[] getColors() {
+    return colors;
   }
 }
