@@ -17,7 +17,7 @@ public class Game extends Application {
 
   public static final int FRAMES_PER_SECOND = 60;
   public static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
-  public static final String VIEW_RESOURCE_BUNDLE_NAME = "view";
+  public static final String VIEW_RESOURCE_BUNDLE_NAME = "english";
   public static View view;
   public static List<Simulation> simulations;
   public static ConfigLoader configLoader;
