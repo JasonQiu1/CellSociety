@@ -25,6 +25,18 @@ class StateColorGenerator {
   }
 
   /**
+   * Maps each state to the given rgb colors
+   *
+   * @param rgbColors the rgb values to use for each state.
+   */
+  public StateColorGenerator(int[][] rgbColors) {
+    colors = new Color[rgbColors.length];
+    for (int i = 0; i < rgbColors.length; i++) {
+      colors[i] = Color.rgb(rgbColors[i][0], rgbColors[i][1], rgbColors[i][2]);
+    }
+  }
+
+  /**
    * Gets the fixed color for a given state.
    *
    * @param state the state number.
@@ -32,9 +44,5 @@ class StateColorGenerator {
    */
   public Color getColor(int state) {
     return colors[state];
-  }
-
-  public Color[] getColors() {
-    return colors;
   }
 }

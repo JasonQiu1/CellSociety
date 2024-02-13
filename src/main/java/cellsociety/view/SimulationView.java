@@ -23,6 +23,12 @@ abstract class SimulationView extends UserInterfacePanel {
   protected SimulationView(Simulation simulation, Pane pane, String cssClassName) {
     super(pane, cssClassName);
     this.simulation = simulation;
+    // TODO: replace line below with this block when simulation.getStateColors() is implemented
+    // try {
+    //    colorGenerator = new StateColorGenerator(simulation.getStateColors());
+    // } catch (Exception e) {
+    //    colorGenerator = new StateColorGenerator(getSimulation().getNumStates())
+    // }
     colorGenerator = new StateColorGenerator(getSimulation().getNumStates());
   }
 
