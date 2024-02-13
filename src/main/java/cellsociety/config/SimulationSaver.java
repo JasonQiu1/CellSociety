@@ -3,7 +3,6 @@ package cellsociety.config;
 import cellsociety.model.Grid;
 import cellsociety.model.Simulation;
 import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import javax.xml.parsers.DocumentBuilder;
@@ -71,7 +70,7 @@ public class SimulationSaver {
     Map<String, String> configInfo = simulation.getConfigInfo();
 //    System.out.println(configInfo);
     for (Map.Entry<String, String> entry : configInfo.entrySet()) {
-      if (Objects.equals(entry.getKey(), "Width") || Objects.equals(entry.getKey(), "Height")){
+      if (Objects.equals(entry.getKey(), "Width") || Objects.equals(entry.getKey(), "Height")) {
         continue;
       }
       Element detailElement = doc.createElement(entry.getKey());

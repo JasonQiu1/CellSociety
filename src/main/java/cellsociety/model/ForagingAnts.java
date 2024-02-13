@@ -14,34 +14,32 @@ public class ForagingAnts extends RuleSet {
   // 3 = 50% - 75% max ant size
   // 4 = 75% - 100% max ant size
 
-  public ForagingAnts () {
+  private static final int MAX_ANTS = 10;
+  private static final int MAX_PHEREMONES = 100;
+
+  public ForagingAnts() {
     super();
   }
-
-
-  private static final int MAX_ANTS = 10;
-
-  private static final int MAX_PHEREMONES = 100;
 
   public Cell[][] makeAntCells(Cell[][] grids) {
     // takes in cell array and make it into FishOrShark cell array
     Cell[][] newGrid = new Cell[grids.length][grids[0].length];
     for (int i = 0; i < grids.length; i++) {
       for (int j = 0; j < grids[0].length; j++) {
-        int randomAnts = (int)(MAX_ANTS * (Math.random())
+        int randomAnts = (int) (MAX_ANTS * (Math.random())
             * (Math.random() * (0.25 * grids[i][j].getCurrentState())));
 
         newGrid[i][j] = new AntCell(grids[i][j].getCurrentState(), 5, 5, generateAnts(randomAnts));
       }
     }
-    int setRandomNest = (int)(Math.random() * grids.length);
-    int setRandomNest2 = (int)(Math.random() * grids[0].length);
-    ((AntCell)(newGrid[setRandomNest][setRandomNest2])).setNest(true);
-    ((AntCell)(newGrid[setRandomNest][setRandomNest2])).setNestPheromones(MAX_PHEREMONES);
-    int setRandomFoodSource = (int)(Math.random() * grids.length);
-    int setRandomFoodSource2 = (int)(Math.random() * grids[0].length);
-    ((AntCell)(newGrid[setRandomFoodSource][setRandomFoodSource2])).setFoodSource(true);
-    ((AntCell)(newGrid[setRandomFoodSource][setRandomFoodSource2])).
+    int setRandomNest = (int) (Math.random() * grids.length);
+    int setRandomNest2 = (int) (Math.random() * grids[0].length);
+    ((AntCell) (newGrid[setRandomNest][setRandomNest2])).setNest(true);
+    ((AntCell) (newGrid[setRandomNest][setRandomNest2])).setNestPheromones(MAX_PHEREMONES);
+    int setRandomFoodSource = (int) (Math.random() * grids.length);
+    int setRandomFoodSource2 = (int) (Math.random() * grids[0].length);
+    ((AntCell) (newGrid[setRandomFoodSource][setRandomFoodSource2])).setFoodSource(true);
+    ((AntCell) (newGrid[setRandomFoodSource][setRandomFoodSource2])).
         setFoodPheromones(MAX_PHEREMONES);
     return newGrid;
   }
@@ -59,7 +57,7 @@ public class ForagingAnts extends RuleSet {
     List<Cell> most = findMostFoodOrNest(neighbors);
     Cell mostFood = most.get(0);
     Cell mostNest = most.get(1);
-    for (int i = 0; i < ((AntCell)c1).getAntList().size(); i++) {
+    for (int i = 0; i < ((AntCell) c1).getAntList().size(); i++) {
       updateAnts(c1, mostFood, mostNest, i);
     }
   }
@@ -67,7 +65,7 @@ public class ForagingAnts extends RuleSet {
   public void updatePheromones(int fpher, int npher, AntCell c1) {
     int addFoodPheromones = fpher - 2;
     int addNestPheromones = npher - 2;
-        // - c1.getNestPheromones();
+    // - c1.getNestPheromones();
     if (c1.getFoodPheromones() + addFoodPheromones < MAX_PHEREMONES && addFoodPheromones > 0) {
       c1.setFoodPheromones(c1.getFoodPheromones() + addFoodPheromones);
     }
@@ -78,16 +76,14 @@ public class ForagingAnts extends RuleSet {
 
   public void updateNextState(Cell c1) {
     if (c1 != null) {
-      evaporation(((AntCell)c1));
-      if (((AntCell)c1).getAntList().isEmpty()) {
+      evaporation(((AntCell) c1));
+      if (((AntCell) c1).getAntList().isEmpty()) {
         c1.setNextState(0);
-      }
-      else if (((AntCell)c1).getAntList().size() < (0.25 * MAX_ANTS)) {
+      } else if (((AntCell) c1).getAntList().size() < (0.25 * MAX_ANTS)) {
         c1.setNextState(1);
-      }
-      else if (((AntCell)c1).getAntList().size() < (0.5 * MAX_ANTS)) {
+      } else if (((AntCell) c1).getAntList().size() < (0.5 * MAX_ANTS)) {
         c1.setNextState(2);
-      } else if (((AntCell)c1).getAntList().size() < (0.75 * MAX_ANTS)) {
+      } else if (((AntCell) c1).getAntList().size() < (0.75 * MAX_ANTS)) {
         c1.setNextState(3);
       } else {
         c1.setNextState(4);
@@ -104,26 +100,26 @@ public class ForagingAnts extends RuleSet {
     int maxnpher = 0;
     if (((AntCell) c1).getAntList().get(i).isHasFoodItem()) {
       if (mostNest != null) {
-        maxnpher = ((AntCell)mostNest).getNestPheromones();
+        maxnpher = ((AntCell) mostNest).getNestPheromones();
         if (((AntCell) mostNest).isNest()) {
           ((AntCell) c1).getAntList().get(i).setHasFoodItem(false);
-          ((AntCell)mostNest).setNestPheromones(MAX_PHEREMONES);
+          ((AntCell) mostNest).setNestPheromones(MAX_PHEREMONES);
         }
         ((AntCell) mostNest).getAntList().add(((AntCell) c1).getAntList().get(i));
         ((AntCell) c1).getAntList().remove(i);
       }
     } else {
       if (mostFood != null) {
-        maxfpher = ((AntCell)mostFood).getFoodPheromones();
+        maxfpher = ((AntCell) mostFood).getFoodPheromones();
         if (((AntCell) mostFood).isFoodSource()) {
           ((AntCell) c1).getAntList().get(i).setHasFoodItem(true);
-          ((AntCell)mostFood).setFoodPheromones(MAX_PHEREMONES);
+          ((AntCell) mostFood).setFoodPheromones(MAX_PHEREMONES);
         }
         ((AntCell) mostFood).getAntList().add(((AntCell) c1).getAntList().get(i));
         ((AntCell) c1).getAntList().remove(i);
       }
     }
-    updatePheromones(maxfpher, maxnpher, ((AntCell)c1));
+    updatePheromones(maxfpher, maxnpher, ((AntCell) c1));
   }
 
 
@@ -142,12 +138,13 @@ public class ForagingAnts extends RuleSet {
   }
 
   public List<Cell> mostLogic(Cell mostFood, Cell mostNest, Cell check) {
-    if (check != null && ((AntCell)(check)).getAntList().size() < MAX_ANTS) {
-      if (mostFood == null || ((AntCell)check).getFoodPheromones() > ((AntCell)mostFood).getFoodPheromones()) {
+    if (check != null && ((AntCell) (check)).getAntList().size() < MAX_ANTS) {
+      if (mostFood == null
+          || ((AntCell) check).getFoodPheromones() > ((AntCell) mostFood).getFoodPheromones()) {
         mostFood = check;
       }
-      if (mostNest == null || ((AntCell)check).getNestPheromones() >
-          ((AntCell)mostNest).getNestPheromones()) {
+      if (mostNest == null || ((AntCell) check).getNestPheromones() >
+          ((AntCell) mostNest).getNestPheromones()) {
         mostNest = check;
       }
     }

@@ -17,14 +17,14 @@ public abstract class RuleSet implements Rules {
     grid = null;
   }
 
+  public Cell[][] getGrid() {
+    return grid;
+  }
+
   public void setGrid(Cell[][] grid) {
     if (this.grid == null) {
       this.grid = grid;
     }
-  }
-
-  public Cell[][] getGrid() {
-    return grid;
   }
 
   public void applyRules() {
@@ -156,7 +156,7 @@ public abstract class RuleSet implements Rules {
     this.neighborSize = neighborSize;
   }
 
-  public void setToroidalNeighbor (boolean toroidalNeighbor) {
+  public void setToroidalNeighbor(boolean toroidalNeighbor) {
     this.toroidalNeighbor = toroidalNeighbor;
   }
 

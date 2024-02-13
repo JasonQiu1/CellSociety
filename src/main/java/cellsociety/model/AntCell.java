@@ -4,16 +4,11 @@ import java.util.List;
 
 public class AntCell extends Cell {
 
-  private int foodPheromones;
-
-  private int nestPheromones;
-
-  private boolean isNest;
-
-  private boolean foodSource;
-
   private static final double EVAPORATION_RATE = 0.1;
-
+  private int foodPheromones;
+  private int nestPheromones;
+  private boolean isNest;
+  private boolean foodSource;
   private List<Ants> antList;
 
   public AntCell(int currentState, int foodPheromones, int nestPheremones, List<Ants> antList) {

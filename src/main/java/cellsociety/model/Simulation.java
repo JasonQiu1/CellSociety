@@ -15,7 +15,6 @@ public class Simulation {
   private Map<String, String> configInfo = new HashMap<>();
 
 
-
   public Simulation(RuleSet ruleSet, Cell[][] initialGrid) {
 //  public Simulation() {
     this.ruleSet = ruleSet;
@@ -25,7 +24,7 @@ public class Simulation {
     this.lastUpdateTime = 0;
   }
 
-  public String getSimulationType(){
+  public String getSimulationType() {
     if (ruleSet != null) {
       return ruleSet.getClass().getSimpleName();
     } else {
@@ -46,7 +45,6 @@ public class Simulation {
     if (!isPaused) {
       if (lastUpdateTime >= 1.0 / simulationSpeed) {
         grid.update();
-        System.out.println("I am updating the gid");
         lastUpdateTime = 0;
       }
     }

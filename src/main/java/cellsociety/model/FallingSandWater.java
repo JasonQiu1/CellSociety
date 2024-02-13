@@ -21,8 +21,7 @@ public class FallingSandWater extends RuleSet {
       if (neighborUnder != null && neighborUnder.getNextState() == 0) {
         c1.setNextState(0);
         neighborUnder.setNextState(2);
-      }
-      else {
+      } else {
         c1.setNextState(2);
       }
     }
@@ -30,8 +29,7 @@ public class FallingSandWater extends RuleSet {
       if (neighborUnder != null && neighborUnder.getNextState() == 0) {
         c1.setNextState(0);
         neighborUnder.setNextState(1);
-      }
-      else if (neighborUnderRight != null && neighborUnderRight.getNextState() == 0) {
+      } else if (neighborUnderRight != null && neighborUnderRight.getNextState() == 0) {
         c1.setNextState(0);
         neighborUnderRight.setNextState(1);
       } else if (neighborUnderLeft != null && neighborUnderLeft.getNextState() == 0) {

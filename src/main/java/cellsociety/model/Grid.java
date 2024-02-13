@@ -19,5 +19,5 @@ public interface Grid {
 
   void setNeighborSize(int neighborSize);
 
-  void setToroidalNeighbor (boolean toroidalNeighbor);
+  void setToroidalNeighbor(boolean toroidalNeighbor);
 }

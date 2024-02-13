@@ -24,10 +24,6 @@ public class Controller {
     this.simulationWindow = simulationView;
   }
 
-  public Simulation getSimulation() {
-    return simulation;
-  }
-
   /**
    * Send a message to Game to load up a new simulation based on the given file name.
    *
@@ -39,6 +35,10 @@ public class Controller {
     } catch (Exception e) {
       View.showError(e.getMessage());
     }
+  }
+
+  public Simulation getSimulation() {
+    return simulation;
   }
 
   /**

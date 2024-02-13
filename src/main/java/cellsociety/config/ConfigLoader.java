@@ -46,7 +46,8 @@ public class ConfigLoader {
       simulation = new Simulation(ruleSet, grid);
       simulation.setConfigInfo(parameters);
     } catch (Exception e) {
-      throw new RuntimeException("something went wrong with loading the config file\n" + e.getMessage());
+      throw new RuntimeException(
+          "something went wrong with loading the config file\n" + e.getMessage());
     }
 
   }
@@ -136,7 +137,6 @@ public class ConfigLoader {
   }
 
 
-
   private RuleSet buildRuleSet(Document doc) {
     Element root = doc.getDocumentElement();
     String simulationType = getTextValue(root, "SimulationType");
@@ -156,7 +156,7 @@ public class ConfigLoader {
     return buildGameRuleSet(simulationType);
   }
 
-  private RuleSet buildGameRuleSet(String simulationType){
+  private RuleSet buildGameRuleSet(String simulationType) {
     RuleSet ruleSet = null;
 //    Map<String, String> parameters = simulation.getConfigInfo();
 
@@ -166,7 +166,8 @@ public class ConfigLoader {
         ruleSet = new GameOfLife();
         break;
       case "SpreadingOfFire":
-        ruleSet = new SpreadingOfFire(Double.valueOf(parameters.get("probabilityIgnite")) , Double.valueOf(parameters.get("probabilityTree")));
+        ruleSet = new SpreadingOfFire(Double.valueOf(parameters.get("probabilityIgnite")),
+            Double.valueOf(parameters.get("probabilityTree")));
         break;
       case "Percolation":
         ruleSet = new Percolation();

@@ -1,6 +1,7 @@
 package cellsociety.model;
 
 public class Ants {
+
   private boolean hasFoodItem;
 
   private int directionFacing;
